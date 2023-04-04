@@ -2,8 +2,10 @@
 
 source 'https://rubygems.org'
 
-gem 'amp-jekyll'
+ruby '3.1.2'
+
 gem 'github-pages'
+gem 'jekyll'
 
 # infra
 gem 'webrick', '~> 1.8'
