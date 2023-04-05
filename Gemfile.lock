@@ -238,6 +238,7 @@ GEM
     public_suffix (4.0.7)
     racc (1.6.2)
     rainbow (3.1.1)
+    rake (13.0.6)
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -293,6 +294,7 @@ DEPENDENCIES
   jekyll
   jekyll-sitemap
   jekyll-spaceship
+  rake (~> 13.0)
   rubocop (~> 1.42)
   webrick (~> 1.8)
 
