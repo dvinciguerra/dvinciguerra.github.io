@@ -39,7 +39,8 @@ exclude:
 
 # plugins
 plugins:
-  - jemoji
+  - jekyll-feed
+  - jekyll-paginate
   - jekyll-sitemap
   - jekyll-spaceship
 
