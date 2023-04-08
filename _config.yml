@@ -24,7 +24,7 @@ twitter:
 
 # build
 markdown: kramdown
-permalink: /:year/:month/:day/:title
+permalink: /:title
 
 sass:
     style: compressed
