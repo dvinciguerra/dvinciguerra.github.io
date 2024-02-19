@@ -84,3 +84,8 @@ jekyll-spaceship:
     css:
       class: emoji
     src: https://github.githubassets.com/images/icons/emoji/
+
+feed:
+  tags: true
+  posts_limit: 50
+  path: /feed.atom
