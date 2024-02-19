@@ -2,6 +2,7 @@
 layout: post
 title:  "Novo projeto para organizar e centralizar informações"
 tags: project, ruby, rails, data
+author: danielvinciguerra
 ---
 
 Depois de ser diagnosticado com transtorno de déficit de atenção com hiperatividade (TDAH), passei a entender o porque de eu "funcionar ou ser afetado de formas específica" pelo excesso de demanda (que podem ser tarefas, projetos, investigações, etc).

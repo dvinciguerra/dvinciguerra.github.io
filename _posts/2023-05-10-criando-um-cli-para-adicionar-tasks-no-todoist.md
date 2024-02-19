@@ -2,6 +2,7 @@
 layout: post
 title:  "Criando um CLI para adicionar tasks no Todoist"
 tags: tool, ruby, productivity, focus
+author: danielvinciguerra
 ---
 
 
