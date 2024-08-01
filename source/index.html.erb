@@ -1,0 +1,46 @@
+---
+pageable: true
+per_page: 10
+layout: blog
+---
+
+<% content_for :heading do %>
+  <%= partial('components/heading') %>
+<% end %>
+
+<div class="-my-8 divide-y-2 divide-gray-800">
+  <% page_articles.each_with_index do |article, i| %>
+    <div class="py-8 flex flex-wrap md:flex-nowrap">
+      <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+        <span class="font-semibold title-font text-white uppercase"><%= article.data.category %></span>
+        <span class="mt-1 text-gray-500 text-sm"><%= article.date.strftime('%d %b %Y') %></span>
+      </div>
+      <div class="md:flex-grow">
+        <a href="<%= article.url %>" class='no-underline text-2xl font-medium text-white title-font mb-2'>
+          <%= article.title %>
+        </a>
+        <p class="leading-relaxed">
+          <% article.tags.each do |tag| %>
+            <span class="rounded-lg py-1 px-2 bg-gray-700 text-gray-50 text-xs"><%= tag %></span>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% if paginate && num_pages > 1 %>
+  <p>Page <%= page_number %> of <%= num_pages %></p>
+
+  <% if prev_page %>
+    <p><%= link_to 'Previous page', prev_page %></p>
+  <% end %>
+<% end %>
+
+
+<% if paginate %>
+  <% if next_page %>
+    <p><%= link_to 'Next page', next_page %></p>
+  <% end %>
+<% end %>
+

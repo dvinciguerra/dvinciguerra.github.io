@@ -1,25 +1,25 @@
-# frozen_string_literal: true
-
 source 'https://rubygems.org'
 
-ruby '3.2.1'
+# Middleman Gems
+gem 'middleman', '~> 4.5'
+gem 'middleman-autoprefixer', '~> 3.0'
+gem 'terser', '~> 1.1'
 
-gem 'jekyll'
-gem 'rake', '~> 13.0'
+gem 'middleman-blog', '~> 4.0'
+gem 'middleman-importmap', '~> 0.6.0'
 
-# plugins
-group :jekyll_plugins do
-  gem 'jekyll-sitemap'
-  gem 'jekyll-spaceship'
-end
+# markdown
+gem 'redcarpet', '~> 3.3', '>= 3.3.3'
+
+# atom feed
+gem 'builder', '~> 3.0'
+
+# code syntax highlighting
+gem 'middleman-syntax'
+
+gem 'middleman-livereload', '~> 3.4'
 
 group :development do
-  gem 'rubocop', '~> 1.42', require: false
-
-  # infrastructure
-  gem 'webrick', '~> 1.8'
+  gem 'rubocop', require: false
+  gem 'solargraph', require: false
 end
-
-gem "jekyll-feed", "~> 0.17.0"
-
-gem "jekyll-paginate", "~> 1.1"
