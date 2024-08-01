@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Blog Name</title>
+  <subtitle>Blog subtitle</subtitle>
+  <id>http://blog.url.com/</id>
+  <link href="http://blog.url.com/"/>
+  <link href="http://blog.url.com/feed.xml" rel="self"/>
+  <updated>2024-07-31T09:59:00-03:00</updated>
+  <author>
+    <name>Blog Author</name>
+  </author>
+  <entry>
+    <title>Por que Migrei Meu Blog do Jekyll para o Middleman</title>
+    <link rel="alternate" href="http://blog.url.com/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/"/>
+    <id>http://blog.url.com/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/</id>
+    <published>2024-07-31T09:59:00-03:00</published>
+    <updated>2024-07-31T17:26:50-03:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;Migrar um blog de uma plataforma para outra é uma decisão significativa que pode ser motivada por diversas razões, desde 
+melhorias na performance, melhores funcionalidades, etc. Recentemente, decidi migrar meu blog do Jekyll para o 
+Middleman, e gostaria de compartilhar as razões que me levaram a fazer essa mudança e quais as minhas percepções sobre
+a escolha e o processo.&lt;/p&gt;
+
+&lt;h2&gt;Porque o Jekyll?&lt;/h2&gt;
+
+&lt;p&gt;O Jekyll é uma ferramenta popular para a criação de sites estáticos, talvez seja uma das mais conhecidas e certamente a 
+que popularizou essa categoria de ferramentas com a simplicidade em criar sites estáticos, mesmo para que não conhecia a 
+linguagem Ruby (na qual a ferramenta foi criada).&lt;/p&gt;
+
+&lt;p&gt;A sintaxe do Liquid, a facilidade de personalização e a comunidade ativa de plugins certamente foram fatores que me 
+atraíram para o Jekyll.&lt;/p&gt;
+
+&lt;p&gt;No entanto, ao longo do tempo, comecei a sentir algumas limitações e desafios com o Jekyll que me levaram a considerar
+outras opções, como o Middleman que ja conhecia.&lt;/p&gt;
+
+&lt;h2&gt;Porque o Middleman?&lt;/h2&gt;
+
+&lt;p&gt;O Middleman é uma ferramenta de geração de sites estáticos construída em Ruby, que oferece uma abordagem mais flexível e 
+personalizável para o desenvolvimento de sites, trazendo principalmente muito do que costumamos usar quando 
+desenvolvemos soluções web em ruby.&lt;/p&gt;
+
+&lt;p&gt;As possibilidades nativas e o uso do erb ao inves do liquid, torna tudo mais simples e faz um desenvolvedor 
+familiarizado com Ruby se sentir em casa.&lt;/p&gt;
+
+&lt;p&gt;Muitas pessoas podem se perguntar porque não usar outras alternativas como o Gatsby, Hugo, etc. A resposta é simples, o
+Middleman é uma ferramenta que já conhecia e que me atende muito bem, então porque mudar?&lt;/p&gt;
+
+&lt;h2&gt;Razões para a migração&lt;/h2&gt;
+
+&lt;h3&gt;1. Queria mais controle e flexibilidade&lt;/h3&gt;
+
+&lt;p&gt;Apesar de gostar muito do Jekyll, sentia que sempre estava &amp;ldquo;lutando&amp;rdquo; para alterar meu conteúdo ou adicionar novas
+funcionalidades. &lt;/p&gt;
+
+&lt;p&gt;Diferente disso, o Middleman sempre me ofereceu mais controle e flexibilidade sobre a estrutura e o design dos meus
+projetos, facilidade de integrar com qualquer coisa que eu quisesse de forma natural e sem muitas dores de cabeça. &lt;/p&gt;
+
+&lt;h3&gt;2. Sistema de templates&lt;/h3&gt;
+
+&lt;p&gt;O Middleman utiliza o sistema de templates ERB, Haml, Slim, entre outros, o que facilita a criação de layouts complexos 
+e reutilizáveis. Isso se traduz em um desenvolvimento mais eficiente e uma manutenção mais simples. &lt;/p&gt;
+
+&lt;p&gt;No Jekyll, embora os templates sejam poderosos, a sintaxe do Liquid pode ser limitada para certos casos de uso que eu 
+precisava.&lt;/p&gt;
+
+&lt;h3&gt;3. Ecossistema de plugins&lt;/h3&gt;
+
+&lt;p&gt;O ecossistema de plugins do Middleman é robusto e altamente extensível, tendo praticamente tudo que eu preciso.&lt;/p&gt;
+
+&lt;p&gt;Mesmo se não tiver, acho a facilidade de criar um plugin para o Middleman muito boa. &lt;/p&gt;
+
+&lt;h3&gt;4. Experiência pessoal&lt;/h3&gt;
+
+&lt;p&gt;Trabalhei um bom tempo com projetos frontend usando Middleman e sempre gostei da experiência, então a familiaridade com
+a ferramenta foi um fator importante na minha decisão.&lt;/p&gt;
+
+&lt;p&gt;Usar o Middleman para o meu blog me permitiu usar o que eu ja sabia e manter o foco no que eu preciso, que é o conteúdo. &lt;/p&gt;
+
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+
+&lt;p&gt;A migração do meu blog do Jekyll para o Middleman foi uma decisão que me trouxe muitos benefícios e melhorias.&lt;/p&gt;
+
+&lt;p&gt;Não estou dizendo que o Jekyll é ruim, pelo contrário, é uma ferramenta incrível e que me ajudou muito, mas o Middleman
+sendo uma solução na qual tenho mais familiaridade, me permite ter menos friccção sobre manter ele e mais no conteúdo
+que quero compartilhar.&lt;/p&gt;
+
+&lt;p&gt;Não espero que outras pessoas façam a mesma migração, mas espero que minha experiência possa ajudar alguém a tomar uma
+decisão informada sobre qual ferramenta usar para o seu blog ou site estático, com base nas suas necessidades.&lt;/p&gt;
+
+&lt;p&gt;No final do dia, o que importa é você usar uma ferramenta que te atenda e não o hype do momento.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Criando um projeto de frontend usando Middleman e TailwindCSS</title>
+    <link rel="alternate" href="http://blog.url.com/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/"/>
+    <id>http://blog.url.com/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/</id>
+    <published>2024-07-29T21:00:00-03:00</published>
+    <updated>2024-07-30T17:12:46-03:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;Neste artigo, vamos criar um projeto de frontend usando Middleman e TailwindCSS.&lt;/p&gt;
+
+&lt;h2&gt;Introdução&lt;/h2&gt;
+
+&lt;p&gt;Middleman é um gerador de sites estáticos que permite criar sites usando HTML, CSS e JavaScript. TailwindCSS é um
+framework de CSS que facilita a criação de interfaces responsivas e bonitas.&lt;/p&gt;
+
+&lt;h2&gt;Criando um novo projecto&lt;/h2&gt;
+
+&lt;p&gt;Para criar um novo projecto com Middleman, execute o seguinte comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;middleman init my_project
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Este comando irá criar uma nova pasta chamada &lt;code&gt;my_project&lt;/code&gt; com a estrutura básica de um projecto Middleman.&lt;/p&gt;
+
+&lt;h2&gt;Instalando o TailwindCSS&lt;/h2&gt;
+
+&lt;p&gt;Para instalar o TailwindCSS no seu projecto, execute os seguintes comandos:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;my_project
+npm &lt;span class="nb"&gt;install&lt;/span&gt; &lt;span class="nt"&gt;-D&lt;/span&gt; tailwindcss
+npx tailwindcss init
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Em seguida, adicione o seguinte código ao seu ficheiro &lt;code&gt;tailwind.config.js&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="cm"&gt;/** @type {import('tailwindcss').Config} */&lt;/span&gt;
+&lt;span class="nx"&gt;module&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;exports&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="na"&gt;content&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="dl"&gt;"&lt;/span&gt;&lt;span class="s2"&gt;./src/**/*.{html,js}&lt;/span&gt;&lt;span class="dl"&gt;"&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+  &lt;span class="na"&gt;theme&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="na"&gt;extend&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{},&lt;/span&gt;
+  &lt;span class="p"&gt;},&lt;/span&gt;
+  &lt;span class="na"&gt;plugins&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[],&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Altere o nome do arquivo &lt;code&gt;site.css.scss&lt;/code&gt; para &lt;code&gt;site.css&lt;/code&gt;. e adicione o seguinte código:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight css"&gt;&lt;code&gt;&lt;span class="k"&gt;@tailwind&lt;/span&gt; &lt;span class="n"&gt;base&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;@tailwind&lt;/span&gt; &lt;span class="n"&gt;components&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="k"&gt;@tailwind&lt;/span&gt; &lt;span class="n"&gt;utilities&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Adicionando estilos ao seu projecto&lt;/h2&gt;
+
+&lt;p&gt;Agora que o TailwindCSS está instalado, pode começar a adicionar estilos ao seu projecto. Por exemplo, pode adicionar
+um botão com o seguinte código:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight html"&gt;&lt;code&gt;&lt;span class="nt"&gt;&amp;lt;button&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+  Button
+&lt;span class="nt"&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Compilando os ficheiros CSS&lt;/h2&gt;
+
+&lt;p&gt;Para compilar os ficheiros CSS do TailwindCSS, adicione o seguinte script ao seu ficheiro &lt;code&gt;package.json&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight json"&gt;&lt;code&gt;&lt;span class="nl"&gt;"scripts"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
+  &lt;/span&gt;&lt;span class="nl"&gt;"build"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"tailwindcss build stylesheets/site.css -o .tmp/dist/site.css"&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Depois de adicionar o script, execute o seguinte comando para compilar os ficheiros CSS:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;npm run build
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Alterando o config.rb do Middleman&lt;/h2&gt;
+
+&lt;p&gt;Para que o Middleman compile os ficheiros CSS corretamente, adicione o seguinte código ao seu ficheiro &lt;code&gt;config.rb&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:external_pipeline&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="ss"&gt;name: :webpack&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="ss"&gt;command: &lt;/span&gt;&lt;span class="n"&gt;build?&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="s2"&gt;"npm run build"&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"npm run start"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="ss"&gt;source: &lt;/span&gt;&lt;span class="s2"&gt;".tmp/dist"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="ss"&gt;latency: &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+
+&lt;p&gt;Neste artigo, criamos um projecto de frontend usando Middleman e TailwindCSS. Espero que este artigo tenha sido útil
+example article. You probably want to delete it and write your own articles!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Criando um CLI para adicionar tasks no Todoist</title>
+    <link rel="alternate" href="http://blog.url.com/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/"/>
+    <id>http://blog.url.com/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/</id>
+    <published>2023-05-09T21:00:00-03:00</published>
+    <updated>2024-07-31T11:22:07-03:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;Sou uma pessoa que funciona muito bem usando todo lists e gosto principalmente de usar ferramentas ou plataformas que permitam ter acesso as minhas tasks sempre que preciso.&lt;/p&gt;
+
+&lt;p&gt;Passei um momento da minha vida testando diversas delas e uma das que mais gostei foi o Google Tasks pela extrema simplicidade. Porém essa simplicidade toda me fez esbarrar em coisas que eu precisava muito e isso fez eu continuar a busca até chegar no Todoist que me atende perfeitamente.&lt;/p&gt;
+
+&lt;h2&gt;Todoist segundo meus critérios&lt;/h2&gt;
+
+&lt;p&gt;É uma ferramenta poderosa e muito produtiva que permite uso diversos lugares, de smartphone até add-on de navegadores.&lt;/p&gt;
+
+&lt;p&gt;Além de tudo conta com várias interações e uma API muito completa e simples de usar.&lt;/p&gt;
+
+&lt;p&gt;A interface dele é super simples e direto ao ponto, mas sem deixar de ser poderosa, contando com lembretes, recorrência, suporte a AI para te ajudar a definir a tarefa e uma sintaxe que permite adicionar due dates em linguagem natural (tipo tomorrow, at Monday 9:00, next week, etc).&lt;/p&gt;
+
+&lt;h2&gt;Então qual o problema?&lt;/h2&gt;
+
+&lt;p&gt;No meu workflow, uso muito o terminal e evito ao máximo &amp;ldquo;sair dele&amp;rdquo; porque sei que sou muito ruim em dividir atenção.&lt;/p&gt;
+
+&lt;p&gt;Isso me fez perceber que conforme o aumento do número ou complexidade das demandas, eu me esquecia de anotar minhas tarefas para serem feita.&lt;/p&gt;
+
+&lt;p&gt;Pode parecer besteira mas se para uma pessoa neurotípica é fácil esquecer algo quando está encarando um momento de stress, imagine uma pessoa TDAH.&lt;/p&gt;
+
+&lt;p&gt;Foi aí que comecei a procurar formar de ter essa forma simples de fazer esse registro das tarefas que precisava sem sair do terminal e chavear o contexto em que estava trabalhando.&lt;/p&gt;
+
+&lt;h2&gt;Buscando alternativas e testando hipóteses&lt;/h2&gt;
+
+&lt;p&gt;Pensando muito e testando algumas ferramentas, várias muito boas mas me fariam não utilizar o Todoist.&lt;/p&gt;
+
+&lt;p&gt;Minha premissa era centralizar ao máximo essa &amp;ldquo;captura&amp;rdquo; das informações do que precisaria fazer e com isso me lembrei de uma solução inteligente que tinha visto em um repositório no Github do Tatsuhiko Miyagawa, um software engineer que acompanho desde que codava mais em Perl.&lt;/p&gt;
+
+&lt;p&gt;Ele acabou criando algo muito próximo do que eu queria, mas que aparentemente utilizava as notificações no sistema operacional para criar esses lembretes.&lt;/p&gt;
+
+&lt;h2&gt;Entendendo a referência para adaptar&lt;/h2&gt;
+
+&lt;p&gt;O link para o script está aqui https://github.com/miyagawa/misc-scripts/blob/master/remind, mas explicando brevemente&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;O script recebe como entrada uma frase em linguagem natural predefinida, algo como &amp;ldquo;remind me at night about do a code review&amp;rdquo; e usando regular expressions ele divide a sentença em duas partes.&lt;/p&gt;
+
+&lt;p&gt;A primeira diz sobre o tempo em que devo ser lembrado ou alertado e com essa parte ele utiliza uma Ruby gem chamada Chronic, para fazer parsing de texto em linguagem natural para data e hora.&lt;/p&gt;
+
+&lt;p&gt;A segunda parte da sentença e apenas a descrição do que precisa ser feito ou lembrado.&lt;/p&gt;
+
+&lt;p&gt;Com essas duas partes ele executa uma expressão, que faz uma chamada de sistema encadeando dois comandos: o sleep para aguardar o número de segundos até que ele seja alertado e quando o tempo chegar, o pushme que não conheço mas imagino ser um serviço de push notification que vai enviar esse lembrete para o computador ou smartphone.&lt;/p&gt;
+
+&lt;h2&gt;Adaptando e implementando a integração com Todoist&lt;/h2&gt;
+
+&lt;p&gt;Entendendo esses comportamentos, adaptei o código para poder entender também português além de descrições em inglês e implementei o envio para minha conta do Todoist usando integração via API Rest.&lt;/p&gt;
+
+&lt;p&gt;O resultado foi uma ferramenta semelhante, que torna muito mais produtivo para mim anotado minhas tarefas e que centraliza todas as informações onde preciso.&lt;/p&gt;
+
+&lt;p&gt;Agradecimentos especiais, obviamente, ao autor original da ideia e do script que serviu de inspiração. =)&lt;/p&gt;
+</content>
+  </entry>
+</feed>
