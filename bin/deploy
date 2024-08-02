@@ -26,7 +26,7 @@ end
 # commit the changes
 puts '[info] committing changes...'
 `git add .`
-`git commit -m "build: deployment to gh-pages #{Time.now}"`
+`git commit -m "build: deployment to gh-pages"`
 
 # push the changes
 puts '[info] pushing changes...'
