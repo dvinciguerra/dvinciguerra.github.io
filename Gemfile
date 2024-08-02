@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+platform = Gem::Platform.local
+
 # Middleman Gems
 gem 'middleman', '~> 4.5'
 gem 'middleman-autoprefixer', '~> 3.0'
@@ -18,6 +20,8 @@ gem 'builder', '~> 3.0'
 gem 'middleman-syntax'
 
 gem 'middleman-livereload', '~> 3.4'
+
+gem 'tzinfo-data' if platform.version == 'android'
 
 group :development do
   gem 'rubocop', require: false
