@@ -1,0 +1,275 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Utilizando o Solid Queue em sua aplicação</title>
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/feed.xml" />
+
+    <!-- script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script -->
+
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+    <link href="/stylesheets/highlighting.css" rel="stylesheet" />
+
+
+    <script
+  async
+  data-turbo-track="reload"
+  src="https://ga.jspm.io/npm:es-module-shims@1.8.2/dist/es-module-shims.js"
+  crossorigin="anonymous"
+></script>
+<script type="importmap-shim">
+  {
+  "imports": {
+    "@hotwired/stimulus": "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js"
+  }
+}
+</script>
+<script
+  type="module-shim"
+  src="/javascripts/site.js"
+></script>
+
+
+    <!-- style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+      }
+    </style -->
+  </head>
+  <body class="">
+    <header class="text-gray-400 bg-gray-900 body-font">
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+      <img src="/images/logo.png" alt="vincebot logo" class="w-10 h-10" />
+
+      <span class="ml-3 text-xl">Vincebot</span>
+    </a>
+    <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
+      <a class="mr-5 hover:text-white" href="/">Home</a>
+      <a class="mr-5 hover:text-white" href="/now">Now</a>
+      <a class="mr-5 hover:text-white" href="/about-me">About me</a>
+    </nav>
+  </div>
+</header>
+
+
+
+
+    <main class="bg-gray-900 pb-20">
+      <section class="text-gray-400 body-font overflow-hidden min-h-svh">
+        <div class="container px-0 sm:px-2 md:px-6 lg:px-20 xl:px-60 pt-5 mx-auto">
+            <article class="post">
+    <header class="post-header">
+      <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-12">
+        <p class="mb-2 text-xs font-semibold tracking-wide text-gray-600 uppercase sm:text-center">
+          <time class="post-date" datetime="2024-08-02">
+            02 August 2024
+          </time>
+        </p>
+        <div class="max-w-xl mb-5 md:mx-auto sm:text-center lg:max-w-2xl">
+          <div class="mb-4">
+            <h1 class="inline-block max-w-lg font-sans text-3xl font-extrabold leading-none tracking-tight text-gray-50 transition-colors duration-200 hover:text-gray-50 sm:text-4xl">
+              Utilizando o Solid Queue em sua aplicação
+            </h1>
+          </div>
+
+          <p class="text-base text-gray-50 md:text-lg">
+              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">basecamp</span>
+              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">solid-queue</span>
+              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">rails</span>
+              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">activejob</span>
+              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">background-job</span>
+              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">async-job</span>
+              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">ruby</span>
+          </p>
+        </div>
+        <div class="sm:text-center">
+        </div>
+      </div>
+    </header>
+
+    <section class="post-content container px-auto max-md:px-0 max-sm:px-4 md:pb-40 max-sm:pb-20">
+      <p>A um tempo, o Basecamp lançou uma nova ferramenta de background job compatível com o ActiveJob do Rails.</p>
+
+<p>Essa ferramenta, mais tarde, foi promovida a uma lib do projeto Rails, para ser uma opção padrão para lidar com tarefas assíncronas em segundo plano.</p>
+
+<p>O grande diferencial dessa ferramenta é o uso do banco de dados para manter os dados dos Jobs, ao invés das principais opções que fazem uso de in-memory storages como Redis.</p>
+
+<h2>Instalando o Solid Queue</h2>
+
+<p>O processo de instalação do Solid Queue é super simple, bastando seguir os passos abaixo.</p>
+
+<ol>
+<li>Adicione a gem ao seu Gemfile</li>
+</ol>
+<div class="highlight"><pre class="highlight ruby"><code><span class="n">gem</span> <span class="s1">'solid_queue'</span>
+</code></pre></div>
+<ol>
+<li>Instale a gem</li>
+</ol>
+
+<p>O comando abaixo irá instalar a gem e suas dependências.</p>
+<div class="highlight"><pre class="highlight shell"><code>bundle <span class="nb">install</span>
+</code></pre></div>
+<ol>
+<li>Crie a tabela no banco de dados</li>
+</ol>
+
+<p>Como comentei anteriormente, o Solid Queue faz uso do banco de dados para armazenar os Jobs, então precisamos criar a
+tabela que irá armazenar esses dados.</p>
+<div class="highlight"><pre class="highlight shell"><code>rails solid_queue:install:migrations
+rails db:migrate
+</code></pre></div>
+<ol>
+<li>Configure o ActiveJob para usar o Solid Queue</li>
+</ol>
+
+<p>Para que o ActiveJob use o Solid Queue como backend, precisamos configurar o arquivo de configuração do Rails.</p>
+<div class="highlight"><pre class="highlight ruby"><code><span class="c1"># config/application.rb</span>
+<span class="k">module</span> <span class="nn">Sample</span>
+  <span class="k">class</span> <span class="nc">Application</span> <span class="o">&lt;</span> <span class="no">Rails</span><span class="o">::</span><span class="no">Application</span>
+    <span class="n">config</span><span class="p">.</span><span class="nf">active_job</span><span class="p">.</span><span class="nf">queue_adapter</span> <span class="o">=</span> <span class="ss">:solid_queue</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<h2>Criando nosso primeiro Job</h2>
+
+<p>Vamos supor que temos uma aplicação criada com o comando rails new sample e essa aplicação tenha um model que quando salvo, dispara uma notificação via email rails generate scaffold bookmarks title:string description:text.</p>
+
+<p>Pensando neste cenário, vamos criar um job que, quando um novo registro for inserido, faça o envio de uma notificação via email.</p>
+<div class="highlight"><pre class="highlight ruby"><code><span class="c1"># app/jobs/send_notification_job.rb</span>
+<span class="k">class</span> <span class="nc">SendNotificationJob</span> <span class="o">&lt;</span> <span class="no">ApplicationJob</span>
+  <span class="n">queue_as</span> <span class="ss">:default</span>
+
+  <span class="k">def</span> <span class="nf">perform</span><span class="p">(</span><span class="n">bookmark</span><span class="p">)</span>
+    <span class="c1"># Aqui você pode chamar o método que envia o email</span>
+    <span class="c1"># Exemplo: BookmarkMailer.with(bookmark: bookmark).new_bookmark.deliver_now</span>
+    <span class="nb">puts</span> <span class="s2">"Enviando notificação para </span><span class="si">#{</span><span class="n">bookmark</span><span class="p">.</span><span class="nf">title</span><span class="si">}</span><span class="s2">"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<h2>Executando e acompanhando</h2>
+
+<p>Para que os Jobs sejam executados, precisamos iniciar o processo que irá monitorar a tabela de Jobs e executá-los.</p>
+<div class="highlight"><pre class="highlight shell"><code>rails solid_queue:work
+</code></pre></div>
+<h2>Simplificando o monitoramento com Mission Control</h2>
+
+<p>Assim como Resque, Sidekiq e outras soluções consolidadas, o Solid Queue também possui um dashboard onde nos podemos acompanhar como está o processo de execução dos Jobs.</p>
+
+<p>Ele é entregue em uma gem separada, chamada <code>mission_control-jobs</code>, e podemos instalar ela com os seguintes passos.</p>
+
+<p><strong>1 - Adicione a gem ao seu Gemfile</strong></p>
+<div class="highlight"><pre class="highlight ruby"><code><span class="n">gem</span> <span class="s1">'mission_control-jobs'</span>
+</code></pre></div>
+<p><strong>2 - Instale a gem</strong></p>
+<div class="highlight"><pre class="highlight shell"><code>bundle <span class="nb">install</span>
+</code></pre></div>
+<p><strong>3 - Adicione a rota ao seu arquivo de rotas</strong></p>
+<div class="highlight"><pre class="highlight ruby"><code><span class="c1"># config/routes.rb</span>
+
+<span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">routes</span><span class="p">.</span><span class="nf">draw</span> <span class="k">do</span>
+  <span class="n">mount</span> <span class="no">MissionControl</span><span class="o">::</span><span class="no">Jobs</span><span class="o">::</span><span class="no">Engine</span> <span class="o">=&gt;</span> <span class="s2">"/mission_control"</span>
+<span class="k">end</span>
+</code></pre></div>
+<p><strong>4 - Acesse o dashboard</strong></p>
+
+<p>Agora, basta acessar a rota <code>http://localhost:3000/mission_control</code> da sua aplicação para visualizar o dashboard.</p>
+
+<p><img src="/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/queues-multiple.png" alt="Mission Control" /></p>
+
+<h2>Conclusão</h2>
+
+<p>O Solid Queue é uma solução simples e bem interessante para lidar com Jobs em background, mas vale lembrar que ela não é a primeira que usa bancos de dados para isso.</p>
+
+<p>De qualquer forma, estando sob o guarda-chuva do time do Rails e do Basecamp, imagino que podemos esperar uma ótima integração com as APIs e funcionalidades do Rails.</p>
+
+<p>Fiz alguns testes e quero criar um novo artigo, explicando pontos que observei para melhorar a escalabilidade de soluções Rails usando o Solid Queue.</p>
+
+<p>Muito obrigado pela visita e nos vemos no próximo post.</p>
+
+    </section>
+
+
+    <!-- footer class="post-footer">
+      <section class="author">
+        <h4>
+          <a href="/author/daniel-vinciguerra/">Daniel Vinciguerra</a>
+        </h4>
+        <p>
+            Read <a href="/author/daniel-vinciguerra/">more posts</a> by this author.
+        </p>
+
+      </section>
+
+      <section class="share">
+        <h4>Share this post</h4>
+        <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Utilizando o Solid Queue em sua aplicação&amp;url=http://www.example.com/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+          <span class="hidden">Twitter</span>
+        </a>
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://www.example.com/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/" onclick="window.open(this.href, 'facebook-share', 'width=580,height=296');return false;">
+          <span class="hidden">Facebook</span>
+        </a>
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=http://www.example.com/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+          <span class="hidden">Google+</span>
+        </a>
+      </section>
+    </footer -->
+
+  </article>
+
+        </div>
+      </section>
+    </main>
+
+    <footer class="text-gray-400 bg-gray-900 body-font">
+  <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+    <a class="flex title-font font-medium items-center md:justify-start justify-center text-white">
+
+      <img src="/images/logo.png" alt="vincebot logo" class="w-10 h-10" />
+
+
+      <span class="ml-3 text-xl">Vincebot</span>
+    </a>
+    <p class="text-sm text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4">&copy; 2023 Vincebot —
+    <a href="https://github.com/dvinciguerra" class="text-gray-500 ml-1" target="_blank" rel="noopener noreferrer">Daniel Vinciguerra</a>&nbsp;
+      <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
+    </p>
+    <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+      <a class="text-gray-400">
+        <!-- svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+          <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+        </svg -->
+      </a>
+      <a class="ml-3 text-gray-400" href="https://twitter.com/dvinciguerra" target="_blank">
+        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+          <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+        </svg>
+      </a>
+      <a class="ml-3 text-gray-400" href="https://www.instagram.com/danielvinciguerra/" target="_blank">
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+          <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+        </svg>
+      </a>
+      <a class="ml-3 text-gray-400" href="https://www.linkedin.com/in/dvinciguerra/" target="_blank">
+        <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+          <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+          <circle cx="4" cy="4" r="2" stroke="none"></circle>
+        </svg>
+      </a>
+    </span>
+  </div>
+</footer>
+
+
+
+  </body>
+</html>

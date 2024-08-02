@@ -5,16 +5,125 @@
   <id>http://blog.url.com/</id>
   <link href="http://blog.url.com/"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2024-07-31T09:59:00-03:00</updated>
+  <updated>2024-08-02T10:25:00-03:00</updated>
   <author>
     <name>Blog Author</name>
   </author>
+  <entry>
+    <title>Utilizando o Solid Queue em sua aplicação</title>
+    <link rel="alternate" href="http://blog.url.com/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/"/>
+    <id>http://blog.url.com/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/</id>
+    <published>2024-08-02T10:25:00-03:00</published>
+    <updated>2024-08-02T19:08:29-03:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;A um tempo, o Basecamp lançou uma nova ferramenta de background job compatível com o ActiveJob do Rails.&lt;/p&gt;
+
+&lt;p&gt;Essa ferramenta, mais tarde, foi promovida a uma lib do projeto Rails, para ser uma opção padrão para lidar com tarefas assíncronas em segundo plano.&lt;/p&gt;
+
+&lt;p&gt;O grande diferencial dessa ferramenta é o uso do banco de dados para manter os dados dos Jobs, ao invés das principais opções que fazem uso de in-memory storages como Redis.&lt;/p&gt;
+
+&lt;h2&gt;Instalando o Solid Queue&lt;/h2&gt;
+
+&lt;p&gt;O processo de instalação do Solid Queue é super simple, bastando seguir os passos abaixo.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Adicione a gem ao seu Gemfile&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;gem&lt;/span&gt; &lt;span class="s1"&gt;'solid_queue'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;Instale a gem&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;O comando abaixo irá instalar a gem e suas dependências.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;bundle &lt;span class="nb"&gt;install&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;Crie a tabela no banco de dados&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Como comentei anteriormente, o Solid Queue faz uso do banco de dados para armazenar os Jobs, então precisamos criar a
+tabela que irá armazenar esses dados.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;rails solid_queue:install:migrations
+rails db:migrate
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;ol&gt;
+&lt;li&gt;Configure o ActiveJob para usar o Solid Queue&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Para que o ActiveJob use o Solid Queue como backend, precisamos configurar o arquivo de configuração do Rails.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# config/application.rb&lt;/span&gt;
+&lt;span class="k"&gt;module&lt;/span&gt; &lt;span class="nn"&gt;Sample&lt;/span&gt;
+  &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Application&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="no"&gt;Rails&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Application&lt;/span&gt;
+    &lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;active_job&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;queue_adapter&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="ss"&gt;:solid_queue&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Criando nosso primeiro Job&lt;/h2&gt;
+
+&lt;p&gt;Vamos supor que temos uma aplicação criada com o comando rails new sample e essa aplicação tenha um model que quando salvo, dispara uma notificação via email rails generate scaffold bookmarks title:string description:text.&lt;/p&gt;
+
+&lt;p&gt;Pensando neste cenário, vamos criar um job que, quando um novo registro for inserido, faça o envio de uma notificação via email.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# app/jobs/send_notification_job.rb&lt;/span&gt;
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;SendNotificationJob&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="no"&gt;ApplicationJob&lt;/span&gt;
+  &lt;span class="n"&gt;queue_as&lt;/span&gt; &lt;span class="ss"&gt;:default&lt;/span&gt;
+
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;perform&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bookmark&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="c1"&gt;# Aqui você pode chamar o método que envia o email&lt;/span&gt;
+    &lt;span class="c1"&gt;# Exemplo: BookmarkMailer.with(bookmark: bookmark).new_bookmark.deliver_now&lt;/span&gt;
+    &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;"Enviando notificação para &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;bookmark&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;title&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Executando e acompanhando&lt;/h2&gt;
+
+&lt;p&gt;Para que os Jobs sejam executados, precisamos iniciar o processo que irá monitorar a tabela de Jobs e executá-los.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;rails solid_queue:work
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Simplificando o monitoramento com Mission Control&lt;/h2&gt;
+
+&lt;p&gt;Assim como Resque, Sidekiq e outras soluções consolidadas, o Solid Queue também possui um dashboard onde nos podemos acompanhar como está o processo de execução dos Jobs.&lt;/p&gt;
+
+&lt;p&gt;Ele é entregue em uma gem separada, chamada &lt;code&gt;mission_control-jobs&lt;/code&gt;, e podemos instalar ela com os seguintes passos.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1 - Adicione a gem ao seu Gemfile&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;gem&lt;/span&gt; &lt;span class="s1"&gt;'mission_control-jobs'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;2 - Instale a gem&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;bundle &lt;span class="nb"&gt;install&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;3 - Adicione a rota ao seu arquivo de rotas&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# config/routes.rb&lt;/span&gt;
+
+&lt;span class="no"&gt;Rails&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;application&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;routes&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;draw&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+  &lt;span class="n"&gt;mount&lt;/span&gt; &lt;span class="no"&gt;MissionControl&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Jobs&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="no"&gt;Engine&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="s2"&gt;"/mission_control"&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;4 - Acesse o dashboard&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Agora, basta acessar a rota &lt;code&gt;http://localhost:3000/mission_control&lt;/code&gt; da sua aplicação para visualizar o dashboard.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/queues-multiple.png" alt="Mission Control" /&gt;&lt;/p&gt;
+
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+
+&lt;p&gt;O Solid Queue é uma solução simples e bem interessante para lidar com Jobs em background, mas vale lembrar que ela não é a primeira que usa bancos de dados para isso.&lt;/p&gt;
+
+&lt;p&gt;De qualquer forma, estando sob o guarda-chuva do time do Rails e do Basecamp, imagino que podemos esperar uma ótima integração com as APIs e funcionalidades do Rails.&lt;/p&gt;
+
+&lt;p&gt;Fiz alguns testes e quero criar um novo artigo, explicando pontos que observei para melhorar a escalabilidade de soluções Rails usando o Solid Queue.&lt;/p&gt;
+
+&lt;p&gt;Muito obrigado pela visita e nos vemos no próximo post.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Por que Migrei Meu Blog do Jekyll para o Middleman</title>
     <link rel="alternate" href="http://blog.url.com/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/"/>
     <id>http://blog.url.com/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/</id>
     <published>2024-07-31T09:59:00-03:00</published>
-    <updated>2024-08-01T16:08:05-03:00</updated>
+    <updated>2024-08-01T19:46:17-03:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -97,7 +206,7 @@ decisão informada sobre qual ferramenta usar para o seu blog ou site estático,
     <link rel="alternate" href="http://blog.url.com/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/"/>
     <id>http://blog.url.com/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/</id>
     <published>2024-07-29T21:00:00-03:00</published>
-    <updated>2024-08-01T16:08:05-03:00</updated>
+    <updated>2024-08-01T19:46:17-03:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -175,7 +284,7 @@ example article. You probably want to delete it and write your own articles!&lt;
     <link rel="alternate" href="http://blog.url.com/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/"/>
     <id>http://blog.url.com/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/</id>
     <published>2023-05-09T21:00:00-03:00</published>
-    <updated>2024-08-01T16:08:05-03:00</updated>
+    <updated>2024-08-01T19:46:17-03:00</updated>
     <author>
       <name>Article Author</name>
     </author>
