@@ -6,6 +6,10 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <% if current_article %>
+      <%= partial('components/open_graph', locals: { article: current_article }) %>
+    <% end %>
+
     <title><%= current_page.data.title || "Vincebot" %></title>
     <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
 
