@@ -5,16 +5,77 @@
   <id>http://blog.url.com/</id>
   <link href="http://blog.url.com/"/>
   <link href="http://blog.url.com/feed.xml" rel="self"/>
-  <updated>2024-08-02T10:25:00-03:00</updated>
+  <updated>2024-08-04T00:12:00-03:00</updated>
   <author>
     <name>Blog Author</name>
   </author>
+  <entry>
+    <title>Produtividade e algumas recomendações e referências sobre o assunto</title>
+    <link rel="alternate" href="http://blog.url.com/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/"/>
+    <id>http://blog.url.com/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/</id>
+    <published>2024-08-04T00:12:00-03:00</published>
+    <updated>2024-08-04T01:03:32-03:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;Produtividade não diz respeito a fazer as coisas mais rápido, mas sim, fazer as coisas de forma consistente e respeitando o tempo e particularidade de cada indivíduo envolvido.&lt;/p&gt;
+
+&lt;p&gt;Existem diversas técnicas para ajudar a nos tornarmos mais produtivos, mas existe algo indispensável no processo que é auto-conhecimento para saber suas virtudes e trabalhar suas oportunidades de melhoria.&lt;/p&gt;
+
+&lt;h2&gt;Conceitos&lt;/h2&gt;
+
+&lt;p&gt;Alguns conceitos que eu acho importante conhecermos.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight plaintext"&gt;&lt;code&gt;Kaizen (evolução contínua)
+Todo List (mantendo listas de tarefas)
+Checklists (para organizar processos)
+WIP Limit (limitar o trabalho em progresso)
+Digital Garden (para compartilhando conhecimentos)
+Matriz de Eisenhower (auxilia na priorização)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Ferramentas&lt;/h2&gt;
+
+&lt;p&gt;E para levar o dia a dia também existem algumas ferramentas que podem nos ajudar (e essas são algumas das que eu gosto de recomendar).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight plaintext"&gt;&lt;code&gt;Trello (board kanban para projetos)
+Todoist (para minhas demandas pessoais)
+Google Calendar (compromissos e centralizar eventos)
+Noises (para manter a mente focada)
+IFTTT (uso para integrar tudo ou automatizar processos)
+Logseq (para manter minhas ideias e informações)
+Github (organizar os projetos)
+DuckDuckGo (além de ótimo buscador tem widgets pra várias coisas)
+
+Cron job scheduler (para agendar várias rotinas mais críticas)
+Greasemonkey userscript (automatizar coisas em web pages)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Métodos&lt;/h2&gt;
+
+&lt;p&gt;Alguns métodos que conheço e costumo usar para as demandas pessoais e profissionais.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight plaintext"&gt;&lt;code&gt;GTD (Getting Things Done)
+Pomodoro
+Pair Programming
+Prova de Conceito
+TDD (Test Driven Development)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Tentar Evitar&lt;/h2&gt;
+
+&lt;p&gt;E como não pode faltar, algumas pegadinhas (ciladas Bino) que as vezes podemos passar no trajeto.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight plaintext"&gt;&lt;code&gt;FOMO (Fear Of Missing Out)
+Analysis Paralysis
+Overengineering
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Considerações&lt;/h2&gt;
+
+&lt;p&gt;A produtividade depende do ambiente conhecimentos e ponto de vista de cada indivíduo, grupo ou ambiente e por esse motivo as técnicas que funcionam para uma pessoa pode não ser tão eficiente para outro.&lt;/p&gt;
+
+&lt;p&gt;Outro ponto importante é que se trata de um projeto evolutivo e longo de autoconhecimento e uma coisa muito importante é medirmos o que pretendemos melhorar para acompanharmos nossa evolução.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Utilizando o Solid Queue em sua aplicação</title>
     <link rel="alternate" href="http://blog.url.com/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/"/>
     <id>http://blog.url.com/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/</id>
     <published>2024-08-02T10:25:00-03:00</published>
-    <updated>2024-08-03T22:40:50-03:00</updated>
+    <updated>2024-08-03T22:41:32-03:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -123,7 +184,7 @@ rails db:migrate
     <link rel="alternate" href="http://blog.url.com/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/"/>
     <id>http://blog.url.com/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/</id>
     <published>2024-07-31T09:59:00-03:00</published>
-    <updated>2024-08-03T22:40:50-03:00</updated>
+    <updated>2024-08-03T22:41:32-03:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -206,7 +267,7 @@ decisão informada sobre qual ferramenta usar para o seu blog ou site estático,
     <link rel="alternate" href="http://blog.url.com/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/"/>
     <id>http://blog.url.com/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/</id>
     <published>2024-07-29T21:00:00-03:00</published>
-    <updated>2024-08-03T22:40:50-03:00</updated>
+    <updated>2024-08-03T22:41:32-03:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -284,7 +345,7 @@ example article. You probably want to delete it and write your own articles!&lt;
     <link rel="alternate" href="http://blog.url.com/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/"/>
     <id>http://blog.url.com/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/</id>
     <published>2023-05-09T21:00:00-03:00</published>
-    <updated>2024-08-03T22:40:50-03:00</updated>
+    <updated>2024-08-03T22:41:32-03:00</updated>
     <author>
       <name>Article Author</name>
     </author>
