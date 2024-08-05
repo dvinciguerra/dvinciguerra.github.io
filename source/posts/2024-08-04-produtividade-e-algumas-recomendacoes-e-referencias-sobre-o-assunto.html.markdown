@@ -33,7 +33,6 @@ E para levar o dia a dia também existem algumas ferramentas que podem nos ajuda
 - Logseq (para manter minhas ideias e informações)
 - Github (organizar os projetos)
 - DuckDuckGo (além de ótimo buscador tem widgets pra várias coisas)
--
 - Cron job scheduler (para agendar várias rotinas mais críticas)
 - Greasemonkey userscript (automatizar coisas em web pages)
 
