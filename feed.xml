@@ -14,7 +14,7 @@
     <link rel="alternate" href="http://blog.url.com/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/"/>
     <id>http://blog.url.com/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/</id>
     <published>2024-08-04T00:12:00-03:00</published>
-    <updated>2024-08-05T13:22:20-03:00</updated>
+    <updated>2024-08-05T14:16:24-03:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -47,11 +47,7 @@
 &lt;li&gt;IFTTT (uso para integrar tudo ou automatizar processos)&lt;/li&gt;
 &lt;li&gt;Logseq (para manter minhas ideias e informações)&lt;/li&gt;
 &lt;li&gt;Github (organizar os projetos)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2&gt;- DuckDuckGo (além de ótimo buscador tem widgets pra várias coisas)&lt;/h2&gt;
-
-&lt;ul&gt;
+&lt;li&gt;DuckDuckGo (além de ótimo buscador tem widgets pra várias coisas)&lt;/li&gt;
 &lt;li&gt;Cron job scheduler (para agendar várias rotinas mais críticas)&lt;/li&gt;
 &lt;li&gt;Greasemonkey userscript (automatizar coisas em web pages)&lt;/li&gt;
 &lt;/ul&gt;
@@ -203,18 +199,18 @@ rails db:migrate
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;Migrar um blog de uma plataforma para outra é uma decisão significativa que pode ser motivada por diversas razões, desde 
-melhorias na performance, melhores funcionalidades, etc. Recentemente, decidi migrar meu blog do Jekyll para o 
+    <content type="html">&lt;p&gt;Migrar um blog de uma plataforma para outra é uma decisão significativa que pode ser motivada por diversas razões, desde
+melhorias na performance, melhores funcionalidades, etc. Recentemente, decidi migrar meu blog do Jekyll para o
 Middleman, e gostaria de compartilhar as razões que me levaram a fazer essa mudança e quais as minhas percepções sobre
 a escolha e o processo.&lt;/p&gt;
 
 &lt;h2&gt;Porque o Jekyll?&lt;/h2&gt;
 
-&lt;p&gt;O Jekyll é uma ferramenta popular para a criação de sites estáticos, talvez seja uma das mais conhecidas e certamente a 
-que popularizou essa categoria de ferramentas com a simplicidade em criar sites estáticos, mesmo para que não conhecia a 
+&lt;p&gt;O Jekyll é uma ferramenta popular para a criação de sites estáticos, talvez seja uma das mais conhecidas e certamente a
+que popularizou essa categoria de ferramentas com a simplicidade em criar sites estáticos, mesmo para que não conhecia a
 linguagem Ruby (na qual a ferramenta foi criada).&lt;/p&gt;
 
-&lt;p&gt;A sintaxe do Liquid, a facilidade de personalização e a comunidade ativa de plugins certamente foram fatores que me 
+&lt;p&gt;A sintaxe do Liquid, a facilidade de personalização e a comunidade ativa de plugins certamente foram fatores que me
 atraíram para o Jekyll.&lt;/p&gt;
 
 &lt;p&gt;No entanto, ao longo do tempo, comecei a sentir algumas limitações e desafios com o Jekyll que me levaram a considerar
@@ -222,11 +218,11 @@ outras opções, como o Middleman que ja conhecia.&lt;/p&gt;
 
 &lt;h2&gt;Porque o Middleman?&lt;/h2&gt;
 
-&lt;p&gt;O Middleman é uma ferramenta de geração de sites estáticos construída em Ruby, que oferece uma abordagem mais flexível e 
-personalizável para o desenvolvimento de sites, trazendo principalmente muito do que costumamos usar quando 
+&lt;p&gt;O Middleman é uma ferramenta de geração de sites estáticos construída em Ruby, que oferece uma abordagem mais flexível e
+personalizável para o desenvolvimento de sites, trazendo principalmente muito do que costumamos usar quando
 desenvolvemos soluções web em ruby.&lt;/p&gt;
 
-&lt;p&gt;As possibilidades nativas e o uso do erb ao inves do liquid, torna tudo mais simples e faz um desenvolvedor 
+&lt;p&gt;As possibilidades nativas e o uso do erb ao inves do liquid, torna tudo mais simples e faz um desenvolvedor
 familiarizado com Ruby se sentir em casa.&lt;/p&gt;
 
 &lt;p&gt;Muitas pessoas podem se perguntar porque não usar outras alternativas como o Gatsby, Hugo, etc. A resposta é simples, o
@@ -244,10 +240,10 @@ projetos, facilidade de integrar com qualquer coisa que eu quisesse de forma nat
 
 &lt;h3&gt;2. Sistema de templates&lt;/h3&gt;
 
-&lt;p&gt;O Middleman utiliza o sistema de templates ERB, Haml, Slim, entre outros, o que facilita a criação de layouts complexos 
+&lt;p&gt;O Middleman utiliza o sistema de templates ERB, Haml, Slim, entre outros, o que facilita a criação de layouts complexos
 e reutilizáveis. Isso se traduz em um desenvolvimento mais eficiente e uma manutenção mais simples. &lt;/p&gt;
 
-&lt;p&gt;No Jekyll, embora os templates sejam poderosos, a sintaxe do Liquid pode ser limitada para certos casos de uso que eu 
+&lt;p&gt;No Jekyll, embora os templates sejam poderosos, a sintaxe do Liquid pode ser limitada para certos casos de uso que eu
 precisava.&lt;/p&gt;
 
 &lt;h3&gt;3. Ecossistema de plugins&lt;/h3&gt;

@@ -1096,6 +1096,12 @@ video {
     --tw-text-opacity: 1;
     color: rgb(249 250 251 / var(--tw-text-opacity));
   }
+  ul {
+    list-style-position: inside;
+  }
+  ul {
+    list-style-type: disc;
+  }
 }
 
 main {
