@@ -30,6 +30,10 @@
   & pre {
     @apply bg-gray-800 text-gray-50 p-4 my-3 rounded-md overflow-y-auto;
   }
+
+  ul {
+    @apply list-disc list-inside;
+  }
 }
 
 main {
