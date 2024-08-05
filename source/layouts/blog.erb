@@ -6,6 +6,8 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <%= partial('components/icons') %>
+
     <% if current_article %>
       <%= partial('components/open_graph', locals: { article: current_article }) %>
     <% end %>
