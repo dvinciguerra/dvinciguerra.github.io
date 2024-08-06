@@ -13,7 +13,7 @@ blog:
 author:
   name: 'Daniel Vinciguerra'
   bio: null # Optional
-  location: null # Optional
+  location: 'Brazil'
   website: 'https://vincebot.dev'
   gravatar_email: 'daniel.vinciguerra@bivee.com.br'
   twitter: 'dvinciguerra'
