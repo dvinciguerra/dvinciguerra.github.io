@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Blog Name</title>
-  <subtitle>Blog subtitle</subtitle>
-  <id>http://blog.url.com/</id>
-  <link href="http://blog.url.com/"/>
-  <link href="http://blog.url.com/feed.xml" rel="self"/>
+  <title>Vincebot</title>
+  <subtitle>I'm a software engineer and I love to write about technology, automation, integration, programming, productivity and life.
+</subtitle>
+  <id>https://vincebot.dev</id>
+  <link href="https://vincebot.dev"/>
+  <link href="https://vincebot.dev/feed.xml" rel="self"/>
   <updated>2024-08-04T00:12:00-03:00</updated>
   <author>
-    <name>Blog Author</name>
+    <name>Daniel Vinciguerra</name>
   </author>
   <entry>
     <title>Produtividade e algumas recomendações e referências sobre o assunto</title>
-    <link rel="alternate" href="http://blog.url.com/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/"/>
-    <id>http://blog.url.com/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/</id>
+    <link rel="alternate" href="https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/"/>
+    <id>https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/</id>
     <published>2024-08-04T00:12:00-03:00</published>
-    <updated>2024-08-06T13:45:22-03:00</updated>
+    <updated>2024-08-06T18:29:52-03:00</updated>
     <author>
-      <name>Article Author</name>
+      <name>Daniel Vinciguerra</name>
     </author>
     <content type="html">&lt;p&gt;Produtividade não diz respeito a fazer as coisas mais rápido, mas sim, fazer as coisas de forma consistente e respeitando o tempo e particularidade de cada indivíduo envolvido.&lt;/p&gt;
 
@@ -83,12 +84,12 @@
   </entry>
   <entry>
     <title>Utilizando o Solid Queue em sua aplicação</title>
-    <link rel="alternate" href="http://blog.url.com/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/"/>
-    <id>http://blog.url.com/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/</id>
+    <link rel="alternate" href="https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/"/>
+    <id>https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/</id>
     <published>2024-08-02T10:25:00-03:00</published>
-    <updated>2024-08-06T13:45:22-03:00</updated>
+    <updated>2024-08-06T18:29:52-03:00</updated>
     <author>
-      <name>Article Author</name>
+      <name>Daniel Vinciguerra</name>
     </author>
     <content type="html">&lt;p&gt;A um tempo, o Basecamp lançou uma nova ferramenta de background job compatível com o ActiveJob do Rails.&lt;/p&gt;
 
@@ -192,12 +193,12 @@ rails db:migrate
   </entry>
   <entry>
     <title>Por que Migrei Meu Blog do Jekyll para o Middleman</title>
-    <link rel="alternate" href="http://blog.url.com/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/"/>
-    <id>http://blog.url.com/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/</id>
+    <link rel="alternate" href="https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/"/>
+    <id>https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/</id>
     <published>2024-07-31T09:59:00-03:00</published>
-    <updated>2024-08-06T13:45:22-03:00</updated>
+    <updated>2024-08-06T18:29:52-03:00</updated>
     <author>
-      <name>Article Author</name>
+      <name>Daniel Vinciguerra</name>
     </author>
     <content type="html">&lt;p&gt;Migrar um blog de uma plataforma para outra é uma decisão significativa que pode ser motivada por diversas razões, desde 
 melhorias na performance, melhores funcionalidades, etc. Recentemente, decidi migrar meu blog do Jekyll para o 
@@ -275,12 +276,12 @@ decisão informada sobre qual ferramenta usar para o seu blog ou site estático,
   </entry>
   <entry>
     <title>Criando um projeto de frontend usando Middleman e TailwindCSS</title>
-    <link rel="alternate" href="http://blog.url.com/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/"/>
-    <id>http://blog.url.com/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/</id>
+    <link rel="alternate" href="https://vincebot.dev/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/"/>
+    <id>https://vincebot.dev/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/</id>
     <published>2024-07-29T21:00:00-03:00</published>
-    <updated>2024-08-06T13:45:22-03:00</updated>
+    <updated>2024-08-06T18:29:52-03:00</updated>
     <author>
-      <name>Article Author</name>
+      <name>Daniel Vinciguerra</name>
     </author>
     <content type="html">&lt;p&gt;Neste artigo, vamos criar um projeto de frontend usando Middleman e TailwindCSS.&lt;/p&gt;
 
@@ -353,12 +354,12 @@ example article. You probably want to delete it and write your own articles!&lt;
   </entry>
   <entry>
     <title>Como eu comecei a gerenciar meu conhecimento usando Logseq</title>
-    <link rel="alternate" href="http://blog.url.com/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/"/>
-    <id>http://blog.url.com/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/</id>
+    <link rel="alternate" href="https://vincebot.dev/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/"/>
+    <id>https://vincebot.dev/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/</id>
     <published>2024-07-01T16:30:00-03:00</published>
-    <updated>2024-08-06T16:50:19-03:00</updated>
+    <updated>2024-08-06T18:29:52-03:00</updated>
     <author>
-      <name>Article Author</name>
+      <name>Daniel Vinciguerra</name>
     </author>
     <content type="html">&lt;p&gt;&lt;img src="/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/banner.png" alt="Logseq" /&gt;&lt;/p&gt;
 
@@ -422,12 +423,12 @@ fatos e tirar ainda mais aprendizados.&lt;/p&gt;
   </entry>
   <entry>
     <title>Criando um CLI para adicionar tasks no Todoist</title>
-    <link rel="alternate" href="http://blog.url.com/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/"/>
-    <id>http://blog.url.com/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/</id>
+    <link rel="alternate" href="https://vincebot.dev/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/"/>
+    <id>https://vincebot.dev/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/</id>
     <published>2023-05-09T21:00:00-03:00</published>
-    <updated>2024-08-06T13:45:22-03:00</updated>
+    <updated>2024-08-06T18:29:52-03:00</updated>
     <author>
-      <name>Article Author</name>
+      <name>Daniel Vinciguerra</name>
     </author>
     <content type="html">&lt;p&gt;Sou uma pessoa que funciona muito bem usando todo lists e gosto principalmente de usar ferramentas ou plataformas que permitam ter acesso as minhas tasks sempre que preciso.&lt;/p&gt;
 
