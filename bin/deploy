@@ -3,16 +3,42 @@
 
 require 'fileutils'
 
+def system!(command)
+  system(command) || abort("[error] command failed: #{command}")
+end
+
+current_branch = `git rev-parse --abbrev-ref HEAD`.strip
+
+# check if current branch is main and checkout it
+unless %w[master main].include? current_branch
+  puts '[error] you must be on the main branch to deploy'
+  exit 1
+end
+
+# check if there are uncommitted changes
+if `git status --porcelain`.strip != ''
+  puts '[error] there are uncommitted changes'
+  exit 1
+end
+
 # build the site
 puts '[info] building site...'
 `middleman build --clean`
 
-# change to gh-pages branch
+# stash the builded files
+puts '[info] stashing builded files...'
+`git stash push --include-untracked --keep-index`
+
+# change to gh-pages branch and update it
 puts '[info] changing to gh-pages branch...'
-`git checkout gh-pages`
+`git checkout gh-pages && git pull origin gh-pages`
+
+# pop the stash
+puts '[info] popping stash...'
+`git stash pop`
 
 # remove all files
-puts '[info] removing all files...'
+puts '[info] removing all unnecessary files...'
 Dir.glob('*').each do |file|
   FileUtils.rm_rf(file) unless ['build', '.git'].include?(file)
 end
