@@ -14,7 +14,7 @@
     <link rel="alternate" href="http://blog.url.com/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/"/>
     <id>http://blog.url.com/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/</id>
     <published>2024-08-04T00:12:00-03:00</published>
-    <updated>2024-08-05T14:16:24-03:00</updated>
+    <updated>2024-08-06T13:45:22-03:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -86,7 +86,7 @@
     <link rel="alternate" href="http://blog.url.com/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/"/>
     <id>http://blog.url.com/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/</id>
     <published>2024-08-02T10:25:00-03:00</published>
-    <updated>2024-08-05T13:22:20-03:00</updated>
+    <updated>2024-08-06T13:45:22-03:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -195,22 +195,22 @@ rails db:migrate
     <link rel="alternate" href="http://blog.url.com/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/"/>
     <id>http://blog.url.com/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/</id>
     <published>2024-07-31T09:59:00-03:00</published>
-    <updated>2024-08-05T13:22:20-03:00</updated>
+    <updated>2024-08-06T13:45:22-03:00</updated>
     <author>
       <name>Article Author</name>
     </author>
-    <content type="html">&lt;p&gt;Migrar um blog de uma plataforma para outra é uma decisão significativa que pode ser motivada por diversas razões, desde
-melhorias na performance, melhores funcionalidades, etc. Recentemente, decidi migrar meu blog do Jekyll para o
+    <content type="html">&lt;p&gt;Migrar um blog de uma plataforma para outra é uma decisão significativa que pode ser motivada por diversas razões, desde 
+melhorias na performance, melhores funcionalidades, etc. Recentemente, decidi migrar meu blog do Jekyll para o 
 Middleman, e gostaria de compartilhar as razões que me levaram a fazer essa mudança e quais as minhas percepções sobre
 a escolha e o processo.&lt;/p&gt;
 
 &lt;h2&gt;Porque o Jekyll?&lt;/h2&gt;
 
-&lt;p&gt;O Jekyll é uma ferramenta popular para a criação de sites estáticos, talvez seja uma das mais conhecidas e certamente a
-que popularizou essa categoria de ferramentas com a simplicidade em criar sites estáticos, mesmo para que não conhecia a
+&lt;p&gt;O Jekyll é uma ferramenta popular para a criação de sites estáticos, talvez seja uma das mais conhecidas e certamente a 
+que popularizou essa categoria de ferramentas com a simplicidade em criar sites estáticos, mesmo para que não conhecia a 
 linguagem Ruby (na qual a ferramenta foi criada).&lt;/p&gt;
 
-&lt;p&gt;A sintaxe do Liquid, a facilidade de personalização e a comunidade ativa de plugins certamente foram fatores que me
+&lt;p&gt;A sintaxe do Liquid, a facilidade de personalização e a comunidade ativa de plugins certamente foram fatores que me 
 atraíram para o Jekyll.&lt;/p&gt;
 
 &lt;p&gt;No entanto, ao longo do tempo, comecei a sentir algumas limitações e desafios com o Jekyll que me levaram a considerar
@@ -218,11 +218,11 @@ outras opções, como o Middleman que ja conhecia.&lt;/p&gt;
 
 &lt;h2&gt;Porque o Middleman?&lt;/h2&gt;
 
-&lt;p&gt;O Middleman é uma ferramenta de geração de sites estáticos construída em Ruby, que oferece uma abordagem mais flexível e
-personalizável para o desenvolvimento de sites, trazendo principalmente muito do que costumamos usar quando
+&lt;p&gt;O Middleman é uma ferramenta de geração de sites estáticos construída em Ruby, que oferece uma abordagem mais flexível e 
+personalizável para o desenvolvimento de sites, trazendo principalmente muito do que costumamos usar quando 
 desenvolvemos soluções web em ruby.&lt;/p&gt;
 
-&lt;p&gt;As possibilidades nativas e o uso do erb ao inves do liquid, torna tudo mais simples e faz um desenvolvedor
+&lt;p&gt;As possibilidades nativas e o uso do erb ao inves do liquid, torna tudo mais simples e faz um desenvolvedor 
 familiarizado com Ruby se sentir em casa.&lt;/p&gt;
 
 &lt;p&gt;Muitas pessoas podem se perguntar porque não usar outras alternativas como o Gatsby, Hugo, etc. A resposta é simples, o
@@ -240,10 +240,10 @@ projetos, facilidade de integrar com qualquer coisa que eu quisesse de forma nat
 
 &lt;h3&gt;2. Sistema de templates&lt;/h3&gt;
 
-&lt;p&gt;O Middleman utiliza o sistema de templates ERB, Haml, Slim, entre outros, o que facilita a criação de layouts complexos
+&lt;p&gt;O Middleman utiliza o sistema de templates ERB, Haml, Slim, entre outros, o que facilita a criação de layouts complexos 
 e reutilizáveis. Isso se traduz em um desenvolvimento mais eficiente e uma manutenção mais simples. &lt;/p&gt;
 
-&lt;p&gt;No Jekyll, embora os templates sejam poderosos, a sintaxe do Liquid pode ser limitada para certos casos de uso que eu
+&lt;p&gt;No Jekyll, embora os templates sejam poderosos, a sintaxe do Liquid pode ser limitada para certos casos de uso que eu 
 precisava.&lt;/p&gt;
 
 &lt;h3&gt;3. Ecossistema de plugins&lt;/h3&gt;
@@ -278,7 +278,7 @@ decisão informada sobre qual ferramenta usar para o seu blog ou site estático,
     <link rel="alternate" href="http://blog.url.com/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/"/>
     <id>http://blog.url.com/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/</id>
     <published>2024-07-29T21:00:00-03:00</published>
-    <updated>2024-08-05T13:22:20-03:00</updated>
+    <updated>2024-08-06T13:45:22-03:00</updated>
     <author>
       <name>Article Author</name>
     </author>
@@ -352,11 +352,80 @@ example article. You probably want to delete it and write your own articles!&lt;
 </content>
   </entry>
   <entry>
+    <title>Como eu comecei a gerenciar meu conhecimento usando Logseq</title>
+    <link rel="alternate" href="http://blog.url.com/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/"/>
+    <id>http://blog.url.com/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/</id>
+    <published>2024-07-01T16:30:00-03:00</published>
+    <updated>2024-08-06T16:50:19-03:00</updated>
+    <author>
+      <name>Article Author</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;img src="/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/banner.png" alt="Logseq" /&gt;&lt;/p&gt;
+
+&lt;h2&gt;Como tudo começou&lt;/h2&gt;
+
+&lt;p&gt;Minha memória não é das melhores para diversas coisas, e minha capacidade de manter a atenção é bastante limitada.&lt;/p&gt;
+
+&lt;p&gt;Sempre que preciso me lembrar de detalhes específicos, torna-se um verdadeiro desafio. Por isso, anotar as coisas
+tornou-se essencial para a minha sobrevivência diária.&lt;/p&gt;
+
+&lt;h2&gt;Escolhendo as ferramentas&lt;/h2&gt;
+
+&lt;p&gt;Já experimentei vários métodos e ferramentas para gerenciar meu conhecimento. Tentei usar wikis, Google Docs e Basecamp.&lt;/p&gt;
+
+&lt;p&gt;Depois de muita busca por uma ferramenta e formato que funcionassem bem para mim, resolvi focar no simples e passei a
+usar Markdown.&lt;/p&gt;
+
+&lt;p&gt;O uso de arquivos Markdown finalmente começou a fazer sentido para mim, mas ainda precisava de uma ferramenta que me
+ajudasse a ser mais produtivo e a organizar melhor minhas ideias.&lt;/p&gt;
+
+&lt;p&gt;Testei algumas excelentes opções open source e gratuitas, mas nenhuma tinha as combinações de funções que eu estava
+buscando, até chegar no Obsidian.&lt;/p&gt;
+
+&lt;p&gt;Usei o Obsidian por um tempo, mas sentia que ele me oferecia tantas possibilidades que acabava perdendo o foco.&lt;/p&gt;
+
+&lt;p&gt;Assim como escolhi o Todoist pela sua eficiência e simplicidade, queria algo semelhante para minhas notas. Foi então
+que, em um grupo de notas e produtividade, descobri o Logseq, que empresta muitos conceitos do Roam Research.&lt;/p&gt;
+
+&lt;p&gt;Quando resolvi testar o Logseq, fiquei fascinado. Ele tinha exatamente o que eu precisava na medida certa e, mesmo não
+sendo perfeito, oferecia as combinações de funções que me permitiam criar notas de forma organizada e com foco.&lt;/p&gt;
+
+&lt;h2&gt;Como organizo minhas notas&lt;/h2&gt;
+
+&lt;p&gt;Costumo usar um modelo de diários diários (daily journals) e adiciono algumas páginas para outros temas que prefiro
+separar. Dessa forma, sinto que as coisas ficam mais bem organizadas. Também uso bastante referências e tags, nativas do
+Logseq, o que me permite criar consultas (queries) e linkar assuntos para facilitar a pesquisa e a localização quando
+necessário.&lt;/p&gt;
+
+&lt;p&gt;Nas minhas notas diárias, costumo ter um espaço para falar sobre aspectos pessoais, como estou me sentindo, e também
+sobre aspectos do meu dia, tanto pessoal quanto profissional.&lt;/p&gt;
+
+&lt;h2&gt;Como é o processo&lt;/h2&gt;
+
+&lt;p&gt;Para manter a consistência, tento registrar minhas anotações diariamente à noite, refletindo sobre o meu dia. Aspectos
+mais gerais, anoto conforme vão acontecendo. Quando tenho alguma reunião, deixo referências com antecedência para me
+preparar com dúvidas ou pontos importantes.&lt;/p&gt;
+
+&lt;p&gt;Também costumo anotar coisas úteis que vou aprendendo e que podem ser úteis no futuro, como comandos, dicas sobre
+produtos, curiosidades sobre diversos assuntos, etc.&lt;/p&gt;
+
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+
+&lt;p&gt;O hábito de anotar as coisas fez com que eu estivesse mais presente nas reuniões e me permitiu ter um tempo para
+refletir sobre os acontecimentos do meu cotidiano. Além disso, tornou-se uma ferramenta indispensável no meu dia a dia,
+permitindo que eu recorde pontos importantes de cada evento e revisite sempre que necessário.&lt;/p&gt;
+
+&lt;p&gt;Mesmo sem nunca ter sido fã de diários, escrever e tirar as ideias da cabeça permite que eu passe o dia com a mente mais
+leve. A única coisa que gostaria de melhorar é a frequência com que revisito as informações, para refletir sobre os
+fatos e tirar ainda mais aprendizados.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
     <title>Criando um CLI para adicionar tasks no Todoist</title>
     <link rel="alternate" href="http://blog.url.com/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/"/>
     <id>http://blog.url.com/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/</id>
     <published>2023-05-09T21:00:00-03:00</published>
-    <updated>2024-08-05T13:22:20-03:00</updated>
+    <updated>2024-08-06T13:45:22-03:00</updated>
     <author>
       <name>Article Author</name>
     </author>
