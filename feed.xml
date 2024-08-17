@@ -6,16 +6,80 @@
   <id>https://vincebot.dev</id>
   <link href="https://vincebot.dev"/>
   <link href="https://vincebot.dev/feed.xml" rel="self"/>
-  <updated>2024-08-10T02:16:00-03:00</updated>
+  <updated>2024-08-16T23:16:00-03:00</updated>
   <author>
     <name>Daniel Vinciguerra</name>
   </author>
+  <entry>
+    <title>Minhas regras de ouro quando estou arquitetando uma solução</title>
+    <link rel="alternate" href="https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/"/>
+    <id>https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/</id>
+    <published>2024-08-16T23:16:00-03:00</published>
+    <updated>2024-08-16T23:19:48-03:00</updated>
+    <author>
+      <name>Daniel Vinciguerra</name>
+    </author>
+    <content type="html">&lt;p&gt;No ano passado (2023), completei 20 anos escrevendo software, sendo que 18 desses foram escrevendo software profissionalmente.&lt;/p&gt;
+
+&lt;p&gt;Durante todo esse tempo, já passei por projetos que foram incríveis e outros que eram um caos total. Alguns eram bem organizados, enquanto outros eram uma verdadeira bagunça. Também participei de projetos onde tentaram aplicar algum padrão arquitetural ou de engenharia, mas que nunca chegaram a um bom termo.&lt;/p&gt;
+
+&lt;p&gt;Por isso, criei algumas &amp;ldquo;regras de ouro&amp;rdquo; que sempre tento seguir e que acho que funcionam bem nesses cenários:&lt;/p&gt;
+
+&lt;h2&gt;1. Design e Arquitetura São Sobre Comunicação&lt;/h2&gt;
+
+&lt;p&gt;A arquitetura do seu software tem que ter a comunicação como o princípio mais importante.&lt;/p&gt;
+
+&lt;p&gt;Quem estiver desenvolvendo o projeto, e quem vai pegar ele no futuro, precisa entender rápido o raciocínio por trás dele e saber onde está e o que fazer.&lt;/p&gt;
+
+&lt;h2&gt;2. Abstrações Simples Criam Projetos Simples&lt;/h2&gt;
+
+&lt;p&gt;E o inverso também é verdade.&lt;/p&gt;
+
+&lt;p&gt;Se você começa seu projeto logo de cara com implementações super complexas, projetando para problemas que ainda nem existem, usando micro serviços e toda aquela sopa de letrinhas que os mais experientes já conhecem, seu projeto já nasce complicado. Isso acaba atrapalhando tanto o crescimento do negócio quanto a velocidade da sua equipe.&lt;/p&gt;
+
+&lt;p&gt;Simplicidade é a chave para projetos que duram e que são bem escritos.&lt;/p&gt;
+
+&lt;p&gt;Não adianta nada querer construir sistemas distribuídos se você ainda não entendeu bem como funciona um MVC básico.&lt;/p&gt;
+
+&lt;p&gt;Explore as opções, conheça os conceitos e mantenha tudo simples.&lt;/p&gt;
+
+&lt;h2&gt;3. O Time Precisa Estar Alinhado&lt;/h2&gt;
+
+&lt;p&gt;De novo falando sobre complexidade: não adianta você já ter estudado e aplicado com sucesso padrões arquiteturais em outros lugares se, no projeto atual, a sua equipe não entende as decisões que estão sendo tomadas.&lt;/p&gt;
+
+&lt;p&gt;Boas arquiteturas são aquelas que, assim como o código, são organizadas, fáceis de entender e ajudam todo mundo a se encontrar no projeto.&lt;/p&gt;
+
+&lt;p&gt;De que adianta uma arquitetura super sofisticada se ninguém vê valor nisso?&lt;/p&gt;
+
+&lt;h2&gt;4. Pare de Escolher as Tecnologias da Moda&lt;/h2&gt;
+
+&lt;p&gt;É importante que as pessoas entendam o que você está usando e por que está usando cada tecnologia.&lt;/p&gt;
+
+&lt;p&gt;Se você tem um projeto web simples, tipo um MVP, por que usar Kubernetes, Kafka, dividir o projeto em dezenas de pedaços, cada um com seu próprio servidor, e criar problemas que você não precisa?&lt;/p&gt;
+
+&lt;h2&gt;5. Entenda que Tudo Tem Seus Prós e Contras&lt;/h2&gt;
+
+&lt;p&gt;Se você quer criar boas soluções, entenda que cada escolha vai ter um lado negativo.&lt;/p&gt;
+
+&lt;p&gt;Por que não usar SSDs para tudo se eles são mais rápidos? Porque a vida útil deles é bem menor que a dos HDDs. Por que não usar Memory Stores no lugar de Bancos Relacionais? Porque, além de mais caros, esses bancos que usam memória RAM como armazenamento têm o problema da volatilidade.&lt;/p&gt;
+
+&lt;p&gt;Tudo tem seu lado bom e ruim, e entender isso logo, além de saber como usar essas características a seu favor, vai te ajudar a evitar escolhas ruins e impulsivas.&lt;/p&gt;
+
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+
+&lt;p&gt;Arquiteturas são muito mais sobre comunicação entre as pessoas do negócio e sobre entender o que funciona ou não em determinado contexto do que sobre seguir preferências pessoais.&lt;/p&gt;
+
+&lt;p&gt;Bons profissionais não criam soluções só para si mesmos, mas sim pensando na equipe, no negócio e, principalmente, nas pessoas que vão usar o projeto.&lt;/p&gt;
+
+&lt;p&gt;E isso é super importante, porque projetos que ninguém usa ou que não resolvem um problema são só um desperdício de tempo e dinheiro.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>O 'Efeito Notion': Por que Prefiro Evitar Apps de Produtividade Superpoderosos</title>
     <link rel="alternate" href="https://vincebot.dev/2024/08/10/efeito-notion/"/>
     <id>https://vincebot.dev/2024/08/10/efeito-notion/</id>
     <published>2024-08-10T02:16:00-03:00</published>
-    <updated>2024-08-10T02:28:16-03:00</updated>
+    <updated>2024-08-10T02:31:16-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -74,7 +138,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/"/>
     <id>https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/</id>
     <published>2024-08-04T00:12:00-03:00</published>
-    <updated>2024-08-10T02:15:51-03:00</updated>
+    <updated>2024-08-10T02:31:16-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -146,7 +210,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/"/>
     <id>https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/</id>
     <published>2024-08-02T10:25:00-03:00</published>
-    <updated>2024-08-05T13:23:04-03:00</updated>
+    <updated>2024-08-10T02:31:16-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -255,7 +319,7 @@ rails db:migrate
     <link rel="alternate" href="https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/"/>
     <id>https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/</id>
     <published>2024-07-31T09:59:00-03:00</published>
-    <updated>2024-08-05T13:23:04-03:00</updated>
+    <updated>2024-08-10T02:31:16-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -338,7 +402,7 @@ decisão informada sobre qual ferramenta usar para o seu blog ou site estático,
     <link rel="alternate" href="https://vincebot.dev/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/"/>
     <id>https://vincebot.dev/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/</id>
     <published>2024-07-29T21:00:00-03:00</published>
-    <updated>2024-08-05T13:23:04-03:00</updated>
+    <updated>2024-08-10T02:31:16-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -416,7 +480,7 @@ example article. You probably want to delete it and write your own articles!&lt;
     <link rel="alternate" href="https://vincebot.dev/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/"/>
     <id>https://vincebot.dev/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/</id>
     <published>2024-07-01T16:30:00-03:00</published>
-    <updated>2024-08-10T02:15:51-03:00</updated>
+    <updated>2024-08-10T02:31:16-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -485,7 +549,7 @@ fatos e tirar ainda mais aprendizados.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/"/>
     <id>https://vincebot.dev/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/</id>
     <published>2023-05-09T21:00:00-03:00</published>
-    <updated>2024-08-05T13:23:04-03:00</updated>
+    <updated>2024-08-10T02:31:16-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>

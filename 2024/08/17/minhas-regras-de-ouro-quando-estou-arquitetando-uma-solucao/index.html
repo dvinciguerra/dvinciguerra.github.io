@@ -13,17 +13,17 @@
 
 
       <meta property="og:type" content="article">
-<meta property="og:url" content="/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/">
-<meta property="og:title" content="Criando um CLI para adicionar tasks no Todoist">
+<meta property="og:url" content="/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/">
+<meta property="og:title" content="Minhas regras de ouro quando estou arquitetando uma solução">
 <meta property="og:site_name" content="Vincebot">
-<meta property="og:description" content="Sou uma pessoa que funciona muito bem usando todo lists e gosto principalmente de usar ferramentas ou plataformas que permitam ter acesso as minhas tasks sempre que preciso...">
+<meta property="og:description" content="No ano passado (2023), completei 20 anos escrevendo software, sendo que 18 desses foram escrevendo software profissionalmente...">
 <meta property="og:image" content="/images/avatar.jpg">
 
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="/images/avatar.jpg">
 
 
-    <title>Criando um CLI para adicionar tasks no Todoist</title>
+    <title>Minhas regras de ouro quando estou arquitetando uma solução</title>
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/feed.xml" />
 
     <!-- script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script -->
@@ -85,23 +85,22 @@
     <header class="post-header">
       <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-12">
         <p class="mb-2 text-xs font-semibold tracking-wide text-gray-600 uppercase sm:text-center">
-          <time class="post-date" datetime="2023-05-10">
-            10 May 2023
+          <time class="post-date" datetime="2024-08-17">
+            17 August 2024
           </time>
         </p>
         <div class="max-w-xl mb-5 md:mx-auto sm:text-center lg:max-w-2xl">
           <div class="mb-4">
             <h1 class="inline-block max-w-lg font-sans text-3xl font-extrabold leading-none tracking-tight text-gray-50 transition-colors duration-200 hover:text-gray-50 sm:text-4xl">
-              Criando um CLI para adicionar tasks no Todoist
+              Minhas regras de ouro quando estou arquitetando uma solução
             </h1>
           </div>
 
           <p class="text-base text-gray-50 md:text-lg">
-              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">productivity</span>
-              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">todoist</span>
-              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">cli</span>
-              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">ruby</span>
-              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">api</span>
+              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">solution-architecture</span>
+              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">software architecture</span>
+              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">software engineering</span>
+              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">system design</span>
           </p>
         </div>
         <div class="sm:text-center">
@@ -110,62 +109,66 @@
     </header>
 
     <section class="post-content container px-auto max-md:px-0 max-sm:px-4 md:pb-40 max-sm:pb-20">
-      <p>Sou uma pessoa que funciona muito bem usando todo lists e gosto principalmente de usar ferramentas ou plataformas que permitam ter acesso as minhas tasks sempre que preciso.</p>
+      <p>No ano passado (2023), completei 20 anos escrevendo software, sendo que 18 desses foram escrevendo software profissionalmente.</p>
 
-<p>Passei um momento da minha vida testando diversas delas e uma das que mais gostei foi o Google Tasks pela extrema simplicidade. Porém essa simplicidade toda me fez esbarrar em coisas que eu precisava muito e isso fez eu continuar a busca até chegar no Todoist que me atende perfeitamente.</p>
+<p>Durante todo esse tempo, já passei por projetos que foram incríveis e outros que eram um caos total. Alguns eram bem organizados, enquanto outros eram uma verdadeira bagunça. Também participei de projetos onde tentaram aplicar algum padrão arquitetural ou de engenharia, mas que nunca chegaram a um bom termo.</p>
 
-<h2>Todoist segundo meus critérios</h2>
+<p>Por isso, criei algumas &ldquo;regras de ouro&rdquo; que sempre tento seguir e que acho que funcionam bem nesses cenários:</p>
 
-<p>É uma ferramenta poderosa e muito produtiva que permite uso diversos lugares, de smartphone até add-on de navegadores.</p>
+<h2>1. Design e Arquitetura São Sobre Comunicação</h2>
 
-<p>Além de tudo conta com várias interações e uma API muito completa e simples de usar.</p>
+<p>A arquitetura do seu software tem que ter a comunicação como o princípio mais importante.</p>
 
-<p>A interface dele é super simples e direto ao ponto, mas sem deixar de ser poderosa, contando com lembretes, recorrência, suporte a AI para te ajudar a definir a tarefa e uma sintaxe que permite adicionar due dates em linguagem natural (tipo tomorrow, at Monday 9:00, next week, etc).</p>
+<p>Quem estiver desenvolvendo o projeto, e quem vai pegar ele no futuro, precisa entender rápido o raciocínio por trás dele e saber onde está e o que fazer.</p>
 
-<h2>Então qual o problema?</h2>
+<h2>2. Abstrações Simples Criam Projetos Simples</h2>
 
-<p>No meu workflow, uso muito o terminal e evito ao máximo &ldquo;sair dele&rdquo; porque sei que sou muito ruim em dividir atenção.</p>
+<p>E o inverso também é verdade.</p>
 
-<p>Isso me fez perceber que conforme o aumento do número ou complexidade das demandas, eu me esquecia de anotar minhas tarefas para serem feita.</p>
+<p>Se você começa seu projeto logo de cara com implementações super complexas, projetando para problemas que ainda nem existem, usando micro serviços e toda aquela sopa de letrinhas que os mais experientes já conhecem, seu projeto já nasce complicado. Isso acaba atrapalhando tanto o crescimento do negócio quanto a velocidade da sua equipe.</p>
 
-<p>Pode parecer besteira mas se para uma pessoa neurotípica é fácil esquecer algo quando está encarando um momento de stress, imagine uma pessoa TDAH.</p>
+<p>Simplicidade é a chave para projetos que duram e que são bem escritos.</p>
 
-<p>Foi aí que comecei a procurar formar de ter essa forma simples de fazer esse registro das tarefas que precisava sem sair do terminal e chavear o contexto em que estava trabalhando.</p>
+<p>Não adianta nada querer construir sistemas distribuídos se você ainda não entendeu bem como funciona um MVC básico.</p>
 
-<h2>Buscando alternativas e testando hipóteses</h2>
+<p>Explore as opções, conheça os conceitos e mantenha tudo simples.</p>
 
-<p>Pensando muito e testando algumas ferramentas, várias muito boas mas me fariam não utilizar o Todoist.</p>
+<h2>3. O Time Precisa Estar Alinhado</h2>
 
-<p>Minha premissa era centralizar ao máximo essa &ldquo;captura&rdquo; das informações do que precisaria fazer e com isso me lembrei de uma solução inteligente que tinha visto em um repositório no Github do Tatsuhiko Miyagawa, um software engineer que acompanho desde que codava mais em Perl.</p>
+<p>De novo falando sobre complexidade: não adianta você já ter estudado e aplicado com sucesso padrões arquiteturais em outros lugares se, no projeto atual, a sua equipe não entende as decisões que estão sendo tomadas.</p>
 
-<p>Ele acabou criando algo muito próximo do que eu queria, mas que aparentemente utilizava as notificações no sistema operacional para criar esses lembretes.</p>
+<p>Boas arquiteturas são aquelas que, assim como o código, são organizadas, fáceis de entender e ajudam todo mundo a se encontrar no projeto.</p>
 
-<h2>Entendendo a referência para adaptar</h2>
+<p>De que adianta uma arquitetura super sofisticada se ninguém vê valor nisso?</p>
 
-<p>O link para o script está aqui https://github.com/miyagawa/misc-scripts/blob/master/remind, mas explicando brevemente&hellip;</p>
+<h2>4. Pare de Escolher as Tecnologias da Moda</h2>
 
-<p>O script recebe como entrada uma frase em linguagem natural predefinida, algo como &ldquo;remind me at night about do a code review&rdquo; e usando regular expressions ele divide a sentença em duas partes.</p>
+<p>É importante que as pessoas entendam o que você está usando e por que está usando cada tecnologia.</p>
 
-<p>A primeira diz sobre o tempo em que devo ser lembrado ou alertado e com essa parte ele utiliza uma Ruby gem chamada Chronic, para fazer parsing de texto em linguagem natural para data e hora.</p>
+<p>Se você tem um projeto web simples, tipo um MVP, por que usar Kubernetes, Kafka, dividir o projeto em dezenas de pedaços, cada um com seu próprio servidor, e criar problemas que você não precisa?</p>
 
-<p>A segunda parte da sentença e apenas a descrição do que precisa ser feito ou lembrado.</p>
+<h2>5. Entenda que Tudo Tem Seus Prós e Contras</h2>
 
-<p>Com essas duas partes ele executa uma expressão, que faz uma chamada de sistema encadeando dois comandos: o sleep para aguardar o número de segundos até que ele seja alertado e quando o tempo chegar, o pushme que não conheço mas imagino ser um serviço de push notification que vai enviar esse lembrete para o computador ou smartphone.</p>
+<p>Se você quer criar boas soluções, entenda que cada escolha vai ter um lado negativo.</p>
 
-<h2>Adaptando e implementando a integração com Todoist</h2>
+<p>Por que não usar SSDs para tudo se eles são mais rápidos? Porque a vida útil deles é bem menor que a dos HDDs. Por que não usar Memory Stores no lugar de Bancos Relacionais? Porque, além de mais caros, esses bancos que usam memória RAM como armazenamento têm o problema da volatilidade.</p>
 
-<p>Entendendo esses comportamentos, adaptei o código para poder entender também português além de descrições em inglês e implementei o envio para minha conta do Todoist usando integração via API Rest.</p>
+<p>Tudo tem seu lado bom e ruim, e entender isso logo, além de saber como usar essas características a seu favor, vai te ajudar a evitar escolhas ruins e impulsivas.</p>
 
-<p>O resultado foi uma ferramenta semelhante, que torna muito mais produtivo para mim anotado minhas tarefas e que centraliza todas as informações onde preciso.</p>
+<h2>Conclusão</h2>
 
-<p>Agradecimentos especiais, obviamente, ao autor original da ideia e do script que serviu de inspiração. =)</p>
+<p>Arquiteturas são muito mais sobre comunicação entre as pessoas do negócio e sobre entender o que funciona ou não em determinado contexto do que sobre seguir preferências pessoais.</p>
+
+<p>Bons profissionais não criam soluções só para si mesmos, mas sim pensando na equipe, no negócio e, principalmente, nas pessoas que vão usar o projeto.</p>
+
+<p>E isso é super importante, porque projetos que ninguém usa ou que não resolvem um problema são só um desperdício de tempo e dinheiro.</p>
 
     </section>
 
 
     <p class="contact-me rounded border border-solid border-slate-700 p-4">
   Quer conversar sobre este artigo? Mande-me uma
-  <a href="mailto:7pa1gevhw@mozmail.com?Subject=Comment: [Vincebot] Criando um CLI para adicionar tasks no Todoist">mensagem</a>.
+  <a href="mailto:7pa1gevhw@mozmail.com?Subject=Comment: [Vincebot] Minhas regras de ouro quando estou arquitetando uma solução">mensagem</a>.
 </p>
 
 
@@ -182,13 +185,13 @@
 
       <section class="share">
         <h4>Share this post</h4>
-        <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Criando um CLI para adicionar tasks no Todoist&amp;url=http://www.example.com/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Minhas regras de ouro quando estou arquitetando uma solução&amp;url=http://www.example.com/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
           <span class="hidden">Twitter</span>
         </a>
-        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://www.example.com/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/" onclick="window.open(this.href, 'facebook-share', 'width=580,height=296');return false;">
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://www.example.com/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/" onclick="window.open(this.href, 'facebook-share', 'width=580,height=296');return false;">
           <span class="hidden">Facebook</span>
         </a>
-        <a class="icon-google-plus" href="https://plus.google.com/share?url=http://www.example.com/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=http://www.example.com/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
           <span class="hidden">Google+</span>
         </a>
       </section>
