@@ -15,7 +15,7 @@
     <link rel="alternate" href="https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/"/>
     <id>https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/</id>
     <published>2024-08-16T23:16:00-03:00</published>
-    <updated>2024-08-22T11:31:52-03:00</updated>
+    <updated>2024-08-22T11:34:28-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -79,7 +79,7 @@
     <link rel="alternate" href="https://vincebot.dev/2024/08/10/efeito-notion/"/>
     <id>https://vincebot.dev/2024/08/10/efeito-notion/</id>
     <published>2024-08-10T02:16:00-03:00</published>
-    <updated>2024-08-12T14:55:34-03:00</updated>
+    <updated>2024-08-22T11:34:28-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -138,7 +138,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/"/>
     <id>https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/</id>
     <published>2024-08-04T00:12:00-03:00</published>
-    <updated>2024-08-09T11:33:42-03:00</updated>
+    <updated>2024-08-22T11:34:28-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -210,7 +210,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/"/>
     <id>https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/</id>
     <published>2024-08-02T10:25:00-03:00</published>
-    <updated>2024-08-09T11:33:42-03:00</updated>
+    <updated>2024-08-22T11:34:28-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -319,7 +319,7 @@ rails db:migrate
     <link rel="alternate" href="https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/"/>
     <id>https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/</id>
     <published>2024-07-31T09:59:00-03:00</published>
-    <updated>2024-08-09T11:33:42-03:00</updated>
+    <updated>2024-08-22T11:34:28-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -402,7 +402,7 @@ decisão informada sobre qual ferramenta usar para o seu blog ou site estático,
     <link rel="alternate" href="https://vincebot.dev/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/"/>
     <id>https://vincebot.dev/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/</id>
     <published>2024-07-29T21:00:00-03:00</published>
-    <updated>2024-08-09T11:33:41-03:00</updated>
+    <updated>2024-08-22T11:34:28-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -480,7 +480,7 @@ example article. You probably want to delete it and write your own articles!&lt;
     <link rel="alternate" href="https://vincebot.dev/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/"/>
     <id>https://vincebot.dev/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/</id>
     <published>2024-07-01T16:30:00-03:00</published>
-    <updated>2024-08-09T11:33:41-03:00</updated>
+    <updated>2024-08-22T11:34:28-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -549,7 +549,7 @@ fatos e tirar ainda mais aprendizados.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/"/>
     <id>https://vincebot.dev/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/</id>
     <published>2023-05-09T21:00:00-03:00</published>
-    <updated>2024-08-09T11:33:41-03:00</updated>
+    <updated>2024-08-22T11:34:28-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -602,6 +602,57 @@ fatos e tirar ainda mais aprendizados.&lt;/p&gt;
 &lt;p&gt;O resultado foi uma ferramenta semelhante, que torna muito mais produtivo para mim anotado minhas tarefas e que centraliza todas as informações onde preciso.&lt;/p&gt;
 
 &lt;p&gt;Agradecimentos especiais, obviamente, ao autor original da ideia e do script que serviu de inspiração. =)&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Voltando a blogar!</title>
+    <link rel="alternate" href="https://vincebot.dev/2019/10/30/voltando-a-blogar/"/>
+    <id>https://vincebot.dev/2019/10/30/voltando-a-blogar/</id>
+    <published>2019-10-29T21:00:00-03:00</published>
+    <updated>2024-08-22T15:06:42-03:00</updated>
+    <author>
+      <name>Daniel Vinciguerra</name>
+    </author>
+    <content type="html">&lt;p&gt;Comecei a estudar e escrever código cedo (o quão cedo pude) e logo tomei muito gosto por compartilhar o conhecimento que
+ia adquirindo de forma tão suada, e por ser autodidata, pensava em deixar o caminho das outras pessoas que trilhassem o
+mesmo que o meu mais fácil.&lt;/p&gt;
+
+&lt;p&gt;Depois de um longo tempo, acabei perdendo este hábito que gostava tanto e desde então tinha sempre no peito uma vontade
+enorme de voltar a compartilhar minhas ideias, escrever e aprender com os outros usando o formato de blog posts.&lt;/p&gt;
+
+&lt;h2&gt;Ok, então vamos lá…&lt;/h2&gt;
+
+&lt;p&gt;Estive postergando este dia há muito tempo, mas decidi começar do começo para driblar minha “auto-sabotagem”.&lt;/p&gt;
+
+&lt;p&gt;Então para sair do zero, decidi escrever um post contando esta pequena história sobre este meu sentimento particular.&lt;/p&gt;
+
+&lt;h2&gt;Por que parei de escrever se gostava tanto?&lt;/h2&gt;
+
+&lt;p&gt;Acho que comecei a reduzir o volume e posteriormente parei quando entrei para “o mundo corporativo” e junto comecei a
+faculdade de Ciência da Computação.&lt;/p&gt;
+
+&lt;p&gt;Meu tempo foi fincando cada vez mais escasso e o cansaço era muito grande, com isso passei a dar prioridade para o
+trabalho e para meus estudos.&lt;/p&gt;
+
+&lt;p&gt;No final das contas, refletindo um pouco, poderia ter optado por me organizar melhor e feito posts com uma regularidade
+reduzida. Porém, o cansaço do dia-a-dia na época, unido com a quantidade de informação que eu estava absorvendo dos meus
+mentores em uma das melhores empresas que já trabalhei, fizeram com que meu foco mudasse.&lt;/p&gt;
+
+&lt;h2&gt;E por que voltar agora?&lt;/h2&gt;
+
+&lt;p&gt;Talvez por nostalgia ou simplesmente por que gostava de expor e discutir as ideias, aprender e conhecer outros pontos de
+vista através este formato.&lt;/p&gt;
+
+&lt;p&gt;No final das contas não existe uma resposta simples para isso, mas uma das coisas que sinto falta era de poder escrever
+e organizar as ideias que estavam na minha mente, de quebra ter isso em um lugar e poder revisitar e acompanhar o quanto
+amadureci e aprendi em um intervalo de tempo… sem dúvidas me traz sentimentos muito bons.&lt;/p&gt;
+
+&lt;h2&gt;Concluindo&lt;/h2&gt;
+
+&lt;p&gt;Acho que vou voltar neste espaço para expor e organizar algumas ideias e aprender um pouco com outras pessoas e pontos
+de vista.&lt;/p&gt;
+
+&lt;p&gt;Acredito que fazer (ou voltar a fazer) o que gostamos é algo bem realizador e motivante!&lt;/p&gt;
 </content>
   </entry>
 </feed>
