@@ -15,7 +15,7 @@
     <link rel="alternate" href="https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/"/>
     <id>https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/</id>
     <published>2024-08-16T23:16:00-03:00</published>
-    <updated>2024-08-16T23:21:23-03:00</updated>
+    <updated>2024-08-22T11:31:52-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -79,7 +79,7 @@
     <link rel="alternate" href="https://vincebot.dev/2024/08/10/efeito-notion/"/>
     <id>https://vincebot.dev/2024/08/10/efeito-notion/</id>
     <published>2024-08-10T02:16:00-03:00</published>
-    <updated>2024-08-16T23:21:23-03:00</updated>
+    <updated>2024-08-12T14:55:34-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -138,7 +138,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/"/>
     <id>https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/</id>
     <published>2024-08-04T00:12:00-03:00</published>
-    <updated>2024-08-16T23:21:23-03:00</updated>
+    <updated>2024-08-09T11:33:42-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -210,7 +210,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/"/>
     <id>https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/</id>
     <published>2024-08-02T10:25:00-03:00</published>
-    <updated>2024-08-16T23:21:23-03:00</updated>
+    <updated>2024-08-09T11:33:42-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -319,7 +319,7 @@ rails db:migrate
     <link rel="alternate" href="https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/"/>
     <id>https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/</id>
     <published>2024-07-31T09:59:00-03:00</published>
-    <updated>2024-08-16T23:21:23-03:00</updated>
+    <updated>2024-08-09T11:33:42-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -402,7 +402,7 @@ decisão informada sobre qual ferramenta usar para o seu blog ou site estático,
     <link rel="alternate" href="https://vincebot.dev/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/"/>
     <id>https://vincebot.dev/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/</id>
     <published>2024-07-29T21:00:00-03:00</published>
-    <updated>2024-08-16T23:21:23-03:00</updated>
+    <updated>2024-08-09T11:33:41-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -480,7 +480,7 @@ example article. You probably want to delete it and write your own articles!&lt;
     <link rel="alternate" href="https://vincebot.dev/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/"/>
     <id>https://vincebot.dev/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/</id>
     <published>2024-07-01T16:30:00-03:00</published>
-    <updated>2024-08-16T23:21:23-03:00</updated>
+    <updated>2024-08-09T11:33:41-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -549,7 +549,7 @@ fatos e tirar ainda mais aprendizados.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/"/>
     <id>https://vincebot.dev/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/</id>
     <published>2023-05-09T21:00:00-03:00</published>
-    <updated>2024-08-16T23:21:23-03:00</updated>
+    <updated>2024-08-09T11:33:41-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
