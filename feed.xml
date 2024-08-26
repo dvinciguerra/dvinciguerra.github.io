@@ -6,16 +6,92 @@
   <id>https://vincebot.dev</id>
   <link href="https://vincebot.dev"/>
   <link href="https://vincebot.dev/feed.xml" rel="self"/>
-  <updated>2024-08-16T23:16:00-03:00</updated>
+  <updated>2024-08-26T00:48:00-03:00</updated>
   <author>
     <name>Daniel Vinciguerra</name>
   </author>
+  <entry>
+    <title>Utilizando userscripts para customizar sua experiencia na web</title>
+    <link rel="alternate" href="https://vincebot.dev/2024/08/26/utilizando-userscripts-para-customizar-sua-experiencia-na-web/"/>
+    <id>https://vincebot.dev/2024/08/26/utilizando-userscripts-para-customizar-sua-experiencia-na-web/</id>
+    <published>2024-08-26T00:48:00-03:00</published>
+    <updated>2024-08-26T00:50:45-03:00</updated>
+    <author>
+      <name>Daniel Vinciguerra</name>
+    </author>
+    <content type="html">&lt;p&gt;Sabe quando você acessa um site ou plataforma e pensa: &amp;ldquo;Poxa, isso aqui poderia ser diferente&amp;rdquo;, ou &amp;ldquo;Seria ótimo se tivesse essa feature&amp;rdquo;? A solução que logo vem à cabeça de muitos desenvolvedores é criar uma extensão para o navegador, que altere o site ao ser acessado. Mas, apesar de criar um plugin não ser tão complicado, às vezes precisamos de algo mais rápido e simples.&lt;/p&gt;
+
+&lt;p&gt;É aí que entram os userscripts.&lt;/p&gt;
+
+&lt;h2&gt;Mas, o que são userscripts?&lt;/h2&gt;
+
+&lt;p&gt;Userscripts são pequenos códigos que escrevemos para modificar determinados sites na web, personalizando a experiência de acordo com nossas necessidades. Em outras palavras, é uma maneira prática de tirar o máximo proveito das ferramentas que usamos no dia a dia.&lt;/p&gt;
+
+&lt;h2&gt;Alguns casos de uso&lt;/h2&gt;
+
+&lt;p&gt;Eu já uso userscripts há algum tempo e eles têm melhorado minha experiência em diversas situações, como por exemplo:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Criar um banner para me avisar que estou acessando o ambiente de staging.&lt;/li&gt;
+&lt;li&gt;Automatizar o preenchimento de campos em formulários, quando os nomes seguem certos padrões.&lt;/li&gt;
+&lt;li&gt;Esconder partes de sites que tiram minha atenção do que eu realmente preciso fazer.&lt;/li&gt;
+&lt;li&gt;Adicionar teclas de atalho para aumentar minha produtividade.&lt;/li&gt;
+&lt;li&gt;Colocar botões que facilitam o acesso a funcionalidades escondidas, mas que uso com frequência.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Como dá pra ver, os userscripts são extremamente versáteis e trazem uma série de benefícios.&lt;/p&gt;
+
+&lt;h2&gt;Como usar userscripts&lt;/h2&gt;
+
+&lt;p&gt;Para começar a usar userscripts, existem alguns add-ons específicos que permitem injetar esses scripts nas páginas que você acessar. Geralmente, eles têm versões para os principais navegadores.&lt;/p&gt;
+
+&lt;p&gt;Aqui estão dois que eu costumo usar:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Greasemonkey&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tampermonkey&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;É só visitar a página deles, escolher o que mais te agrada e instalar.&lt;/p&gt;
+
+&lt;h2&gt;Exemplo prático&lt;/h2&gt;
+
+&lt;p&gt;Vou compartilhar um script que criei para adicionar atalhos no Jira. Isso tem me ajudado a acessar alguns filtros e criar novos cards no board do time de forma mais rápida.&lt;/p&gt;
+
+&lt;p&gt;Vamos criar um script que adiciona um atalho para quando você digitar &lt;code&gt;ctrl + n&lt;/code&gt;, criar um novo card automaticamente.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="c1"&gt;// ==UserScript==&lt;/span&gt;
+&lt;span class="c1"&gt;// @name     Jira :: Custom Shortcuts&lt;/span&gt;
+&lt;span class="c1"&gt;// @namespace  dvinciguerra&lt;/span&gt;
+&lt;span class="c1"&gt;// @version  1.0.0&lt;/span&gt;
+&lt;span class="c1"&gt;// @grant    none&lt;/span&gt;
+&lt;span class="c1"&gt;// @match      https://*.atlassian.net/jira/software/c/projects/*&lt;/span&gt;
+&lt;span class="c1"&gt;// @author  Daniel Vinciguerra&lt;/span&gt;
+&lt;span class="c1"&gt;// ==/UserScript==&lt;/span&gt;
+
+&lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;addEventListener&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="s1"&gt;keydown&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;event&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;event&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;event&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;event&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;event&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;ctrlKey&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;event&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;key&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="dl"&gt;"&lt;/span&gt;&lt;span class="s2"&gt;n&lt;/span&gt;&lt;span class="dl"&gt;"&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="nx"&gt;event&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;key&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="dl"&gt;"&lt;/span&gt;&lt;span class="s2"&gt;E&lt;/span&gt;&lt;span class="dl"&gt;"&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;querySelector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="s1"&gt;#createGlobalItem&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;click&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;E pronto! Agora é só garantir que o script está ativo e, sempre que você entrar no Jira, o atalho vai estar funcionando.&lt;/p&gt;
+
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+
+&lt;p&gt;Como vimos, é bem fácil injetar novos comportamentos em aplicações web, melhorando a usabilidade e, consequentemente, nossa produtividade.&lt;/p&gt;
+
+&lt;p&gt;Embora exista uma comunidade grande de pessoas que criam scripts, eu prefiro seguir a regra de nunca usar scripts de terceiros por questões de segurança. Mas, no fim das contas, esses add-ons tornam nossa vida e o uso das ferramentas e plataformas web muito mais simples e produtivos.&lt;/p&gt;
+
+&lt;p&gt;Obrigado por ler e até o próximo artigo!&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Minhas regras de ouro quando estou arquitetando uma solução</title>
     <link rel="alternate" href="https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/"/>
     <id>https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/</id>
     <published>2024-08-16T23:16:00-03:00</published>
-    <updated>2024-08-22T11:34:28-03:00</updated>
+    <updated>2024-08-22T00:48:45-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -79,7 +155,7 @@
     <link rel="alternate" href="https://vincebot.dev/2024/08/10/efeito-notion/"/>
     <id>https://vincebot.dev/2024/08/10/efeito-notion/</id>
     <published>2024-08-10T02:16:00-03:00</published>
-    <updated>2024-08-22T11:34:28-03:00</updated>
+    <updated>2024-08-22T00:48:45-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -138,7 +214,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/"/>
     <id>https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/</id>
     <published>2024-08-04T00:12:00-03:00</published>
-    <updated>2024-08-22T11:34:28-03:00</updated>
+    <updated>2024-08-22T00:48:45-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -210,7 +286,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/"/>
     <id>https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/</id>
     <published>2024-08-02T10:25:00-03:00</published>
-    <updated>2024-08-22T11:34:28-03:00</updated>
+    <updated>2024-08-22T00:48:45-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -319,7 +395,7 @@ rails db:migrate
     <link rel="alternate" href="https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/"/>
     <id>https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/</id>
     <published>2024-07-31T09:59:00-03:00</published>
-    <updated>2024-08-22T11:34:28-03:00</updated>
+    <updated>2024-08-22T00:48:45-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -402,7 +478,7 @@ decisão informada sobre qual ferramenta usar para o seu blog ou site estático,
     <link rel="alternate" href="https://vincebot.dev/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/"/>
     <id>https://vincebot.dev/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/</id>
     <published>2024-07-29T21:00:00-03:00</published>
-    <updated>2024-08-22T11:34:28-03:00</updated>
+    <updated>2024-08-22T00:48:45-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -480,7 +556,7 @@ example article. You probably want to delete it and write your own articles!&lt;
     <link rel="alternate" href="https://vincebot.dev/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/"/>
     <id>https://vincebot.dev/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/</id>
     <published>2024-07-01T16:30:00-03:00</published>
-    <updated>2024-08-22T11:34:28-03:00</updated>
+    <updated>2024-08-22T00:48:45-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -549,7 +625,7 @@ fatos e tirar ainda mais aprendizados.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/"/>
     <id>https://vincebot.dev/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/</id>
     <published>2023-05-09T21:00:00-03:00</published>
-    <updated>2024-08-22T11:34:28-03:00</updated>
+    <updated>2024-08-22T00:48:45-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -609,7 +685,7 @@ fatos e tirar ainda mais aprendizados.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2019/10/30/voltando-a-blogar/"/>
     <id>https://vincebot.dev/2019/10/30/voltando-a-blogar/</id>
     <published>2019-10-29T21:00:00-03:00</published>
-    <updated>2024-08-22T15:06:42-03:00</updated>
+    <updated>2024-08-26T00:46:42-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
