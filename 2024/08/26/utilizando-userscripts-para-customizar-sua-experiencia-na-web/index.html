@@ -163,21 +163,68 @@
 
 <p>Vamos criar um script que adiciona um atalho para quando você digitar <code>ctrl + n</code>, criar um novo card automaticamente.</p>
 <div class="highlight"><pre class="highlight javascript"><code><span class="c1">// ==UserScript==</span>
-<span class="c1">// @name     Jira :: Custom Shortcuts</span>
-<span class="c1">// @namespace  dvinciguerra</span>
-<span class="c1">// @version  1.0.0</span>
-<span class="c1">// @grant    none</span>
-<span class="c1">// @match      https://*.atlassian.net/jira/software/c/projects/*</span>
-<span class="c1">// @author  Daniel Vinciguerra</span>
+<span class="c1">// @name        Jira :: Custom Shortcuts</span>
+<span class="c1">// @namespace   dvinciguerra</span>
+<span class="c1">// @version     1.0.0</span>
+<span class="c1">// @grant       none</span>
+<span class="c1">// @match       https://*.atlassian.net/jira/software/c/projects/*</span>
+<span class="c1">// @author      Daniel Vinciguerra</span>
 <span class="c1">// ==/UserScript==</span>
+
+
+<span class="kd">const</span> <span class="nx">keymap</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">keys</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">ctrlKey</span> <span class="o">&amp;&amp;</span> <span class="nx">keys</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">key</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nx">action</span><span class="p">()</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">clickElement</span> <span class="o">=</span> <span class="p">(</span><span class="nx">selector</span><span class="p">)</span> <span class="o">=&gt;</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="nx">selector</span><span class="p">).</span><span class="nx">click</span><span class="p">()</span>
+
+<span class="kd">const</span> <span class="nx">redirectTo</span> <span class="o">=</span> <span class="p">(</span><span class="nx">address</span><span class="p">,</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span> <span class="na">params</span><span class="p">:</span> <span class="p">{},</span> <span class="p">...</span><span class="nx">options</span><span class="p">}</span>
+
+  <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">URL</span><span class="p">(</span><span class="nx">address</span><span class="p">.</span><span class="nx">toString</span><span class="p">())</span>
+  <span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">options</span><span class="p">.</span><span class="nx">params</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(([</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">]</span> <span class="o">=</span> <span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">url</span><span class="p">.</span><span class="nx">searchParams</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">))</span>
+
+  <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">url</span><span class="p">.</span><span class="nx">toString</span><span class="p">())</span>
+<span class="p">}</span>
 
 <span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">keydown</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="nx">event</span> <span class="o">=</span> <span class="nx">event</span> <span class="o">||</span> <span class="nb">window</span><span class="p">.</span><span class="nx">event</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">ctrlKey</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">key</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">n</span><span class="dl">"</span> <span class="o">||</span> <span class="nx">event</span><span class="p">.</span><span class="nx">key</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">E</span><span class="dl">"</span><span class="p">))</span> <span class="p">{</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">#createGlobalItem</span><span class="dl">'</span><span class="p">).</span><span class="nx">click</span><span class="p">()</span>
-  <span class="p">}</span>
+
+  <span class="c1">// create new card: [ctrl + n] or [ctrl + E]</span>
+  <span class="nx">keymap</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="p">[</span><span class="dl">'</span><span class="s1">n</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">E</span><span class="dl">'</span><span class="p">],</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">clickElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">#createGlobalItem</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">})</span>
+
+  <span class="c1">// filters: [ctrl + Number] and jira filter ids</span>
+  <span class="nx">filters</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="dl">'</span><span class="s1">1</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">quickFilter</span><span class="p">:</span> <span class="dl">'</span><span class="s1">100</span><span class="dl">'</span> <span class="p">}],</span>
+    <span class="p">[</span><span class="dl">'</span><span class="s1">2</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">quickFilter</span><span class="p">:</span> <span class="dl">'</span><span class="s1">200</span><span class="dl">'</span> <span class="p">}],</span>
+    <span class="p">[</span><span class="dl">'</span><span class="s1">3</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">quickFilter</span><span class="p">:</span> <span class="dl">'</span><span class="s1">300</span><span class="dl">'</span> <span class="p">}],</span>
+    <span class="p">[</span><span class="dl">'</span><span class="s1">4</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">quickFilter</span><span class="p">:</span> <span class="dl">'</span><span class="s1">400</span><span class="dl">'</span> <span class="p">}],</span>
+    <span class="p">[</span><span class="dl">'</span><span class="s1">5</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">quickFilter</span><span class="p">:</span> <span class="dl">'</span><span class="s1">500</span><span class="dl">'</span> <span class="p">}],</span>
+    <span class="p">[</span><span class="dl">'</span><span class="s1">6</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">quickFilter</span><span class="p">:</span> <span class="dl">'</span><span class="s1">600</span><span class="dl">'</span> <span class="p">}],</span>
+  <span class="p">]</span>
+
+  <span class="c1">// apply filters shortcuts</span>
+  <span class="nx">filters</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(([</span><span class="nx">keys</span><span class="p">,</span> <span class="nx">params</span><span class="p">]</span> <span class="o">=</span> <span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">keymap</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="p">[</span><span class="nx">keys</span><span class="p">],</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">redirectTo</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">,</span> <span class="p">{</span> <span class="na">params</span><span class="p">:</span> <span class="nx">params</span> <span class="p">}))</span>
+  <span class="p">})</span>
 <span class="p">})</span>
 </code></pre></div>
+<p><strong>Explicando</strong></p>
+
+<p>Nesse script cadastramos atalhos para a criação de novos cards e para acessar filtros específicos no Jira. Para isso,
+usamos a função <code>keymap</code> que recebe o evento do teclado, as teclas que queremos monitorar e a ação que deve ser
+executada.</p>
+
+<p>Também criamos funções auxiliares para clicar em elementos da página e redirecionar para uma nova URL.</p>
+
+<p>Por fim, adicionamos um listener para o evento <code>keydown</code> e, a partir dele, chamamos as funções que criamos
+anteriormente.</p>
+
 <p>E pronto! Agora é só garantir que o script está ativo e, sempre que você entrar no Jira, o atalho vai estar funcionando.</p>
 
 <h2>Conclusão</h2>
