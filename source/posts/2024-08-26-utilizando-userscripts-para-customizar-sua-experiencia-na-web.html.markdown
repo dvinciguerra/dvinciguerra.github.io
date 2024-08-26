@@ -45,21 +45,68 @@ Vamos criar um script que adiciona um atalho para quando você digitar `ctrl + n
 
 ```javascript
 // ==UserScript==
-// @name     Jira :: Custom Shortcuts
-// @namespace  dvinciguerra
-// @version  1.0.0
-// @grant    none
-// @match      https://*.atlassian.net/jira/software/c/projects/*
-// @author  Daniel Vinciguerra
+// @name        Jira :: Custom Shortcuts
+// @namespace   dvinciguerra
+// @version     1.0.0
+// @grant       none
+// @match       https://*.atlassian.net/jira/software/c/projects/*
+// @author      Daniel Vinciguerra
 // ==/UserScript==
+
+
+const keymap = (event, keys, action) => {
+  if (event.ctrlKey && keys.includes(event.key)) {
+    action()
+  }
+}
+
+const clickElement = (selector) =>
+  document.querySelector(selector).click()
+
+const redirectTo = (address, options = {}) => {
+  options = { params: {}, ...options}
+
+  const url = new URL(address.toString())
+  Object.entries(options.params).forEach(([k, v] = item, index) => url.searchParams.set(k, v))
+
+  window.location.replace(url.toString())
+}
 
 document.addEventListener('keydown', (event) => {
   event = event || window.event
-  if (event.ctrlKey && (event.key == "n" || event.key == "E")) {
-    document.querySelector('#createGlobalItem').click()
-  }
+
+  // create new card: [ctrl + n] or [ctrl + E]
+  keymap(event, ['n', 'E'], () => {
+    clickElement('#createGlobalItem')
+  })
+
+  // filters: [ctrl + Number] and jira filter ids
+  filters = [
+    ['1', { quickFilter: '100' }],
+    ['2', { quickFilter: '200' }],
+    ['3', { quickFilter: '300' }],
+    ['4', { quickFilter: '400' }],
+    ['5', { quickFilter: '500' }],
+    ['6', { quickFilter: '600' }],
+  ]
+
+  // apply filters shortcuts
+  filters.forEach(([keys, params] = item, index) => {
+    keymap(event, [keys], () => redirectTo(window.location, { params: params }))
+  })
 })
 ```
+
+**Explicando**
+
+Nesse script cadastramos atalhos para a criação de novos cards e para acessar filtros específicos no Jira. Para isso,
+usamos a função `keymap` que recebe o evento do teclado, as teclas que queremos monitorar e a ação que deve ser
+executada.
+
+Também criamos funções auxiliares para clicar em elementos da página e redirecionar para uma nova URL.
+
+Por fim, adicionamos um listener para o evento `keydown` e, a partir dele, chamamos as funções que criamos
+anteriormente.
 
 E pronto! Agora é só garantir que o script está ativo e, sempre que você entrar no Jira, o atalho vai estar funcionando.
 
