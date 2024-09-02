@@ -6,16 +6,136 @@
   <id>https://vincebot.dev</id>
   <link href="https://vincebot.dev"/>
   <link href="https://vincebot.dev/feed.xml" rel="self"/>
-  <updated>2024-08-26T00:48:00-03:00</updated>
+  <updated>2024-08-28T11:08:00-03:00</updated>
   <author>
     <name>Daniel Vinciguerra</name>
   </author>
+  <entry>
+    <title>Configurando dominios do meu Homelab na Cloudflare usando Terraform</title>
+    <link rel="alternate" href="https://vincebot.dev/2024/08/28/configurando-dominios-do-meu-homelab-na-cloudflare-usando-terraform/"/>
+    <id>https://vincebot.dev/2024/08/28/configurando-dominios-do-meu-homelab-na-cloudflare-usando-terraform/</id>
+    <published>2024-08-28T11:08:00-03:00</published>
+    <updated>2024-09-02T16:45:08-03:00</updated>
+    <author>
+      <name>Daniel Vinciguerra</name>
+    </author>
+    <content type="html">&lt;p&gt;Uma das coisas mais divertidas e uteis que fiz quando comecei a montar meu homelab foi configurar os registros DNS dos
+meus domínios na Cloudflare apontando para as maquinas nas rede. Além de ser uma ferramenta gratuita para esse uso mais
+simples, a Cloudflare oferece uma série de recursos que ajudam a melhorar a segurança e performance dos sites.&lt;/p&gt;
+
+&lt;p&gt;Neste post, vou mostrar como eu fiz esse processo utilizando o terraform.&lt;/p&gt;
+
+&lt;h2&gt;O que é Terraform?&lt;/h2&gt;
+
+&lt;p&gt;Terraform é uma ferramenta de infraestrutura como código (IaC) que permite criar, alterar e versionar a infraestrutura
+de forma segura e eficiente. Com ele, é possível gerenciar diversos provedores de nuvem, como AWS, Azure, Google Cloud,
+entre outros.&lt;/p&gt;
+
+&lt;p&gt;Passei muitos anos configurando maquinas manualmente e, acredite, é um processo bem chato e propenso a erros. Nos dias
+de hoje, com a popularização das ferramentas e do conceito de IaC, não é mais aceitável construirmos infraestruturas
+de forma manual, mesmo que seja para coisas simples, visto que vamos esquecer o que fizemos, como fizemos, não
+conseguimos aproveitar em outros projetos&amp;hellip; enfim, é um caos.&lt;/p&gt;
+
+&lt;h2&gt;Instalando o Terraform&lt;/h2&gt;
+
+&lt;p&gt;Para começar, você precisa instalar o terraform na sua maquina. Você pode baixar o binário no site oficial ou instalar
+via gerenciador de pacotes da sua distribuição.&lt;/p&gt;
+
+&lt;p&gt;Para instalar no Ubuntu, por exemplo, você pode executar os seguintes comandos:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;wget &lt;span class="nt"&gt;-O-&lt;/span&gt; https://apt.releases.hashicorp.com/gpg | &lt;span class="nb"&gt;sudo &lt;/span&gt;gpg &lt;span class="nt"&gt;--dearmor&lt;/span&gt; &lt;span class="nt"&gt;-o&lt;/span&gt; /usr/share/keyrings/hashicorp-archive-keyring.gpg
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;"deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com &lt;/span&gt;&lt;span class="si"&gt;$(&lt;/span&gt;lsb_release &lt;span class="nt"&gt;-cs&lt;/span&gt;&lt;span class="si"&gt;)&lt;/span&gt;&lt;span class="s2"&gt; main"&lt;/span&gt; | &lt;span class="nb"&gt;sudo tee&lt;/span&gt; /etc/apt/sources.list.d/hashicorp.list
+&lt;span class="nb"&gt;sudo &lt;/span&gt;apt update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;sudo &lt;/span&gt;apt &lt;span class="nb"&gt;install &lt;/span&gt;terraform
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Se estiver usando o MacOS, você pode instalar o terraform via Homebrew:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;brew tap hashicorp/tap
+brew &lt;span class="nb"&gt;install &lt;/span&gt;hashicorp/tap/terraform
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Criando o script&lt;/h2&gt;
+
+&lt;p&gt;Agora, vamos criar o script que vai configurar os registros DNS na Cloudflare. Crie um arquivo chamado &lt;code&gt;main.tf&lt;/code&gt; e
+adicione o seguinte conteúdo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight hcl"&gt;&lt;code&gt;&lt;span class="c1"&gt;# enable required providers&lt;/span&gt;
+&lt;span class="nx"&gt;terraform&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;required_providers&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;cloudflare&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="nx"&gt;source&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"cloudflare/cloudflare"&lt;/span&gt;
+      &lt;span class="nx"&gt;version&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"~&amp;gt; 4"&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;# env variables&lt;/span&gt;
+&lt;span class="nx"&gt;variable&lt;/span&gt; &lt;span class="s2"&gt;"CLOUDFLARE_API_TOKEN"&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;description&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"Cloudflare API Token"&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nx"&gt;variable&lt;/span&gt; &lt;span class="s2"&gt;"CLOUDFLARE_ZONE_ID"&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;description&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"Cloudflare Zone ID"&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nx"&gt;variable&lt;/span&gt; &lt;span class="s2"&gt;"CLOUDFLARE_ACCOUNT_ID"&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;description&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"Cloudflare Account ID"&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nx"&gt;variable&lt;/span&gt; &lt;span class="s2"&gt;"CLOUDFLARE_DOMAIN"&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;description&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"Cloudflare Domain"&lt;/span&gt;
+  &lt;span class="nx"&gt;default&lt;/span&gt;     &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"example.com.br"&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nx"&gt;provider&lt;/span&gt; &lt;span class="s2"&gt;"cloudflare"&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;api_token&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"${var.CLOUDFLARE_API_TOKEN}"&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;# resources&lt;/span&gt;
+&lt;span class="nx"&gt;resource&lt;/span&gt; &lt;span class="s2"&gt;"cloudflare_record"&lt;/span&gt; &lt;span class="s2"&gt;"foo_example_com_br"&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;zone_id&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"${var.CLOUDFLARE_ZONE_ID}"&lt;/span&gt;
+  &lt;span class="nx"&gt;name&lt;/span&gt;    &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"foo"&lt;/span&gt;
+  &lt;span class="nx"&gt;value&lt;/span&gt;   &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"192.168.0.100"&lt;/span&gt;
+  &lt;span class="nx"&gt;type&lt;/span&gt;    &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"A"&lt;/span&gt;
+  &lt;span class="nx"&gt;ttl&lt;/span&gt;     &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;300&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nx"&gt;resource&lt;/span&gt; &lt;span class="s2"&gt;"cloudflare_record"&lt;/span&gt; &lt;span class="s2"&gt;"bar_example_com_br"&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;zone_id&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"${var.CLOUDFLARE_ZONE_ID}"&lt;/span&gt;
+  &lt;span class="nx"&gt;name&lt;/span&gt;    &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"bar"&lt;/span&gt;
+  &lt;span class="nx"&gt;value&lt;/span&gt;   &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"192.168.0.101"&lt;/span&gt;
+  &lt;span class="nx"&gt;type&lt;/span&gt;    &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"A"&lt;/span&gt;
+  &lt;span class="nx"&gt;ttl&lt;/span&gt;     &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;300&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Neste script (fictício), estamos criando dois registros DNS na Cloudflare, um para o domínio &lt;code&gt;homelab.com&lt;/code&gt; e outro para o
+subdomínio &lt;code&gt;blog.homelab.com&lt;/code&gt;. Note que o valor dos registros está vazio, pois vamos preencher com o IP das maquinas
+na rede.&lt;/p&gt;
+
+&lt;p&gt;Para simplificar minha vida, eu também criei um arquivo &lt;code&gt;.env&lt;/code&gt; com as variáveis de ambiente que o terraform vai usar.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight plaintext"&gt;&lt;code&gt;TF_VAR_CLOUDFLARE_API_TOKEN=TF_VAR_CLOUDFLARE_API_TOKEN
+TF_VAR_CLOUDFLARE_ZONE_ID=TF_VAR_CLOUDFLARE_ZONE_ID
+TF_VAR_CLOUDFLARE_ACCOUNT_ID=TF_VAR_CLOUDFLARE_ACCOUNT_ID
+TF_VAR_CLOUDFLARE_DOMAIN=TF_VAR_CLOUDFLARE_DOMAIN
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Aplicando as configurações&lt;/h2&gt;
+
+&lt;p&gt;Para aplicar as configurações, execute os seguinte:&lt;/p&gt;
+
+&lt;p&gt;Com o uso da ferramenta dotenv, carregar o &lt;code&gt;.env&lt;/code&gt; e posso executar o comando &lt;code&gt;terraform plan&lt;/code&gt; para verificar se está
+tudo certo.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;dotenv &lt;span class="nt"&gt;-f&lt;/span&gt; .env terraform plan
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Se tudo estiver correto, você pode aplicar as configurações com o comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;dotenv &lt;span class="nt"&gt;-f&lt;/span&gt; .env terraform apply
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;O terraform vai criar os registros DNS na Cloudflare de acordo com o script que criamos. Depois de aplicar as
+configurações, você pode acessar o painel da Cloudflare e verificar se os registros foram criados corretamente.&lt;/p&gt;
+
+&lt;p&gt;E é isso! Agora você tem seus domínios configurados na Cloudflare de forma automatizada.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Utilizando userscripts para customizar sua experiencia na web</title>
     <link rel="alternate" href="https://vincebot.dev/2024/08/26/utilizando-userscripts-para-customizar-sua-experiencia-na-web/"/>
     <id>https://vincebot.dev/2024/08/26/utilizando-userscripts-para-customizar-sua-experiencia-na-web/</id>
     <published>2024-08-26T00:48:00-03:00</published>
-    <updated>2024-08-26T16:37:22-03:00</updated>
+    <updated>2024-08-26T16:38:59-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -138,7 +258,7 @@ anteriormente.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/"/>
     <id>https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/</id>
     <published>2024-08-16T23:16:00-03:00</published>
-    <updated>2024-08-22T15:09:23-03:00</updated>
+    <updated>2024-08-26T16:38:59-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -202,7 +322,7 @@ anteriormente.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2024/08/10/efeito-notion/"/>
     <id>https://vincebot.dev/2024/08/10/efeito-notion/</id>
     <published>2024-08-10T02:16:00-03:00</published>
-    <updated>2024-08-22T15:09:23-03:00</updated>
+    <updated>2024-08-26T16:38:59-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -261,7 +381,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/"/>
     <id>https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/</id>
     <published>2024-08-04T00:12:00-03:00</published>
-    <updated>2024-08-22T15:09:23-03:00</updated>
+    <updated>2024-08-26T16:38:59-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -333,7 +453,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/"/>
     <id>https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/</id>
     <published>2024-08-02T10:25:00-03:00</published>
-    <updated>2024-08-22T15:09:23-03:00</updated>
+    <updated>2024-08-26T16:38:59-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -442,7 +562,7 @@ rails db:migrate
     <link rel="alternate" href="https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/"/>
     <id>https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/</id>
     <published>2024-07-31T09:59:00-03:00</published>
-    <updated>2024-08-22T15:09:23-03:00</updated>
+    <updated>2024-08-26T16:38:59-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -525,7 +645,7 @@ decisão informada sobre qual ferramenta usar para o seu blog ou site estático,
     <link rel="alternate" href="https://vincebot.dev/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/"/>
     <id>https://vincebot.dev/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/</id>
     <published>2024-07-29T21:00:00-03:00</published>
-    <updated>2024-08-22T15:09:23-03:00</updated>
+    <updated>2024-08-26T16:38:59-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -603,7 +723,7 @@ example article. You probably want to delete it and write your own articles!&lt;
     <link rel="alternate" href="https://vincebot.dev/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/"/>
     <id>https://vincebot.dev/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/</id>
     <published>2024-07-01T16:30:00-03:00</published>
-    <updated>2024-08-22T15:09:23-03:00</updated>
+    <updated>2024-08-26T16:38:59-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -672,7 +792,7 @@ fatos e tirar ainda mais aprendizados.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/"/>
     <id>https://vincebot.dev/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/</id>
     <published>2023-05-09T21:00:00-03:00</published>
-    <updated>2024-08-22T15:09:23-03:00</updated>
+    <updated>2024-08-26T16:38:59-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -732,7 +852,7 @@ fatos e tirar ainda mais aprendizados.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2019/10/30/voltando-a-blogar/"/>
     <id>https://vincebot.dev/2019/10/30/voltando-a-blogar/</id>
     <published>2019-10-29T21:00:00-03:00</published>
-    <updated>2024-08-22T15:09:23-03:00</updated>
+    <updated>2024-08-26T16:38:59-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
