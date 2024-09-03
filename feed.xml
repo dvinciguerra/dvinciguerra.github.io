@@ -6,16 +6,150 @@
   <id>https://vincebot.dev</id>
   <link href="https://vincebot.dev"/>
   <link href="https://vincebot.dev/feed.xml" rel="self"/>
-  <updated>2024-08-28T11:08:00-03:00</updated>
+  <updated>2024-09-02T19:32:00-03:00</updated>
   <author>
     <name>Daniel Vinciguerra</name>
   </author>
+  <entry>
+    <title>Como criar CLIs em Ruby - Parsers de argumentos</title>
+    <link rel="alternate" href="https://vincebot.dev/2024/09/02/como-criar-clis-em-ruby-parsers-de-argumentos/"/>
+    <id>https://vincebot.dev/2024/09/02/como-criar-clis-em-ruby-parsers-de-argumentos/</id>
+    <published>2024-09-02T19:32:00-03:00</published>
+    <updated>2024-09-03T13:48:32-03:00</updated>
+    <author>
+      <name>Daniel Vinciguerra</name>
+    </author>
+    <content type="html">&lt;p&gt;Uma das habilidades mais valiosas para desenvolvedores é se sentir à vontade no terminal. É onde temos o poder de controlar nosso ambiente de forma detalhada, aumentando nossa produtividade e automatizando tarefas com facilidade.&lt;/p&gt;
+
+&lt;p&gt;No entanto, nem sempre temos todas as ferramentas de que precisamos à mão. Às vezes, precisamos criar nossas próprias soluções a partir de um conjunto específico de operações. Para isso, é essencial entender como desenvolver ferramentas de linha de comando, também conhecidas como CLIs (Command Line Interfaces).&lt;/p&gt;
+
+&lt;h2&gt;Criando nossa primeira CLI em Ruby&lt;/h2&gt;
+
+&lt;p&gt;Ruby nos oferece uma vasta coleção de gems para criar CLIs, mas também podemos optar por não usar nenhuma. A escolha é toda nossa e depende das nossas necessidades específicas. Neste artigo, vou compartilhar algumas das minhas preferências e mostrar exemplos práticos de como utilizá-las.&lt;/p&gt;
+
+&lt;h2&gt;Anatomia de um comando&lt;/h2&gt;
+
+&lt;p&gt;Sem querer entrar em muitos detalhes técnicos (que vou explorar em outro artigo), é importante entender a estrutura básica de um comando. Embora não exista um padrão rígido, algumas recomendações e boas práticas ajudam a criar comandos que sejam intuitivos e fáceis de lembrar.&lt;/p&gt;
+
+&lt;p&gt;Geralmente, CLIs seguem um formato como este:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;comando subcomando ação &lt;span class="nt"&gt;--param-booleano&lt;/span&gt; &lt;span class="nt"&gt;--param-texto&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"meu texto"&lt;/span&gt; &lt;span class="nt"&gt;--param-numerico&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;100
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para simplificar, vamos usar o &lt;code&gt;gh&lt;/code&gt;, a ferramenta CLI do GitHub, como exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;gh &lt;span class="nb"&gt;pr &lt;/span&gt;list &lt;span class="nt"&gt;--state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;open &lt;span class="nt"&gt;--limit&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;10 &lt;span class="nt"&gt;--sort&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;created &lt;span class="nt"&gt;-R&lt;/span&gt; owner/repo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Este é o estilo que gosto de seguir ao criar CLIs, pois acho que é um padrão bem organizado e fácil de memorizar.&lt;/p&gt;
+
+&lt;h2&gt;Parsing de argumentos&lt;/h2&gt;
+
+&lt;p&gt;Quando estamos criando uma CLI, podemos capturar todas as informações passadas como argumentos usando a variável &lt;code&gt;ARGV&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# exemplo.rb&lt;/span&gt;
+&lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="no"&gt;ARGV&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;ruby exemplo.rb &lt;span class="nt"&gt;--param1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;valor1 &lt;span class="nt"&gt;--param2&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;valor2
+&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"--param1=valor1"&lt;/span&gt;, &lt;span class="s2"&gt;"--param2=valor2"&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;No entanto, quando lidamos com parâmetros, flags e valores, é útil ter um parser para simplificar essa tarefa. Ruby já nos oferece a gem &lt;code&gt;OptionParser&lt;/code&gt; para isso, que vem na biblioteca padrão. Mas, para fins didáticos, vamos criar um parser simples baseado no comando &lt;code&gt;gh&lt;/code&gt; que vimos antes.&lt;/p&gt;
+
+&lt;p&gt;Vamos criar um parser para um comando hipotético simples:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# gh.rb&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;parse_args&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="n"&gt;options&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+  &lt;span class="n"&gt;current_option&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;nil&lt;/span&gt;
+
+  &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;each&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;arg&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;arg&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;start_with?&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'--'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;arg&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;gsub&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'--'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nf"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'='&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt;
+    &lt;span class="k"&gt;elsif&lt;/span&gt; &lt;span class="n"&gt;arg&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;start_with?&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'-'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="n"&gt;current_option&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;arg&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;gsub&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'-'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nf"&gt;to_sym&lt;/span&gt;
+      &lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;current_option&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;
+      &lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;current_option&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;arg&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="n"&gt;options&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;parse_args&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;ARGV&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;ruby gh.rb &lt;span class="nb"&gt;pr &lt;/span&gt;list &lt;span class="nt"&gt;--state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;open &lt;span class="nt"&gt;--limit&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;10 &lt;span class="nt"&gt;--sort&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;created &lt;span class="nt"&gt;-R&lt;/span&gt; owner/repo
+&lt;span class="o"&gt;{&lt;/span&gt;:state&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"open"&lt;/span&gt;, :limit&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;10, :sort&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"created"&lt;/span&gt;, :R&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"owner/repo"&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Agora temos um hash com os parâmetros passados para o nosso comando. Não é nada muito complexo, mas é um bom começo para entender como lidar com argumentos em CLIs. E claro, não precisamos reinventar a roda; podemos usar a gem &lt;code&gt;OptionParser&lt;/code&gt; para lidar com isso de forma mais robusta.&lt;/p&gt;
+
+&lt;h2&gt;Utilizando o OptionParser&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;OptionParser&lt;/code&gt; é uma gem que facilita muito a manipulação dos argumentos passados para o nosso comando.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# gh.rb&lt;/span&gt;
+
+&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'optparse'&lt;/span&gt;
+
+&lt;span class="n"&gt;options&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+
+&lt;span class="no"&gt;OptionParser&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;opts&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+  &lt;span class="n"&gt;opts&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;banner&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"Usage: gh pr list [options]"&lt;/span&gt;
+
+  &lt;span class="n"&gt;opts&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;on&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"--state=STATE"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Filter by state"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:state&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="n"&gt;opts&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;on&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"--limit=LIMIT"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Limit the number of results"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;limit&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:limit&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;limit&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="n"&gt;opts&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;on&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"--sort=SORT"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Sort the results"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;sort&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:sort&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sort&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="n"&gt;opts&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;on&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"-R"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"--repository=REPOSITORY"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Repository to list PRs from"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;repository&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:repository&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;repository&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;parse!&lt;/span&gt;
+
+&lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;options&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;ruby gh.rb &lt;span class="nb"&gt;pr &lt;/span&gt;list &lt;span class="nt"&gt;--state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;open &lt;span class="nt"&gt;--limit&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;10 &lt;span class="nt"&gt;--sort&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;created &lt;span class="nt"&gt;-R&lt;/span&gt; owner/repo
+&lt;span class="o"&gt;{&lt;/span&gt;:state&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"open"&lt;/span&gt;, :limit&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"10"&lt;/span&gt;, :sort&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"created"&lt;/span&gt;, :repository&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"owner/repo"&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Utilizando o Thor&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;Thor&lt;/code&gt; é uma gem que nos ajuda a criar CLIs mais robustas e organizadas, permitindo que criemos comandos e subcomandos de forma fácil e eficiente.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# Gemfile&lt;/span&gt;
+
+&lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="s1"&gt;'https://rubygems.org'&lt;/span&gt;
+
+&lt;span class="n"&gt;gem&lt;/span&gt; &lt;span class="s1"&gt;'thor'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# gh.rb&lt;/span&gt;
+
+&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'thor'&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Gh&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="no"&gt;Thor&lt;/span&gt;
+  &lt;span class="n"&gt;desc&lt;/span&gt; &lt;span class="s2"&gt;"pr list"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"List pull requests"&lt;/span&gt;
+  &lt;span class="n"&gt;method_option&lt;/span&gt; &lt;span class="ss"&gt;:state&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;type: :string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;desc: &lt;/span&gt;&lt;span class="s2"&gt;"Filter by state"&lt;/span&gt;
+  &lt;span class="n"&gt;method_option&lt;/span&gt; &lt;span class="ss"&gt;:limit&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;type: :numeric&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;desc: &lt;/span&gt;&lt;span class="s2"&gt;"Limit the number of results"&lt;/span&gt;
+  &lt;span class="n"&gt;method_option&lt;/span&gt; &lt;span class="ss"&gt;:sort&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;type: :string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;desc: &lt;/span&gt;&lt;span class="s2"&gt;"Sort the results"&lt;/span&gt;
+  &lt;span class="n"&gt;method_option&lt;/span&gt; &lt;span class="ss"&gt;:repository&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;type: :string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;desc: &lt;/span&gt;&lt;span class="s2"&gt;"Repository to list PRs from"&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;pr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;options&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="no"&gt;Gh&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;start&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;ARGV&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;ruby gh.rb &lt;span class="nb"&gt;pr &lt;/span&gt;list &lt;span class="nt"&gt;--state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;open &lt;span class="nt"&gt;--limit&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;10 &lt;span class="nt"&gt;--sort&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;created &lt;span class="nt"&gt;-R&lt;/span&gt; owner/repo
+&lt;span class="o"&gt;{&lt;/span&gt;:state&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"open"&lt;/span&gt;, :limit&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;10, :sort&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"created"&lt;/span&gt;, :repository&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"owner/repo"&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Usando Thor, podemos ver que a criação de comandos e subcomandos segue um padrão declarativo, mas utiliza classes em vez de um formato mais procedural. Pessoalmente, gosto de usar Thor para criar minhas CLIs, pois ele oferece várias opções e métodos que tornam a criação de comandos mais flexível e organizada.&lt;/p&gt;
+
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+
+&lt;p&gt;Essas são algumas formas de criar CLIs em Ruby. Como vimos, há várias opções para escolhermos ao criar nossas ferramentas. Neste artigo, compartilhei algumas das minhas preferências pessoais, mas existem muitas outras abordagens por aí. Escolha a que melhor se adapta às suas necessidades e mãos à obra!&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Configurando dominios do meu Homelab na Cloudflare usando Terraform</title>
     <link rel="alternate" href="https://vincebot.dev/2024/08/28/configurando-dominios-do-meu-homelab-na-cloudflare-usando-terraform/"/>
     <id>https://vincebot.dev/2024/08/28/configurando-dominios-do-meu-homelab-na-cloudflare-usando-terraform/</id>
     <published>2024-08-28T11:08:00-03:00</published>
-    <updated>2024-09-02T16:45:08-03:00</updated>
+    <updated>2024-09-02T16:47:09-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -135,7 +269,7 @@ configurações, você pode acessar o painel da Cloudflare e verificar se os reg
     <link rel="alternate" href="https://vincebot.dev/2024/08/26/utilizando-userscripts-para-customizar-sua-experiencia-na-web/"/>
     <id>https://vincebot.dev/2024/08/26/utilizando-userscripts-para-customizar-sua-experiencia-na-web/</id>
     <published>2024-08-26T00:48:00-03:00</published>
-    <updated>2024-08-26T16:38:59-03:00</updated>
+    <updated>2024-09-02T16:47:09-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -258,7 +392,7 @@ anteriormente.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/"/>
     <id>https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/</id>
     <published>2024-08-16T23:16:00-03:00</published>
-    <updated>2024-08-26T16:38:59-03:00</updated>
+    <updated>2024-09-02T16:47:09-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -322,7 +456,7 @@ anteriormente.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2024/08/10/efeito-notion/"/>
     <id>https://vincebot.dev/2024/08/10/efeito-notion/</id>
     <published>2024-08-10T02:16:00-03:00</published>
-    <updated>2024-08-26T16:38:59-03:00</updated>
+    <updated>2024-09-02T16:47:09-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -381,7 +515,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/"/>
     <id>https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/</id>
     <published>2024-08-04T00:12:00-03:00</published>
-    <updated>2024-08-26T16:38:59-03:00</updated>
+    <updated>2024-09-02T16:47:09-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -453,7 +587,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/"/>
     <id>https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/</id>
     <published>2024-08-02T10:25:00-03:00</published>
-    <updated>2024-08-26T16:38:59-03:00</updated>
+    <updated>2024-09-02T16:47:09-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -562,7 +696,7 @@ rails db:migrate
     <link rel="alternate" href="https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/"/>
     <id>https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/</id>
     <published>2024-07-31T09:59:00-03:00</published>
-    <updated>2024-08-26T16:38:59-03:00</updated>
+    <updated>2024-09-02T16:47:09-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -645,7 +779,7 @@ decisão informada sobre qual ferramenta usar para o seu blog ou site estático,
     <link rel="alternate" href="https://vincebot.dev/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/"/>
     <id>https://vincebot.dev/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/</id>
     <published>2024-07-29T21:00:00-03:00</published>
-    <updated>2024-08-26T16:38:59-03:00</updated>
+    <updated>2024-09-02T16:47:09-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -723,7 +857,7 @@ example article. You probably want to delete it and write your own articles!&lt;
     <link rel="alternate" href="https://vincebot.dev/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/"/>
     <id>https://vincebot.dev/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/</id>
     <published>2024-07-01T16:30:00-03:00</published>
-    <updated>2024-08-26T16:38:59-03:00</updated>
+    <updated>2024-09-02T16:47:09-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -792,7 +926,7 @@ fatos e tirar ainda mais aprendizados.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/"/>
     <id>https://vincebot.dev/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/</id>
     <published>2023-05-09T21:00:00-03:00</published>
-    <updated>2024-08-26T16:38:59-03:00</updated>
+    <updated>2024-09-02T16:47:09-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -845,57 +979,6 @@ fatos e tirar ainda mais aprendizados.&lt;/p&gt;
 &lt;p&gt;O resultado foi uma ferramenta semelhante, que torna muito mais produtivo para mim anotado minhas tarefas e que centraliza todas as informações onde preciso.&lt;/p&gt;
 
 &lt;p&gt;Agradecimentos especiais, obviamente, ao autor original da ideia e do script que serviu de inspiração. =)&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Voltando a blogar!</title>
-    <link rel="alternate" href="https://vincebot.dev/2019/10/30/voltando-a-blogar/"/>
-    <id>https://vincebot.dev/2019/10/30/voltando-a-blogar/</id>
-    <published>2019-10-29T21:00:00-03:00</published>
-    <updated>2024-08-26T16:38:59-03:00</updated>
-    <author>
-      <name>Daniel Vinciguerra</name>
-    </author>
-    <content type="html">&lt;p&gt;Comecei a estudar e escrever código cedo (o quão cedo pude) e logo tomei muito gosto por compartilhar o conhecimento que
-ia adquirindo de forma tão suada, e por ser autodidata, pensava em deixar o caminho das outras pessoas que trilhassem o
-mesmo que o meu mais fácil.&lt;/p&gt;
-
-&lt;p&gt;Depois de um longo tempo, acabei perdendo este hábito que gostava tanto e desde então tinha sempre no peito uma vontade
-enorme de voltar a compartilhar minhas ideias, escrever e aprender com os outros usando o formato de blog posts.&lt;/p&gt;
-
-&lt;h2&gt;Ok, então vamos lá…&lt;/h2&gt;
-
-&lt;p&gt;Estive postergando este dia há muito tempo, mas decidi começar do começo para driblar minha “auto-sabotagem”.&lt;/p&gt;
-
-&lt;p&gt;Então para sair do zero, decidi escrever um post contando esta pequena história sobre este meu sentimento particular.&lt;/p&gt;
-
-&lt;h2&gt;Por que parei de escrever se gostava tanto?&lt;/h2&gt;
-
-&lt;p&gt;Acho que comecei a reduzir o volume e posteriormente parei quando entrei para “o mundo corporativo” e junto comecei a
-faculdade de Ciência da Computação.&lt;/p&gt;
-
-&lt;p&gt;Meu tempo foi fincando cada vez mais escasso e o cansaço era muito grande, com isso passei a dar prioridade para o
-trabalho e para meus estudos.&lt;/p&gt;
-
-&lt;p&gt;No final das contas, refletindo um pouco, poderia ter optado por me organizar melhor e feito posts com uma regularidade
-reduzida. Porém, o cansaço do dia-a-dia na época, unido com a quantidade de informação que eu estava absorvendo dos meus
-mentores em uma das melhores empresas que já trabalhei, fizeram com que meu foco mudasse.&lt;/p&gt;
-
-&lt;h2&gt;E por que voltar agora?&lt;/h2&gt;
-
-&lt;p&gt;Talvez por nostalgia ou simplesmente por que gostava de expor e discutir as ideias, aprender e conhecer outros pontos de
-vista através este formato.&lt;/p&gt;
-
-&lt;p&gt;No final das contas não existe uma resposta simples para isso, mas uma das coisas que sinto falta era de poder escrever
-e organizar as ideias que estavam na minha mente, de quebra ter isso em um lugar e poder revisitar e acompanhar o quanto
-amadureci e aprendi em um intervalo de tempo… sem dúvidas me traz sentimentos muito bons.&lt;/p&gt;
-
-&lt;h2&gt;Concluindo&lt;/h2&gt;
-
-&lt;p&gt;Acho que vou voltar neste espaço para expor e organizar algumas ideias e aprender um pouco com outras pessoas e pontos
-de vista.&lt;/p&gt;
-
-&lt;p&gt;Acredito que fazer (ou voltar a fazer) o que gostamos é algo bem realizador e motivante!&lt;/p&gt;
 </content>
   </entry>
 </feed>
