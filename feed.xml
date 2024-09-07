@@ -6,16 +6,87 @@
   <id>https://vincebot.dev</id>
   <link href="https://vincebot.dev"/>
   <link href="https://vincebot.dev/feed.xml" rel="self"/>
-  <updated>2024-09-02T19:32:00-03:00</updated>
+  <updated>2024-09-06T21:00:00-03:00</updated>
   <author>
     <name>Daniel Vinciguerra</name>
   </author>
+  <entry>
+    <title>Como eu organizo e mantenho meus dotfiles</title>
+    <link rel="alternate" href="https://vincebot.dev/2024/09/07/como-eu-organizo-e-mantenho-meus-dotfiles/"/>
+    <id>https://vincebot.dev/2024/09/07/como-eu-organizo-e-mantenho-meus-dotfiles/</id>
+    <published>2024-09-06T21:00:00-03:00</published>
+    <updated>2024-09-06T22:54:13-03:00</updated>
+    <author>
+      <name>Daniel Vinciguerra</name>
+    </author>
+    <content type="html">&lt;p&gt;Dotfiles são arquivos que controlam as configurações do meu ambiente de desenvolvimento, como o terminal e editores de texto. Mantê-los organizados facilita a portabilidade entre máquinas e garante um ambiente consistente. Neste artigo, compartilho como organizo e mantenho meus dotfiles, destacando as ferramentas e boas práticas que uso.&lt;/p&gt;
+
+&lt;h2&gt;Por que manter os dotfiles organizados?&lt;/h2&gt;
+
+&lt;p&gt;Manter os dotfiles organizados facilita muito a vida. Quando preciso configurar uma nova máquina, é só copiar tudo e já tenho meu ambiente de volta, sem dor de cabeça. Além disso, usando Git, consigo rastrear todas as mudanças que fiz, então se algo der errado ou eu quiser voltar atrás, está tudo documentado.&lt;/p&gt;
+
+&lt;h2&gt;Como eu organizo meus dotfiles&lt;/h2&gt;
+
+&lt;p&gt;Eu mantenho meus dotfiles em um repositório no GitHub, o que facilita a sincronização entre máquinas. Para gerenciar a instalação, uso o Itamae, uma ferramenta de gerenciamento de configurações. Criei uma extensão para o Itamae que facilita a criação de links simbólicos, o que torna o processo muito simples. Isso me permite selecionar facilmente quais arquivos aplicar em diferentes sistemas operacionais. Como o Itamae é escrito em Ruby, consigo criar extensões sempre que preciso, o que dá bastante flexibilidade.&lt;/p&gt;
+
+&lt;h2&gt;Dotfiles e configurações essenciais&lt;/h2&gt;
+
+&lt;p&gt;No meu setup, alguns dotfiles são indispensáveis. As configurações do Zsh, Git, Neovim e Ruby são fundamentais para o meu fluxo de trabalho. Além disso, mantenho alguns scripts que uso diariamente para automatizar tarefas e facilitar a rotina.&lt;/p&gt;
+
+&lt;p&gt;Também dou bastante atenção às configurações do ambiente, como o terminal e ferramentas como SSH, GPG, Tmux/Zellij, FZF, e Docker. Tudo isso ajuda a garantir que o ambiente esteja pronto para o desenvolvimento. Ferramentas específicas para desenvolvimento em Ruby, como algumas gems, também fazem parte do setup para otimizar o dia a dia.&lt;/p&gt;
+
+&lt;p&gt;Por fim, faço questão de instalar os apps que uso com mais frequência, garantindo que a produtividade não seja interrompida.&lt;/p&gt;
+
+&lt;h2&gt;Script para gerenciamento de dotfiles com Itamae&lt;/h2&gt;
+
+&lt;p&gt;Para manter meus dotfiles organizados e garantir que estejam sempre atualizados nos diferentes ambientes que utilizo, desenvolvi uma extensão no Itamae para facilitar a criação de links simbólicos. O script abaixo define uma função &lt;code&gt;dotfile&lt;/code&gt;, que faz o gerenciamento dessas configurações automaticamente, criando symlinks entre os arquivos de configuração e os diretórios de destino.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# frozen_string_literal: true&lt;/span&gt;
+
+&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'specinfra_termux'&lt;/span&gt;
+
+&lt;span class="n"&gt;os_info&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sb"&gt;`uname -a`&lt;/span&gt;
+
+&lt;span class="n"&gt;is_android&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os_info&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;match?&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sr"&gt;/android/i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;is_darwin&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os_info&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;match?&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sr"&gt;/darwin/i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;is_linux&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os_info&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;match?&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sr"&gt;/linux/i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="no"&gt;Itamae&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;logger&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"OS Info: &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;os_info&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# creating dotfiles symlink configurations&lt;/span&gt;
+&lt;span class="n"&gt;define&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:dotfile&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;source: &lt;/span&gt;&lt;span class="kp"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;target: &lt;/span&gt;&lt;span class="kp"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+  &lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;params&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'source'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="n"&gt;params&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'name'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+  &lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;params&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'target'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="n"&gt;source&lt;/span&gt;
+
+  &lt;span class="n"&gt;source_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="no"&gt;File&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;expand_path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__dir__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/config/&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;source&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+  &lt;span class="n"&gt;target_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;File&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;Dir&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;home&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+  &lt;span class="n"&gt;directory&lt;/span&gt; &lt;span class="no"&gt;File&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;dirname&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;target_path&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+  &lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="n"&gt;target_path&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;source_path&lt;/span&gt;
+    &lt;span class="n"&gt;force&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Esse script usa o Itamae para verificar o sistema operacional atual e criar links simbólicos para os arquivos de configuração armazenados em um diretório específico. Assim, ao configurar uma nova máquina, basta executar o script para garantir que todos os dotfiles estejam no lugar certo, independentemente do sistema que estou usando.&lt;/p&gt;
+
+&lt;h2&gt;Manutenção dos meus dotfiles&lt;/h2&gt;
+
+&lt;p&gt;Eu faço commits regulares no meu repositório de dotfiles, mas prefiro atualizar manualmente em cada ambiente. Embora pudesse automatizar esse processo, como, por exemplo, verificar se o repositório está desatualizado ao iniciar o terminal e atualizar automaticamente, gosto de ter mais controle sobre quando e como as atualizações são aplicadas. Isso me dá mais segurança, especialmente em ambientes diferentes, onde nem sempre quero que as mudanças aconteçam sem supervisão.&lt;/p&gt;
+
+&lt;h2&gt;Considerações Finais&lt;/h2&gt;
+
+&lt;p&gt;Este texto reflete muito da minha experiência pessoal, mas se tem algo que eu aprendi é que o mais importante é manter seus dotfiles, suas versões e backups. Esses arquivos são cruciais para garantir que você possa configurar rapidamente seu ambiente e começar a trabalhar nas suas tarefas e projetos sem perder tempo.&lt;/p&gt;
+
+&lt;p&gt;Já passei por situações onde precisei configurar manualmente meu ambiente várias vezes, e isso é sempre demorado. Além disso, é fácil esquecer de instalar ou configurar algo importante. Por isso, sempre que for possível, prefira usar código para configurar seu ambiente. Isso vai tornar sua vida muito mais fácil a longo prazo.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Como criar CLIs em Ruby - Parsers de argumentos</title>
     <link rel="alternate" href="https://vincebot.dev/2024/09/02/como-criar-clis-em-ruby-parsers-de-argumentos/"/>
     <id>https://vincebot.dev/2024/09/02/como-criar-clis-em-ruby-parsers-de-argumentos/</id>
     <published>2024-09-02T19:32:00-03:00</published>
-    <updated>2024-09-03T13:48:32-03:00</updated>
+    <updated>2024-09-06T22:46:54-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -149,7 +220,7 @@
     <link rel="alternate" href="https://vincebot.dev/2024/08/28/configurando-dominios-do-meu-homelab-na-cloudflare-usando-terraform/"/>
     <id>https://vincebot.dev/2024/08/28/configurando-dominios-do-meu-homelab-na-cloudflare-usando-terraform/</id>
     <published>2024-08-28T11:08:00-03:00</published>
-    <updated>2024-09-02T16:47:09-03:00</updated>
+    <updated>2024-09-06T22:46:54-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -269,7 +340,7 @@ configurações, você pode acessar o painel da Cloudflare e verificar se os reg
     <link rel="alternate" href="https://vincebot.dev/2024/08/26/utilizando-userscripts-para-customizar-sua-experiencia-na-web/"/>
     <id>https://vincebot.dev/2024/08/26/utilizando-userscripts-para-customizar-sua-experiencia-na-web/</id>
     <published>2024-08-26T00:48:00-03:00</published>
-    <updated>2024-09-02T16:47:09-03:00</updated>
+    <updated>2024-09-06T22:46:54-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -392,7 +463,7 @@ anteriormente.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/"/>
     <id>https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/</id>
     <published>2024-08-16T23:16:00-03:00</published>
-    <updated>2024-09-02T16:47:09-03:00</updated>
+    <updated>2024-08-26T00:52:44-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -456,7 +527,7 @@ anteriormente.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2024/08/10/efeito-notion/"/>
     <id>https://vincebot.dev/2024/08/10/efeito-notion/</id>
     <published>2024-08-10T02:16:00-03:00</published>
-    <updated>2024-09-02T16:47:09-03:00</updated>
+    <updated>2024-08-26T00:52:44-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -515,7 +586,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/"/>
     <id>https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/</id>
     <published>2024-08-04T00:12:00-03:00</published>
-    <updated>2024-09-02T16:47:09-03:00</updated>
+    <updated>2024-08-26T00:52:44-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -587,7 +658,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/"/>
     <id>https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/</id>
     <published>2024-08-02T10:25:00-03:00</published>
-    <updated>2024-09-02T16:47:09-03:00</updated>
+    <updated>2024-08-26T00:52:44-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -696,7 +767,7 @@ rails db:migrate
     <link rel="alternate" href="https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/"/>
     <id>https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/</id>
     <published>2024-07-31T09:59:00-03:00</published>
-    <updated>2024-09-02T16:47:09-03:00</updated>
+    <updated>2024-08-26T00:52:44-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -779,7 +850,7 @@ decisão informada sobre qual ferramenta usar para o seu blog ou site estático,
     <link rel="alternate" href="https://vincebot.dev/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/"/>
     <id>https://vincebot.dev/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/</id>
     <published>2024-07-29T21:00:00-03:00</published>
-    <updated>2024-09-02T16:47:09-03:00</updated>
+    <updated>2024-08-26T00:52:44-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -857,7 +928,7 @@ example article. You probably want to delete it and write your own articles!&lt;
     <link rel="alternate" href="https://vincebot.dev/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/"/>
     <id>https://vincebot.dev/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/</id>
     <published>2024-07-01T16:30:00-03:00</published>
-    <updated>2024-09-02T16:47:09-03:00</updated>
+    <updated>2024-08-26T00:52:44-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -919,66 +990,6 @@ permitindo que eu recorde pontos importantes de cada evento e revisite sempre qu
 &lt;p&gt;Mesmo sem nunca ter sido fã de diários, escrever e tirar as ideias da cabeça permite que eu passe o dia com a mente mais
 leve. A única coisa que gostaria de melhorar é a frequência com que revisito as informações, para refletir sobre os
 fatos e tirar ainda mais aprendizados.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Criando um CLI para adicionar tasks no Todoist</title>
-    <link rel="alternate" href="https://vincebot.dev/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/"/>
-    <id>https://vincebot.dev/2023/05/10/criando-um-cli-para-adicionar-tasks-no-todoist/</id>
-    <published>2023-05-09T21:00:00-03:00</published>
-    <updated>2024-09-02T16:47:09-03:00</updated>
-    <author>
-      <name>Daniel Vinciguerra</name>
-    </author>
-    <content type="html">&lt;p&gt;Sou uma pessoa que funciona muito bem usando todo lists e gosto principalmente de usar ferramentas ou plataformas que permitam ter acesso as minhas tasks sempre que preciso.&lt;/p&gt;
-
-&lt;p&gt;Passei um momento da minha vida testando diversas delas e uma das que mais gostei foi o Google Tasks pela extrema simplicidade. Porém essa simplicidade toda me fez esbarrar em coisas que eu precisava muito e isso fez eu continuar a busca até chegar no Todoist que me atende perfeitamente.&lt;/p&gt;
-
-&lt;h2&gt;Todoist segundo meus critérios&lt;/h2&gt;
-
-&lt;p&gt;É uma ferramenta poderosa e muito produtiva que permite uso diversos lugares, de smartphone até add-on de navegadores.&lt;/p&gt;
-
-&lt;p&gt;Além de tudo conta com várias interações e uma API muito completa e simples de usar.&lt;/p&gt;
-
-&lt;p&gt;A interface dele é super simples e direto ao ponto, mas sem deixar de ser poderosa, contando com lembretes, recorrência, suporte a AI para te ajudar a definir a tarefa e uma sintaxe que permite adicionar due dates em linguagem natural (tipo tomorrow, at Monday 9:00, next week, etc).&lt;/p&gt;
-
-&lt;h2&gt;Então qual o problema?&lt;/h2&gt;
-
-&lt;p&gt;No meu workflow, uso muito o terminal e evito ao máximo &amp;ldquo;sair dele&amp;rdquo; porque sei que sou muito ruim em dividir atenção.&lt;/p&gt;
-
-&lt;p&gt;Isso me fez perceber que conforme o aumento do número ou complexidade das demandas, eu me esquecia de anotar minhas tarefas para serem feita.&lt;/p&gt;
-
-&lt;p&gt;Pode parecer besteira mas se para uma pessoa neurotípica é fácil esquecer algo quando está encarando um momento de stress, imagine uma pessoa TDAH.&lt;/p&gt;
-
-&lt;p&gt;Foi aí que comecei a procurar formar de ter essa forma simples de fazer esse registro das tarefas que precisava sem sair do terminal e chavear o contexto em que estava trabalhando.&lt;/p&gt;
-
-&lt;h2&gt;Buscando alternativas e testando hipóteses&lt;/h2&gt;
-
-&lt;p&gt;Pensando muito e testando algumas ferramentas, várias muito boas mas me fariam não utilizar o Todoist.&lt;/p&gt;
-
-&lt;p&gt;Minha premissa era centralizar ao máximo essa &amp;ldquo;captura&amp;rdquo; das informações do que precisaria fazer e com isso me lembrei de uma solução inteligente que tinha visto em um repositório no Github do Tatsuhiko Miyagawa, um software engineer que acompanho desde que codava mais em Perl.&lt;/p&gt;
-
-&lt;p&gt;Ele acabou criando algo muito próximo do que eu queria, mas que aparentemente utilizava as notificações no sistema operacional para criar esses lembretes.&lt;/p&gt;
-
-&lt;h2&gt;Entendendo a referência para adaptar&lt;/h2&gt;
-
-&lt;p&gt;O link para o script está aqui https://github.com/miyagawa/misc-scripts/blob/master/remind, mas explicando brevemente&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;O script recebe como entrada uma frase em linguagem natural predefinida, algo como &amp;ldquo;remind me at night about do a code review&amp;rdquo; e usando regular expressions ele divide a sentença em duas partes.&lt;/p&gt;
-
-&lt;p&gt;A primeira diz sobre o tempo em que devo ser lembrado ou alertado e com essa parte ele utiliza uma Ruby gem chamada Chronic, para fazer parsing de texto em linguagem natural para data e hora.&lt;/p&gt;
-
-&lt;p&gt;A segunda parte da sentença e apenas a descrição do que precisa ser feito ou lembrado.&lt;/p&gt;
-
-&lt;p&gt;Com essas duas partes ele executa uma expressão, que faz uma chamada de sistema encadeando dois comandos: o sleep para aguardar o número de segundos até que ele seja alertado e quando o tempo chegar, o pushme que não conheço mas imagino ser um serviço de push notification que vai enviar esse lembrete para o computador ou smartphone.&lt;/p&gt;
-
-&lt;h2&gt;Adaptando e implementando a integração com Todoist&lt;/h2&gt;
-
-&lt;p&gt;Entendendo esses comportamentos, adaptei o código para poder entender também português além de descrições em inglês e implementei o envio para minha conta do Todoist usando integração via API Rest.&lt;/p&gt;
-
-&lt;p&gt;O resultado foi uma ferramenta semelhante, que torna muito mais produtivo para mim anotado minhas tarefas e que centraliza todas as informações onde preciso.&lt;/p&gt;
-
-&lt;p&gt;Agradecimentos especiais, obviamente, ao autor original da ideia e do script que serviu de inspiração. =)&lt;/p&gt;
 </content>
   </entry>
 </feed>
