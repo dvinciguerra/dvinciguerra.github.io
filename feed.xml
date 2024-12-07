@@ -6,16 +6,57 @@
   <id>https://vincebot.dev</id>
   <link href="https://vincebot.dev"/>
   <link href="https://vincebot.dev/feed.xml" rel="self"/>
-  <updated>2024-09-06T21:00:00-03:00</updated>
+  <updated>2024-12-06T19:54:00-03:00</updated>
   <author>
     <name>Daniel Vinciguerra</name>
   </author>
+  <entry>
+    <title>Mute and umute audio using terminal on Ubuntu</title>
+    <link rel="alternate" href="https://vincebot.dev/2024/12/06/mute-and-umute-audio-using-terminal-on-ubuntu/"/>
+    <id>https://vincebot.dev/2024/12/06/mute-and-umute-audio-using-terminal-on-ubuntu/</id>
+    <published>2024-12-06T19:54:00-03:00</published>
+    <updated>2024-12-06T19:03:30-03:00</updated>
+    <author>
+      <name>Daniel Vinciguerra</name>
+    </author>
+    <content type="html">&lt;p&gt;Hoje precisei mutar o som do meu computador que com Ubuntu e estava utilizando uma outra maquina.&lt;/p&gt;
+
+&lt;p&gt;Não queria precisar me deslocar até o computador para mutar o som, então pesquisei como fazer isso via terminal.&lt;/p&gt;
+
+&lt;p&gt;Para minha surpresa, descobri em um post no &lt;a href="https://askubuntu.com/questions/26068/how-do-you-mute-from-the-command-line" rel="nofollow"&gt;askubuntu&lt;/a&gt; que é possível mutar e desmutar o som utilizando o comando &lt;code&gt;amixer&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4&gt;Mutar o som e desmutar o som respectivamente&lt;/h4&gt;
+
+&lt;p&gt;Para mutar e desmutar o som, utilize os comandos abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;amixer &lt;span class="nb"&gt;set &lt;/span&gt;Master mute
+amixer &lt;span class="nb"&gt;set &lt;/span&gt;Master unmute
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Alternar entre mutar e desmutar o som&lt;/h4&gt;
+
+&lt;p&gt;Também é possível alternar entre mutar e desmutar o som utilizando o comando abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;amixer &lt;span class="nb"&gt;set &lt;/span&gt;Master toggle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Verificar o status do som&lt;/h4&gt;
+
+&lt;p&gt;Para verificar o status do som, utilize o comando abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;amixer get Master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Os comando retornam informações sobre o volume e se o som está mutado ou não, com um output parecido com o abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight plaintext"&gt;&lt;code&gt;Simple mixer control 'Master',0
+  Capabilities: pvolume pvolume-joined pswitch pswitch-joined
+  Playback channels: Mono
+  Limits: Playback 0 - 87
+  Mono: Playback 75 [86%] [-9.00dB] [off]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Onde na ultima linha, a palavra &lt;code&gt;off&lt;/code&gt; indica que o som está mutado.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Como eu organizo e mantenho meus dotfiles</title>
     <link rel="alternate" href="https://vincebot.dev/2024/09/07/como-eu-organizo-e-mantenho-meus-dotfiles/"/>
     <id>https://vincebot.dev/2024/09/07/como-eu-organizo-e-mantenho-meus-dotfiles/</id>
     <published>2024-09-06T21:00:00-03:00</published>
-    <updated>2024-09-06T22:54:13-03:00</updated>
+    <updated>2024-09-11T13:44:36-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -86,7 +127,7 @@
     <link rel="alternate" href="https://vincebot.dev/2024/09/02/como-criar-clis-em-ruby-parsers-de-argumentos/"/>
     <id>https://vincebot.dev/2024/09/02/como-criar-clis-em-ruby-parsers-de-argumentos/</id>
     <published>2024-09-02T19:32:00-03:00</published>
-    <updated>2024-09-06T22:46:54-03:00</updated>
+    <updated>2024-09-03T13:50:01-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -220,7 +261,7 @@
     <link rel="alternate" href="https://vincebot.dev/2024/08/28/configurando-dominios-do-meu-homelab-na-cloudflare-usando-terraform/"/>
     <id>https://vincebot.dev/2024/08/28/configurando-dominios-do-meu-homelab-na-cloudflare-usando-terraform/</id>
     <published>2024-08-28T11:08:00-03:00</published>
-    <updated>2024-09-06T22:46:54-03:00</updated>
+    <updated>2024-09-03T13:50:01-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -340,7 +381,7 @@ configurações, você pode acessar o painel da Cloudflare e verificar se os reg
     <link rel="alternate" href="https://vincebot.dev/2024/08/26/utilizando-userscripts-para-customizar-sua-experiencia-na-web/"/>
     <id>https://vincebot.dev/2024/08/26/utilizando-userscripts-para-customizar-sua-experiencia-na-web/</id>
     <published>2024-08-26T00:48:00-03:00</published>
-    <updated>2024-09-06T22:46:54-03:00</updated>
+    <updated>2024-09-03T13:50:01-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -463,7 +504,7 @@ anteriormente.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/"/>
     <id>https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/</id>
     <published>2024-08-16T23:16:00-03:00</published>
-    <updated>2024-08-26T00:52:44-03:00</updated>
+    <updated>2024-09-03T13:50:01-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -527,7 +568,7 @@ anteriormente.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2024/08/10/efeito-notion/"/>
     <id>https://vincebot.dev/2024/08/10/efeito-notion/</id>
     <published>2024-08-10T02:16:00-03:00</published>
-    <updated>2024-08-26T00:52:44-03:00</updated>
+    <updated>2024-09-03T13:50:01-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -586,7 +627,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/"/>
     <id>https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/</id>
     <published>2024-08-04T00:12:00-03:00</published>
-    <updated>2024-08-26T00:52:44-03:00</updated>
+    <updated>2024-09-03T13:50:01-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -658,7 +699,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/"/>
     <id>https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/</id>
     <published>2024-08-02T10:25:00-03:00</published>
-    <updated>2024-08-26T00:52:44-03:00</updated>
+    <updated>2024-09-03T13:50:01-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -767,7 +808,7 @@ rails db:migrate
     <link rel="alternate" href="https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/"/>
     <id>https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/</id>
     <published>2024-07-31T09:59:00-03:00</published>
-    <updated>2024-08-26T00:52:44-03:00</updated>
+    <updated>2024-09-03T13:50:01-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -850,7 +891,7 @@ decisão informada sobre qual ferramenta usar para o seu blog ou site estático,
     <link rel="alternate" href="https://vincebot.dev/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/"/>
     <id>https://vincebot.dev/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/</id>
     <published>2024-07-29T21:00:00-03:00</published>
-    <updated>2024-08-26T00:52:44-03:00</updated>
+    <updated>2024-09-03T13:50:01-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -921,75 +962,6 @@ um botão com o seguinte código:&lt;/p&gt;
 
 &lt;p&gt;Neste artigo, criamos um projecto de frontend usando Middleman e TailwindCSS. Espero que este artigo tenha sido útil
 example article. You probably want to delete it and write your own articles!&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Como eu comecei a gerenciar meu conhecimento usando Logseq</title>
-    <link rel="alternate" href="https://vincebot.dev/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/"/>
-    <id>https://vincebot.dev/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/</id>
-    <published>2024-07-01T16:30:00-03:00</published>
-    <updated>2024-08-26T00:52:44-03:00</updated>
-    <author>
-      <name>Daniel Vinciguerra</name>
-    </author>
-    <content type="html">&lt;p&gt;&lt;img src="/2024/07/01/como-eu-comecei-a-gerenciar-meu-conhecimento-usando-logseq/banner.png" alt="Logseq" /&gt;&lt;/p&gt;
-
-&lt;h2&gt;Como tudo começou&lt;/h2&gt;
-
-&lt;p&gt;Minha memória não é das melhores para diversas coisas, e minha capacidade de manter a atenção é bastante limitada.&lt;/p&gt;
-
-&lt;p&gt;Sempre que preciso me lembrar de detalhes específicos, torna-se um verdadeiro desafio. Por isso, anotar as coisas
-tornou-se essencial para a minha sobrevivência diária.&lt;/p&gt;
-
-&lt;h2&gt;Escolhendo as ferramentas&lt;/h2&gt;
-
-&lt;p&gt;Já experimentei vários métodos e ferramentas para gerenciar meu conhecimento. Tentei usar wikis, Google Docs e Basecamp.&lt;/p&gt;
-
-&lt;p&gt;Depois de muita busca por uma ferramenta e formato que funcionassem bem para mim, resolvi focar no simples e passei a
-usar Markdown.&lt;/p&gt;
-
-&lt;p&gt;O uso de arquivos Markdown finalmente começou a fazer sentido para mim, mas ainda precisava de uma ferramenta que me
-ajudasse a ser mais produtivo e a organizar melhor minhas ideias.&lt;/p&gt;
-
-&lt;p&gt;Testei algumas excelentes opções open source e gratuitas, mas nenhuma tinha as combinações de funções que eu estava
-buscando, até chegar no Obsidian.&lt;/p&gt;
-
-&lt;p&gt;Usei o Obsidian por um tempo, mas sentia que ele me oferecia tantas possibilidades que acabava perdendo o foco.&lt;/p&gt;
-
-&lt;p&gt;Assim como escolhi o Todoist pela sua eficiência e simplicidade, queria algo semelhante para minhas notas. Foi então
-que, em um grupo de notas e produtividade, descobri o Logseq, que empresta muitos conceitos do Roam Research.&lt;/p&gt;
-
-&lt;p&gt;Quando resolvi testar o Logseq, fiquei fascinado. Ele tinha exatamente o que eu precisava na medida certa e, mesmo não
-sendo perfeito, oferecia as combinações de funções que me permitiam criar notas de forma organizada e com foco.&lt;/p&gt;
-
-&lt;h2&gt;Como organizo minhas notas&lt;/h2&gt;
-
-&lt;p&gt;Costumo usar um modelo de diários diários (daily journals) e adiciono algumas páginas para outros temas que prefiro
-separar. Dessa forma, sinto que as coisas ficam mais bem organizadas. Também uso bastante referências e tags, nativas do
-Logseq, o que me permite criar consultas (queries) e linkar assuntos para facilitar a pesquisa e a localização quando
-necessário.&lt;/p&gt;
-
-&lt;p&gt;Nas minhas notas diárias, costumo ter um espaço para falar sobre aspectos pessoais, como estou me sentindo, e também
-sobre aspectos do meu dia, tanto pessoal quanto profissional.&lt;/p&gt;
-
-&lt;h2&gt;Como é o processo&lt;/h2&gt;
-
-&lt;p&gt;Para manter a consistência, tento registrar minhas anotações diariamente à noite, refletindo sobre o meu dia. Aspectos
-mais gerais, anoto conforme vão acontecendo. Quando tenho alguma reunião, deixo referências com antecedência para me
-preparar com dúvidas ou pontos importantes.&lt;/p&gt;
-
-&lt;p&gt;Também costumo anotar coisas úteis que vou aprendendo e que podem ser úteis no futuro, como comandos, dicas sobre
-produtos, curiosidades sobre diversos assuntos, etc.&lt;/p&gt;
-
-&lt;h2&gt;Conclusão&lt;/h2&gt;
-
-&lt;p&gt;O hábito de anotar as coisas fez com que eu estivesse mais presente nas reuniões e me permitiu ter um tempo para
-refletir sobre os acontecimentos do meu cotidiano. Além disso, tornou-se uma ferramenta indispensável no meu dia a dia,
-permitindo que eu recorde pontos importantes de cada evento e revisite sempre que necessário.&lt;/p&gt;
-
-&lt;p&gt;Mesmo sem nunca ter sido fã de diários, escrever e tirar as ideias da cabeça permite que eu passe o dia com a mente mais
-leve. A única coisa que gostaria de melhorar é a frequência com que revisito as informações, para refletir sobre os
-fatos e tirar ainda mais aprendizados.&lt;/p&gt;
 </content>
   </entry>
 </feed>
