@@ -1,5 +1,4 @@
 
-
 <!doctype html>
 <html>
   <head>
@@ -13,8 +12,18 @@
 
 
 
+      <meta property="og:type" content="article">
+<meta property="og:url" content="/2024/11/03/debugando-codigos-em-ruby/">
+<meta property="og:title" content="Debugando códigos em Ruby">
+<meta property="og:site_name" content="Vincebot">
+<meta property="og:description" content="Eu realmente gosto muito das ferramentas de desenvolvimento (devtools) disponíveis para Ruby...">
+<meta property="og:image" content="/images/avatar.jpg">
 
-    <title>O que estou fazendo agora</title>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/images/avatar.jpg">
+
+
+    <title>Debugando códigos em Ruby</title>
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/feed.xml" />
 
     <!-- script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script -->
@@ -82,53 +91,124 @@
     <main class="bg-gray-900 pb-20">
       <section class="text-gray-400 body-font overflow-hidden min-h-svh">
         <div class="container px-0 sm:px-2 md:px-6 lg:px-20 xl:px-60 pt-5 mx-auto">
-            <section class="text-gray-400 bg-gray-900 body-font">
-  <div class="container p-20 mx-auto">
-    <div class="text-center mb-10">
-      <h1 class="sm:text-3xl text-2xl font-medium title-font text-white mb-4">Hi, I'm Daniel Vinciguerra
-</h1>
-      <!-- subtitulo para o meu blog -->
-      <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-400">I'm a software engineer and I love to write about technology, automation, integration, programming, productivity and life.
-</p>
-      <div class="flex mt-6 justify-center">
-        <div class="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
+            <article class="post">
+    <header class="post-header">
+      <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-12">
+        <p class="mb-2 text-xs font-semibold tracking-wide text-gray-600 uppercase sm:text-center">
+          <time class="post-date" datetime="2024-11-03">
+            03 November 2024
+          </time>
+        </p>
+        <div class="max-w-xl mb-5 md:mx-auto sm:text-center lg:max-w-2xl">
+          <div class="mb-4">
+            <h1 class="inline-block max-w-lg font-sans text-3xl font-extrabold leading-none tracking-tight text-gray-50 transition-colors duration-200 hover:text-gray-50 sm:text-4xl">
+              Debugando códigos em Ruby
+            </h1>
+          </div>
+
+          <p class="text-base text-gray-50 md:text-lg">
+              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">ruby</span>
+              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">debug</span>
+              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">pry</span>
+              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">byebug</span>
+              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">irb</span>
+          </p>
+        </div>
+        <div class="sm:text-center">
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </header>
+
+    <section class="post-content container px-auto max-md:px-0 max-sm:px-4 md:pb-40 max-sm:pb-20">
+      <p>Eu realmente gosto muito das ferramentas de desenvolvimento (devtools) disponíveis para Ruby. Elas são poderosas e facilitam bastante a vida de quem está desenvolvendo. Neste post, vou falar sobre algumas dessas ferramentas e como usá-las para debugar seus códigos Ruby.</p>
+
+<h2>Interactive Ruby - IRB</h2>
+
+<p>Que Ruby é uma linguagem extremamente poderosa e produtiva, acho que é bem claro para quem a utiliza no dia a dia, mas preciso dizer: sou um grande fã do REPL IRB.</p>
+
+<p>REPL é a abreviação de Read-Eval-Print Loop, um ambiente de programação interativo que permite escrever expressões em uma linha de comando e executá-las imediatamente.</p>
+
+<p>Isso é muito útil para criar provas de conceito (PoC), debugar comportamentos ou resolver problemas rapidamente.</p>
+
+<p>O IRB é, sem dúvida, a ferramenta mais básica e simples que temos para debugar códigos Ruby, mas também uma das mais importantes.</p>
+
+<h2>Bindings</h2>
+
+<p>Bindings são pontos de parada (breakpoints) que você pode inserir no código para inspecionar variáveis, métodos e muito mais.</p>
+
+<p>Combinado ao irb, adicionar um binding.irb no código é uma das formas mais simples e eficazes de depuração, permitindo inspecionar variáveis e métodos no contexto desejado.</p>
+
+<p>Apesar de termos ferramentas que estendem as funcionalidades do REPL, como o Byebug e o Pry, o IRB é nativo e não requer dependências adicionais, o que o torna prático e acessível.</p>
+
+<h2>Pretty Print - pp</h2>
+
+<p>Seguindo a clássica, porém ainda muito prática, estratégia de debugar com mensagens no stdout, o pp nos permite inspecionar objetos de forma mais amigável.</p>
+
+<p>Ele chama o método #inspect dos objetos passados como argumento, mas apresenta o resultado de maneira mais legível, o que é extremamente útil para lidar com estruturas mais complexas.</p>
+
+<h2>Rails Console</h2>
+
+<p>O Rails é um software incrível, e uma das suas grandes vantagens é facilitar não apenas a criação de novas aplicações, mas também a manutenção das existentes.</p>
+
+<p>Uma ferramenta essencial para isso é o rails console, um ambiente interativo que carrega todo o contexto da aplicação, permitindo interagir programaticamente com ela.</p>
+
+<p>É excelente para consultar informações, testar comportamentos, corrigir problemas e, claro, debugar códigos. É simplesmente fantástico.</p>
+
+<h2>Rails Runner</h2>
+
+<p>Ainda falando sobre o Rails, o rails runner é uma ferramenta que permite rodar scripts Ruby no contexto da aplicação.</p>
+
+<p>Embora não seja exatamente uma ferramenta de desenvolvimento ou depuração, ela é extremamente útil em ambientes de desenvolvimento. Com ela, é possível escrever pequenos scripts para testar comportamentos ou extrair informações rapidamente.</p>
+
+<h2>RSpec</h2>
+
+<p>Pode parecer clichê, mas eu realmente gosto muito do RSpec. Ele é uma ferramenta poderosa que nos ajuda a escrever testes de forma legível e organizada.</p>
+
+<p>Escrever testes é, muitas vezes, uma forma eficaz de debugar códigos, pois permite validar comportamentos e verificar se o código está funcionando como esperado.</p>
+
+<p>Quando estou com dificuldade para entender um código, costumo escrever testes no mesmo arquivo e utilizo o autorun para executá-los automaticamente. Isso ajuda bastante a esclarecer comportamentos confusos e a identificar problemas conforme o código evolui.</p>
+
+<h2>Conclusão</h2>
+
+<p>Essas são algumas das ferramentas que uso para debugar códigos Ruby. Elas são muito poderosas e me ajudam a entender o que está acontecendo no código, o que é fundamental no dia a dia de desenvolvimento.</p>
+
+<p>Esse é um dos motivos pelos quais eu gosto tanto de Ruby: o tooling da linguagem é simplesmente incrível.</p>
+
+    </section>
 
 
+    <p class="contact-me rounded border border-solid border-slate-700 p-4">
+  Quer conversar sobre este artigo? Mande-me uma
+  <a href="mailto:7pa1gevhw@mozmail.com?Subject=Comment: [Vincebot] Debugando códigos em Ruby">mensagem</a>.
+</p>
 
-  <section class="post-content">
-    <blockquote>
-<p>Esta pagina é inspirada no <a href="https://nownownow.com/about" rel="nofollow">The Now Page Movement</a> de Derek Sivers e tirei a ideia do
-blog do queridisssimo <a href="https://pothix.com/now/" rel="nofollow">pothix</a>.</p>
-</blockquote>
 
-<h3>Profissional</h3>
+    <!-- footer class="post-footer">
+      <section class="author">
+        <h4>
+          <a href="/author/daniel-vinciguerra/">Daniel Vinciguerra</a>
+        </h4>
+        <p>
+            Read <a href="/author/daniel-vinciguerra/">more posts</a> by this author.
+        </p>
 
-<p>Atualmente trabalho como Senior Software Engineer, focando em desenvolvimento web e serviços.</p>
+      </section>
 
-<p>No momento, estou utilizando Ruby, Rails, Redis, Sidekiq e PostgreSQL, no papel de especialista na tematica de automação de processos e integrações &ndash; uma tematica que gosto bastante.</p>
+      <section class="share">
+        <h4>Share this post</h4>
+        <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Debugando códigos em Ruby&amp;url=http://www.example.com/2024/11/03/debugando-codigos-em-ruby/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+          <span class="hidden">Twitter</span>
+        </a>
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://www.example.com/2024/11/03/debugando-codigos-em-ruby/" onclick="window.open(this.href, 'facebook-share', 'width=580,height=296');return false;">
+          <span class="hidden">Facebook</span>
+        </a>
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=http://www.example.com/2024/11/03/debugando-codigos-em-ruby/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+          <span class="hidden">Google+</span>
+        </a>
+      </section>
+    </footer -->
 
-<p>Dentre os projetos que atuo atualmente estão, a manutenção e evolução de um serviço de execução de fluxos de automação dinâmicos e configurados pelos nossos clientes, com foco em execução de ações multi-produtos, dado o contexto da empresa onde trabalho atualmente.</p>
-
-<h3>Estudando</h3>
-
-<p>Estou sempre estudando temas relacionados à engenharia de software, system design, arquitetura, infraestrutura, integrações, automação, produtividade e organização pessoal.</p>
-
-<p>Nos meus projetos pessoais, estou desenvolvendo uma plataforma para metrificar meu fluxo de trabalho e melhorar minha produtividade. A ideia é coletar dados de diversas fontes, como editores de texto e navegadores, para entender melhor como utilizo meu tempo e buscar otimizações.</p>
-
-<p>Também ando projetando sensores e dispositivos para deixar minha casa mais &ldquo;inteligente&rdquo; e confortável. Dentre eles,
-criei sensores para telemetria de qualidade do ar, temperatura, umidade, alguns sensores de abertura de portas e
-janelas para monitorar a segurança da casa e um sistema de controle de iluminação, integrados com o Home Assistant que
-mantenho em um muito humilde <em>Home Lab</em>.</p>
-
-<h3>Pessoal</h3>
-
-<p>No meu tempo livre, gosto de ler artigos, assistir séries, jogar videogame, ouvir música, cozinhar, fazer projetos de eletrônica e, claro, passar tempo com minha família.</p>
-
-  </section>
+  </article>
 
         </div>
       </section>

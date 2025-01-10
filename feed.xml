@@ -15,7 +15,7 @@
     <link rel="alternate" href="https://vincebot.dev/2024/12/06/mute-and-umute-audio-using-terminal-on-ubuntu/"/>
     <id>https://vincebot.dev/2024/12/06/mute-and-umute-audio-using-terminal-on-ubuntu/</id>
     <published>2024-12-06T19:54:00-03:00</published>
-    <updated>2024-12-06T19:03:30-03:00</updated>
+    <updated>2024-12-06T22:26:25-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -52,11 +52,75 @@ amixer &lt;span class="nb"&gt;set &lt;/span&gt;Master unmute
 </content>
   </entry>
   <entry>
+    <title>Debugando códigos em Ruby</title>
+    <link rel="alternate" href="https://vincebot.dev/2024/11/03/debugando-codigos-em-ruby/"/>
+    <id>https://vincebot.dev/2024/11/03/debugando-codigos-em-ruby/</id>
+    <published>2024-11-03T16:36:00-03:00</published>
+    <updated>2025-01-10T10:21:05-03:00</updated>
+    <author>
+      <name>Daniel Vinciguerra</name>
+    </author>
+    <content type="html">&lt;p&gt;Eu realmente gosto muito das ferramentas de desenvolvimento (devtools) disponíveis para Ruby. Elas são poderosas e facilitam bastante a vida de quem está desenvolvendo. Neste post, vou falar sobre algumas dessas ferramentas e como usá-las para debugar seus códigos Ruby.&lt;/p&gt;
+
+&lt;h2&gt;Interactive Ruby - IRB&lt;/h2&gt;
+
+&lt;p&gt;Que Ruby é uma linguagem extremamente poderosa e produtiva, acho que é bem claro para quem a utiliza no dia a dia, mas preciso dizer: sou um grande fã do REPL IRB.&lt;/p&gt;
+
+&lt;p&gt;REPL é a abreviação de Read-Eval-Print Loop, um ambiente de programação interativo que permite escrever expressões em uma linha de comando e executá-las imediatamente.&lt;/p&gt;
+
+&lt;p&gt;Isso é muito útil para criar provas de conceito (PoC), debugar comportamentos ou resolver problemas rapidamente.&lt;/p&gt;
+
+&lt;p&gt;O IRB é, sem dúvida, a ferramenta mais básica e simples que temos para debugar códigos Ruby, mas também uma das mais importantes.&lt;/p&gt;
+
+&lt;h2&gt;Bindings&lt;/h2&gt;
+
+&lt;p&gt;Bindings são pontos de parada (breakpoints) que você pode inserir no código para inspecionar variáveis, métodos e muito mais.&lt;/p&gt;
+
+&lt;p&gt;Combinado ao irb, adicionar um binding.irb no código é uma das formas mais simples e eficazes de depuração, permitindo inspecionar variáveis e métodos no contexto desejado.&lt;/p&gt;
+
+&lt;p&gt;Apesar de termos ferramentas que estendem as funcionalidades do REPL, como o Byebug e o Pry, o IRB é nativo e não requer dependências adicionais, o que o torna prático e acessível.&lt;/p&gt;
+
+&lt;h2&gt;Pretty Print - pp&lt;/h2&gt;
+
+&lt;p&gt;Seguindo a clássica, porém ainda muito prática, estratégia de debugar com mensagens no stdout, o pp nos permite inspecionar objetos de forma mais amigável.&lt;/p&gt;
+
+&lt;p&gt;Ele chama o método #inspect dos objetos passados como argumento, mas apresenta o resultado de maneira mais legível, o que é extremamente útil para lidar com estruturas mais complexas.&lt;/p&gt;
+
+&lt;h2&gt;Rails Console&lt;/h2&gt;
+
+&lt;p&gt;O Rails é um software incrível, e uma das suas grandes vantagens é facilitar não apenas a criação de novas aplicações, mas também a manutenção das existentes.&lt;/p&gt;
+
+&lt;p&gt;Uma ferramenta essencial para isso é o rails console, um ambiente interativo que carrega todo o contexto da aplicação, permitindo interagir programaticamente com ela.&lt;/p&gt;
+
+&lt;p&gt;É excelente para consultar informações, testar comportamentos, corrigir problemas e, claro, debugar códigos. É simplesmente fantástico.&lt;/p&gt;
+
+&lt;h2&gt;Rails Runner&lt;/h2&gt;
+
+&lt;p&gt;Ainda falando sobre o Rails, o rails runner é uma ferramenta que permite rodar scripts Ruby no contexto da aplicação.&lt;/p&gt;
+
+&lt;p&gt;Embora não seja exatamente uma ferramenta de desenvolvimento ou depuração, ela é extremamente útil em ambientes de desenvolvimento. Com ela, é possível escrever pequenos scripts para testar comportamentos ou extrair informações rapidamente.&lt;/p&gt;
+
+&lt;h2&gt;RSpec&lt;/h2&gt;
+
+&lt;p&gt;Pode parecer clichê, mas eu realmente gosto muito do RSpec. Ele é uma ferramenta poderosa que nos ajuda a escrever testes de forma legível e organizada.&lt;/p&gt;
+
+&lt;p&gt;Escrever testes é, muitas vezes, uma forma eficaz de debugar códigos, pois permite validar comportamentos e verificar se o código está funcionando como esperado.&lt;/p&gt;
+
+&lt;p&gt;Quando estou com dificuldade para entender um código, costumo escrever testes no mesmo arquivo e utilizo o autorun para executá-los automaticamente. Isso ajuda bastante a esclarecer comportamentos confusos e a identificar problemas conforme o código evolui.&lt;/p&gt;
+
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+
+&lt;p&gt;Essas são algumas das ferramentas que uso para debugar códigos Ruby. Elas são muito poderosas e me ajudam a entender o que está acontecendo no código, o que é fundamental no dia a dia de desenvolvimento.&lt;/p&gt;
+
+&lt;p&gt;Esse é um dos motivos pelos quais eu gosto tanto de Ruby: o tooling da linguagem é simplesmente incrível.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
     <title>Como eu organizo e mantenho meus dotfiles</title>
     <link rel="alternate" href="https://vincebot.dev/2024/09/07/como-eu-organizo-e-mantenho-meus-dotfiles/"/>
     <id>https://vincebot.dev/2024/09/07/como-eu-organizo-e-mantenho-meus-dotfiles/</id>
     <published>2024-09-06T21:00:00-03:00</published>
-    <updated>2024-09-11T13:44:36-03:00</updated>
+    <updated>2024-12-06T22:26:25-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -127,7 +191,7 @@ amixer &lt;span class="nb"&gt;set &lt;/span&gt;Master unmute
     <link rel="alternate" href="https://vincebot.dev/2024/09/02/como-criar-clis-em-ruby-parsers-de-argumentos/"/>
     <id>https://vincebot.dev/2024/09/02/como-criar-clis-em-ruby-parsers-de-argumentos/</id>
     <published>2024-09-02T19:32:00-03:00</published>
-    <updated>2024-09-03T13:50:01-03:00</updated>
+    <updated>2024-12-06T22:26:25-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -261,7 +325,7 @@ amixer &lt;span class="nb"&gt;set &lt;/span&gt;Master unmute
     <link rel="alternate" href="https://vincebot.dev/2024/08/28/configurando-dominios-do-meu-homelab-na-cloudflare-usando-terraform/"/>
     <id>https://vincebot.dev/2024/08/28/configurando-dominios-do-meu-homelab-na-cloudflare-usando-terraform/</id>
     <published>2024-08-28T11:08:00-03:00</published>
-    <updated>2024-09-03T13:50:01-03:00</updated>
+    <updated>2024-12-06T22:26:25-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -381,7 +445,7 @@ configurações, você pode acessar o painel da Cloudflare e verificar se os reg
     <link rel="alternate" href="https://vincebot.dev/2024/08/26/utilizando-userscripts-para-customizar-sua-experiencia-na-web/"/>
     <id>https://vincebot.dev/2024/08/26/utilizando-userscripts-para-customizar-sua-experiencia-na-web/</id>
     <published>2024-08-26T00:48:00-03:00</published>
-    <updated>2024-09-03T13:50:01-03:00</updated>
+    <updated>2024-12-06T22:26:25-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -504,7 +568,7 @@ anteriormente.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/"/>
     <id>https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/</id>
     <published>2024-08-16T23:16:00-03:00</published>
-    <updated>2024-09-03T13:50:01-03:00</updated>
+    <updated>2024-12-06T22:26:25-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -568,7 +632,7 @@ anteriormente.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2024/08/10/efeito-notion/"/>
     <id>https://vincebot.dev/2024/08/10/efeito-notion/</id>
     <published>2024-08-10T02:16:00-03:00</published>
-    <updated>2024-09-03T13:50:01-03:00</updated>
+    <updated>2024-12-06T22:26:25-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -627,7 +691,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/"/>
     <id>https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/</id>
     <published>2024-08-04T00:12:00-03:00</published>
-    <updated>2024-09-03T13:50:01-03:00</updated>
+    <updated>2024-12-06T22:26:25-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -699,7 +763,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/"/>
     <id>https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/</id>
     <published>2024-08-02T10:25:00-03:00</published>
-    <updated>2024-09-03T13:50:01-03:00</updated>
+    <updated>2024-12-06T22:26:25-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -808,7 +872,7 @@ rails db:migrate
     <link rel="alternate" href="https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/"/>
     <id>https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/</id>
     <published>2024-07-31T09:59:00-03:00</published>
-    <updated>2024-09-03T13:50:01-03:00</updated>
+    <updated>2024-12-06T22:26:25-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -884,84 +948,6 @@ que quero compartilhar.&lt;/p&gt;
 decisão informada sobre qual ferramenta usar para o seu blog ou site estático, com base nas suas necessidades.&lt;/p&gt;
 
 &lt;p&gt;No final do dia, o que importa é você usar uma ferramenta que te atenda e não o hype do momento.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Criando um projeto de frontend usando Middleman e TailwindCSS</title>
-    <link rel="alternate" href="https://vincebot.dev/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/"/>
-    <id>https://vincebot.dev/2024/07/30/criando-um-projeto-de-frontend-usando-middleman-e-tailwindcss/</id>
-    <published>2024-07-29T21:00:00-03:00</published>
-    <updated>2024-09-03T13:50:01-03:00</updated>
-    <author>
-      <name>Daniel Vinciguerra</name>
-    </author>
-    <content type="html">&lt;p&gt;Neste artigo, vamos criar um projeto de frontend usando Middleman e TailwindCSS.&lt;/p&gt;
-
-&lt;h2&gt;Introdução&lt;/h2&gt;
-
-&lt;p&gt;Middleman é um gerador de sites estáticos que permite criar sites usando HTML, CSS e JavaScript. TailwindCSS é um
-framework de CSS que facilita a criação de interfaces responsivas e bonitas.&lt;/p&gt;
-
-&lt;h2&gt;Criando um novo projecto&lt;/h2&gt;
-
-&lt;p&gt;Para criar um novo projecto com Middleman, execute o seguinte comando:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;middleman init my_project
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Este comando irá criar uma nova pasta chamada &lt;code&gt;my_project&lt;/code&gt; com a estrutura básica de um projecto Middleman.&lt;/p&gt;
-
-&lt;h2&gt;Instalando o TailwindCSS&lt;/h2&gt;
-
-&lt;p&gt;Para instalar o TailwindCSS no seu projecto, execute os seguintes comandos:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;my_project
-npm &lt;span class="nb"&gt;install&lt;/span&gt; &lt;span class="nt"&gt;-D&lt;/span&gt; tailwindcss
-npx tailwindcss init
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Em seguida, adicione o seguinte código ao seu ficheiro &lt;code&gt;tailwind.config.js&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="cm"&gt;/** @type {import('tailwindcss').Config} */&lt;/span&gt;
-&lt;span class="nx"&gt;module&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;exports&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-  &lt;span class="na"&gt;content&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="dl"&gt;"&lt;/span&gt;&lt;span class="s2"&gt;./src/**/*.{html,js}&lt;/span&gt;&lt;span class="dl"&gt;"&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-  &lt;span class="na"&gt;theme&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="na"&gt;extend&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{},&lt;/span&gt;
-  &lt;span class="p"&gt;},&lt;/span&gt;
-  &lt;span class="na"&gt;plugins&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[],&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Altere o nome do arquivo &lt;code&gt;site.css.scss&lt;/code&gt; para &lt;code&gt;site.css&lt;/code&gt;. e adicione o seguinte código:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="highlight css"&gt;&lt;code&gt;&lt;span class="k"&gt;@tailwind&lt;/span&gt; &lt;span class="n"&gt;base&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;@tailwind&lt;/span&gt; &lt;span class="n"&gt;components&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;span class="k"&gt;@tailwind&lt;/span&gt; &lt;span class="n"&gt;utilities&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;Adicionando estilos ao seu projecto&lt;/h2&gt;
-
-&lt;p&gt;Agora que o TailwindCSS está instalado, pode começar a adicionar estilos ao seu projecto. Por exemplo, pode adicionar
-um botão com o seguinte código:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="highlight html"&gt;&lt;code&gt;&lt;span class="nt"&gt;&amp;lt;button&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
-  Button
-&lt;span class="nt"&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;Compilando os ficheiros CSS&lt;/h2&gt;
-
-&lt;p&gt;Para compilar os ficheiros CSS do TailwindCSS, adicione o seguinte script ao seu ficheiro &lt;code&gt;package.json&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="highlight json"&gt;&lt;code&gt;&lt;span class="nl"&gt;"scripts"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;
-  &lt;/span&gt;&lt;span class="nl"&gt;"build"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s2"&gt;"tailwindcss build stylesheets/site.css -o .tmp/dist/site.css"&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Depois de adicionar o script, execute o seguinte comando para compilar os ficheiros CSS:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;npm run build
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;Alterando o config.rb do Middleman&lt;/h2&gt;
-
-&lt;p&gt;Para que o Middleman compile os ficheiros CSS corretamente, adicione o seguinte código ao seu ficheiro &lt;code&gt;config.rb&lt;/code&gt;:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;activate&lt;/span&gt; &lt;span class="ss"&gt;:external_pipeline&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="ss"&gt;name: :webpack&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="ss"&gt;command: &lt;/span&gt;&lt;span class="n"&gt;build?&lt;/span&gt; &lt;span class="p"&gt;?&lt;/span&gt; &lt;span class="s2"&gt;"npm run build"&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"npm run start"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="ss"&gt;source: &lt;/span&gt;&lt;span class="s2"&gt;".tmp/dist"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="ss"&gt;latency: &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;h2&gt;Conclusão&lt;/h2&gt;
-
-&lt;p&gt;Neste artigo, criamos um projecto de frontend usando Middleman e TailwindCSS. Espero que este artigo tenha sido útil
-example article. You probably want to delete it and write your own articles!&lt;/p&gt;
 </content>
   </entry>
 </feed>
