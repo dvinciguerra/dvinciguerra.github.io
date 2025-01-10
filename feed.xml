@@ -15,7 +15,7 @@
     <link rel="alternate" href="https://vincebot.dev/2024/12/06/mute-and-umute-audio-using-terminal-on-ubuntu/"/>
     <id>https://vincebot.dev/2024/12/06/mute-and-umute-audio-using-terminal-on-ubuntu/</id>
     <published>2024-12-06T19:54:00-03:00</published>
-    <updated>2024-12-06T22:26:25-03:00</updated>
+    <updated>2025-01-10T10:52:45-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -56,7 +56,7 @@ amixer &lt;span class="nb"&gt;set &lt;/span&gt;Master unmute
     <link rel="alternate" href="https://vincebot.dev/2024/11/03/debugando-codigos-em-ruby/"/>
     <id>https://vincebot.dev/2024/11/03/debugando-codigos-em-ruby/</id>
     <published>2024-11-03T16:36:00-03:00</published>
-    <updated>2025-01-10T10:21:05-03:00</updated>
+    <updated>2025-01-10T10:52:45-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -120,7 +120,7 @@ amixer &lt;span class="nb"&gt;set &lt;/span&gt;Master unmute
     <link rel="alternate" href="https://vincebot.dev/2024/09/07/como-eu-organizo-e-mantenho-meus-dotfiles/"/>
     <id>https://vincebot.dev/2024/09/07/como-eu-organizo-e-mantenho-meus-dotfiles/</id>
     <published>2024-09-06T21:00:00-03:00</published>
-    <updated>2024-12-06T22:26:25-03:00</updated>
+    <updated>2025-01-10T10:52:45-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -191,7 +191,7 @@ amixer &lt;span class="nb"&gt;set &lt;/span&gt;Master unmute
     <link rel="alternate" href="https://vincebot.dev/2024/09/02/como-criar-clis-em-ruby-parsers-de-argumentos/"/>
     <id>https://vincebot.dev/2024/09/02/como-criar-clis-em-ruby-parsers-de-argumentos/</id>
     <published>2024-09-02T19:32:00-03:00</published>
-    <updated>2024-12-06T22:26:25-03:00</updated>
+    <updated>2025-01-10T10:52:45-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -325,7 +325,7 @@ amixer &lt;span class="nb"&gt;set &lt;/span&gt;Master unmute
     <link rel="alternate" href="https://vincebot.dev/2024/08/28/configurando-dominios-do-meu-homelab-na-cloudflare-usando-terraform/"/>
     <id>https://vincebot.dev/2024/08/28/configurando-dominios-do-meu-homelab-na-cloudflare-usando-terraform/</id>
     <published>2024-08-28T11:08:00-03:00</published>
-    <updated>2024-12-06T22:26:25-03:00</updated>
+    <updated>2025-01-10T10:52:45-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -445,7 +445,7 @@ configurações, você pode acessar o painel da Cloudflare e verificar se os reg
     <link rel="alternate" href="https://vincebot.dev/2024/08/26/utilizando-userscripts-para-customizar-sua-experiencia-na-web/"/>
     <id>https://vincebot.dev/2024/08/26/utilizando-userscripts-para-customizar-sua-experiencia-na-web/</id>
     <published>2024-08-26T00:48:00-03:00</published>
-    <updated>2024-12-06T22:26:25-03:00</updated>
+    <updated>2025-01-10T10:52:45-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -568,7 +568,7 @@ anteriormente.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/"/>
     <id>https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/</id>
     <published>2024-08-16T23:16:00-03:00</published>
-    <updated>2024-12-06T22:26:25-03:00</updated>
+    <updated>2025-01-10T10:52:45-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -632,7 +632,7 @@ anteriormente.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2024/08/10/efeito-notion/"/>
     <id>https://vincebot.dev/2024/08/10/efeito-notion/</id>
     <published>2024-08-10T02:16:00-03:00</published>
-    <updated>2024-12-06T22:26:25-03:00</updated>
+    <updated>2025-01-10T10:52:45-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -691,7 +691,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/"/>
     <id>https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/</id>
     <published>2024-08-04T00:12:00-03:00</published>
-    <updated>2024-12-06T22:26:25-03:00</updated>
+    <updated>2025-01-10T10:52:45-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -763,7 +763,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/"/>
     <id>https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/</id>
     <published>2024-08-02T10:25:00-03:00</published>
-    <updated>2024-12-06T22:26:25-03:00</updated>
+    <updated>2025-01-10T10:52:45-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -872,7 +872,7 @@ rails db:migrate
     <link rel="alternate" href="https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/"/>
     <id>https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/</id>
     <published>2024-07-31T09:59:00-03:00</published>
-    <updated>2024-12-06T22:26:25-03:00</updated>
+    <updated>2025-01-10T10:52:45-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
