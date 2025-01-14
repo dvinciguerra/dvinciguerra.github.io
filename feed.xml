@@ -6,16 +6,56 @@
   <id>https://vincebot.dev</id>
   <link href="https://vincebot.dev"/>
   <link href="https://vincebot.dev/feed.xml" rel="self"/>
-  <updated>2024-12-06T19:54:00-03:00</updated>
+  <updated>2025-01-13T16:53:00-03:00</updated>
   <author>
     <name>Daniel Vinciguerra</name>
   </author>
+  <entry>
+    <title>Caracteres com acento em ruby</title>
+    <link rel="alternate" href="https://vincebot.dev/2025/01/13/caracteres-com-acento-em-ruby/"/>
+    <id>https://vincebot.dev/2025/01/13/caracteres-com-acento-em-ruby/</id>
+    <published>2025-01-13T16:53:00-03:00</published>
+    <updated>2025-01-14T08:51:13-03:00</updated>
+    <author>
+      <name>Daniel Vinciguerra</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;em&gt;Este post não é exatamente um TIL, mas sim um post sobre um problema que tive e como resolvi.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2&gt;Problema&lt;/h2&gt;
+
+&lt;p&gt;Estava pareando hoje para resolver um problema em uma regular expression e
+precisavamos verificar se o antes e o pós de uma string continha caracteres
+alfanuméricos.&lt;/p&gt;
+
+&lt;p&gt;Como estamos falando de português, acentos e cedilhas são comuns, então
+precisavamos levar em conta esses caractéres também.&lt;/p&gt;
+
+&lt;h2&gt;Solução&lt;/h2&gt;
+
+&lt;p&gt;Uma solução rápida foi adicionar os caracteres acentuados e cedilhas na regex,
+como o range do &lt;code&gt;À&lt;/code&gt; até o &lt;code&gt;ÿ&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="p"&gt;[\&lt;/span&gt;&lt;span class="n"&gt;w&lt;/span&gt;&lt;span class="err"&gt;À&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="err"&gt;ÿ&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Dessa forma, conseguimos verificar se a string contém caracteres alfanuméricos.&lt;/p&gt;
+
+&lt;p&gt;Para entender melhor o range, podemos usar o método &lt;code&gt;chr&lt;/code&gt; e &lt;code&gt;ord&lt;/code&gt; para ver o código do caractere:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;chars&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;Array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;..&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nf"&gt;map&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;_1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;chr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'utf-8'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;pp&lt;/span&gt; &lt;span class="n"&gt;chars&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;E para utilizar fazer o processo inverso, podemos usar o método &lt;code&gt;ord&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;pp&lt;/span&gt; &lt;span class="n"&gt;chars&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="ss"&gt;:ord&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Se voce reparar, o range do &lt;code&gt;À&lt;/code&gt; até o &lt;code&gt;ÿ&lt;/code&gt; é de &lt;code&gt;192&lt;/code&gt; até &lt;code&gt;255&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Espero que isso ajude alguém que esteja com o mesmo problema que eu tive hoje.&lt;/p&gt;
+</content>
+  </entry>
   <entry>
     <title>Mute and umute audio using terminal on Ubuntu</title>
     <link rel="alternate" href="https://vincebot.dev/2024/12/06/mute-and-umute-audio-using-terminal-on-ubuntu/"/>
     <id>https://vincebot.dev/2024/12/06/mute-and-umute-audio-using-terminal-on-ubuntu/</id>
     <published>2024-12-06T19:54:00-03:00</published>
-    <updated>2025-01-10T10:52:45-03:00</updated>
+    <updated>2025-01-10T12:55:55-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -56,7 +96,7 @@ amixer &lt;span class="nb"&gt;set &lt;/span&gt;Master unmute
     <link rel="alternate" href="https://vincebot.dev/2024/11/03/debugando-codigos-em-ruby/"/>
     <id>https://vincebot.dev/2024/11/03/debugando-codigos-em-ruby/</id>
     <published>2024-11-03T16:36:00-03:00</published>
-    <updated>2025-01-10T10:52:45-03:00</updated>
+    <updated>2025-01-10T12:55:55-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -120,7 +160,7 @@ amixer &lt;span class="nb"&gt;set &lt;/span&gt;Master unmute
     <link rel="alternate" href="https://vincebot.dev/2024/09/07/como-eu-organizo-e-mantenho-meus-dotfiles/"/>
     <id>https://vincebot.dev/2024/09/07/como-eu-organizo-e-mantenho-meus-dotfiles/</id>
     <published>2024-09-06T21:00:00-03:00</published>
-    <updated>2025-01-10T10:52:45-03:00</updated>
+    <updated>2025-01-10T12:55:55-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -191,7 +231,7 @@ amixer &lt;span class="nb"&gt;set &lt;/span&gt;Master unmute
     <link rel="alternate" href="https://vincebot.dev/2024/09/02/como-criar-clis-em-ruby-parsers-de-argumentos/"/>
     <id>https://vincebot.dev/2024/09/02/como-criar-clis-em-ruby-parsers-de-argumentos/</id>
     <published>2024-09-02T19:32:00-03:00</published>
-    <updated>2025-01-10T10:52:45-03:00</updated>
+    <updated>2025-01-10T12:55:55-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -325,7 +365,7 @@ amixer &lt;span class="nb"&gt;set &lt;/span&gt;Master unmute
     <link rel="alternate" href="https://vincebot.dev/2024/08/28/configurando-dominios-do-meu-homelab-na-cloudflare-usando-terraform/"/>
     <id>https://vincebot.dev/2024/08/28/configurando-dominios-do-meu-homelab-na-cloudflare-usando-terraform/</id>
     <published>2024-08-28T11:08:00-03:00</published>
-    <updated>2025-01-10T10:52:45-03:00</updated>
+    <updated>2025-01-10T12:55:55-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -445,7 +485,7 @@ configurações, você pode acessar o painel da Cloudflare e verificar se os reg
     <link rel="alternate" href="https://vincebot.dev/2024/08/26/utilizando-userscripts-para-customizar-sua-experiencia-na-web/"/>
     <id>https://vincebot.dev/2024/08/26/utilizando-userscripts-para-customizar-sua-experiencia-na-web/</id>
     <published>2024-08-26T00:48:00-03:00</published>
-    <updated>2025-01-10T10:52:45-03:00</updated>
+    <updated>2025-01-10T12:55:55-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -568,7 +608,7 @@ anteriormente.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/"/>
     <id>https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/</id>
     <published>2024-08-16T23:16:00-03:00</published>
-    <updated>2025-01-10T10:52:45-03:00</updated>
+    <updated>2025-01-10T12:55:55-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -632,7 +672,7 @@ anteriormente.&lt;/p&gt;
     <link rel="alternate" href="https://vincebot.dev/2024/08/10/efeito-notion/"/>
     <id>https://vincebot.dev/2024/08/10/efeito-notion/</id>
     <published>2024-08-10T02:16:00-03:00</published>
-    <updated>2025-01-10T10:52:45-03:00</updated>
+    <updated>2025-01-10T12:55:55-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -691,7 +731,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/"/>
     <id>https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/</id>
     <published>2024-08-04T00:12:00-03:00</published>
-    <updated>2025-01-10T10:52:45-03:00</updated>
+    <updated>2025-01-10T12:55:55-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -763,7 +803,7 @@ Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é import
     <link rel="alternate" href="https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/"/>
     <id>https://vincebot.dev/2024/08/02/utilizando-o-solid-queue-em-sua-aplicacao/</id>
     <published>2024-08-02T10:25:00-03:00</published>
-    <updated>2025-01-10T10:52:45-03:00</updated>
+    <updated>2025-01-10T12:55:55-03:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -865,89 +905,6 @@ rails db:migrate
 &lt;p&gt;Fiz alguns testes e quero criar um novo artigo, explicando pontos que observei para melhorar a escalabilidade de soluções Rails usando o Solid Queue.&lt;/p&gt;
 
 &lt;p&gt;Muito obrigado pela visita e nos vemos no próximo post.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>Por que Migrei Meu Blog do Jekyll para o Middleman</title>
-    <link rel="alternate" href="https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/"/>
-    <id>https://vincebot.dev/2024/07/31/por-que-migrei-meu-blog-do-jekyll-para-o-middleman/</id>
-    <published>2024-07-31T09:59:00-03:00</published>
-    <updated>2025-01-10T10:52:45-03:00</updated>
-    <author>
-      <name>Daniel Vinciguerra</name>
-    </author>
-    <content type="html">&lt;p&gt;Migrar um blog de uma plataforma para outra é uma decisão significativa que pode ser motivada por diversas razões, desde 
-melhorias na performance, melhores funcionalidades, etc. Recentemente, decidi migrar meu blog do Jekyll para o 
-Middleman, e gostaria de compartilhar as razões que me levaram a fazer essa mudança e quais as minhas percepções sobre
-a escolha e o processo.&lt;/p&gt;
-
-&lt;h2&gt;Porque o Jekyll?&lt;/h2&gt;
-
-&lt;p&gt;O Jekyll é uma ferramenta popular para a criação de sites estáticos, talvez seja uma das mais conhecidas e certamente a 
-que popularizou essa categoria de ferramentas com a simplicidade em criar sites estáticos, mesmo para que não conhecia a 
-linguagem Ruby (na qual a ferramenta foi criada).&lt;/p&gt;
-
-&lt;p&gt;A sintaxe do Liquid, a facilidade de personalização e a comunidade ativa de plugins certamente foram fatores que me 
-atraíram para o Jekyll.&lt;/p&gt;
-
-&lt;p&gt;No entanto, ao longo do tempo, comecei a sentir algumas limitações e desafios com o Jekyll que me levaram a considerar
-outras opções, como o Middleman que ja conhecia.&lt;/p&gt;
-
-&lt;h2&gt;Porque o Middleman?&lt;/h2&gt;
-
-&lt;p&gt;O Middleman é uma ferramenta de geração de sites estáticos construída em Ruby, que oferece uma abordagem mais flexível e 
-personalizável para o desenvolvimento de sites, trazendo principalmente muito do que costumamos usar quando 
-desenvolvemos soluções web em ruby.&lt;/p&gt;
-
-&lt;p&gt;As possibilidades nativas e o uso do erb ao inves do liquid, torna tudo mais simples e faz um desenvolvedor 
-familiarizado com Ruby se sentir em casa.&lt;/p&gt;
-
-&lt;p&gt;Muitas pessoas podem se perguntar porque não usar outras alternativas como o Gatsby, Hugo, etc. A resposta é simples, o
-Middleman é uma ferramenta que já conhecia e que me atende muito bem, então porque mudar?&lt;/p&gt;
-
-&lt;h2&gt;Razões para a migração&lt;/h2&gt;
-
-&lt;h3&gt;1. Queria mais controle e flexibilidade&lt;/h3&gt;
-
-&lt;p&gt;Apesar de gostar muito do Jekyll, sentia que sempre estava &amp;ldquo;lutando&amp;rdquo; para alterar meu conteúdo ou adicionar novas
-funcionalidades. &lt;/p&gt;
-
-&lt;p&gt;Diferente disso, o Middleman sempre me ofereceu mais controle e flexibilidade sobre a estrutura e o design dos meus
-projetos, facilidade de integrar com qualquer coisa que eu quisesse de forma natural e sem muitas dores de cabeça. &lt;/p&gt;
-
-&lt;h3&gt;2. Sistema de templates&lt;/h3&gt;
-
-&lt;p&gt;O Middleman utiliza o sistema de templates ERB, Haml, Slim, entre outros, o que facilita a criação de layouts complexos 
-e reutilizáveis. Isso se traduz em um desenvolvimento mais eficiente e uma manutenção mais simples. &lt;/p&gt;
-
-&lt;p&gt;No Jekyll, embora os templates sejam poderosos, a sintaxe do Liquid pode ser limitada para certos casos de uso que eu 
-precisava.&lt;/p&gt;
-
-&lt;h3&gt;3. Ecossistema de plugins&lt;/h3&gt;
-
-&lt;p&gt;O ecossistema de plugins do Middleman é robusto e altamente extensível, tendo praticamente tudo que eu preciso.&lt;/p&gt;
-
-&lt;p&gt;Mesmo se não tiver, acho a facilidade de criar um plugin para o Middleman muito boa. &lt;/p&gt;
-
-&lt;h3&gt;4. Experiência pessoal&lt;/h3&gt;
-
-&lt;p&gt;Trabalhei um bom tempo com projetos frontend usando Middleman e sempre gostei da experiência, então a familiaridade com
-a ferramenta foi um fator importante na minha decisão.&lt;/p&gt;
-
-&lt;p&gt;Usar o Middleman para o meu blog me permitiu usar o que eu ja sabia e manter o foco no que eu preciso, que é o conteúdo. &lt;/p&gt;
-
-&lt;h2&gt;Conclusão&lt;/h2&gt;
-
-&lt;p&gt;A migração do meu blog do Jekyll para o Middleman foi uma decisão que me trouxe muitos benefícios e melhorias.&lt;/p&gt;
-
-&lt;p&gt;Não estou dizendo que o Jekyll é ruim, pelo contrário, é uma ferramenta incrível e que me ajudou muito, mas o Middleman
-sendo uma solução na qual tenho mais familiaridade, me permite ter menos friccção sobre manter ele e mais no conteúdo
-que quero compartilhar.&lt;/p&gt;
-
-&lt;p&gt;Não espero que outras pessoas façam a mesma migração, mas espero que minha experiência possa ajudar alguém a tomar uma
-decisão informada sobre qual ferramenta usar para o seu blog ou site estático, com base nas suas necessidades.&lt;/p&gt;
-
-&lt;p&gt;No final do dia, o que importa é você usar uma ferramenta que te atenda e não o hype do momento.&lt;/p&gt;
 </content>
   </entry>
 </feed>

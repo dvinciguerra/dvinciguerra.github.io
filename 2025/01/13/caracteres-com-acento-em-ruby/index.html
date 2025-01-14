@@ -1,5 +1,4 @@
 
-
 <!doctype html>
 <html>
   <head>
@@ -13,8 +12,18 @@
 
 
 
+      <meta property="og:type" content="article">
+<meta property="og:url" content="/2025/01/13/caracteres-com-acento-em-ruby/">
+<meta property="og:title" content="Caracteres com acento em ruby">
+<meta property="og:site_name" content="Vincebot">
+<meta property="og:description" content="Este post não é exatamente um TIL, mas sim um post sobre um problema que tive e como resolvi...">
+<meta property="og:image" content="/images/avatar.jpg">
 
-    <title>Sobre mim</title>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/images/avatar.jpg">
+
+
+    <title>Caracteres com acento em ruby</title>
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/feed.xml" />
 
     <!-- script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script -->
@@ -82,47 +91,99 @@
     <main class="bg-gray-900 pb-20">
       <section class="text-gray-400 body-font overflow-hidden min-h-svh">
         <div class="container px-0 sm:px-2 md:px-6 lg:px-20 xl:px-60 pt-5 mx-auto">
-            <section class="text-gray-400 bg-gray-900 body-font">
-  <div class="container p-20 mx-auto">
-    <div class="text-center mb-10">
-      <h1 class="sm:text-3xl text-2xl font-medium title-font text-white mb-4">Hi, I'm Daniel Vinciguerra
-</h1>
-      <!-- subtitulo para o meu blog -->
-      <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-400">I'm a software engineer and I love to write about technology, automation, integration, programming, productivity and life.
-</p>
-      <div class="flex mt-6 justify-center">
-        <div class="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
+            <article class="post">
+    <header class="post-header">
+      <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-12">
+        <p class="mb-2 text-xs font-semibold tracking-wide text-gray-600 uppercase sm:text-center">
+          <time class="post-date" datetime="2025-01-13">
+            13 January 2025
+          </time>
+        </p>
+        <div class="max-w-xl mb-5 md:mx-auto sm:text-center lg:max-w-2xl">
+          <div class="mb-4">
+            <h1 class="inline-block max-w-lg font-sans text-3xl font-extrabold leading-none tracking-tight text-gray-50 transition-colors duration-200 hover:text-gray-50 sm:text-4xl">
+              Caracteres com acento em ruby
+            </h1>
+          </div>
+
+          <p class="text-base text-gray-50 md:text-lg">
+              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">til</span>
+              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">ruby</span>
+              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">caracteres</span>
+              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1">encoding</span>
+          </p>
+        </div>
+        <div class="sm:text-center">
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </header>
+
+    <section class="post-content container px-auto max-md:px-0 max-sm:px-4 md:pb-40 max-sm:pb-20">
+      <p><em>Este post não é exatamente um TIL, mas sim um post sobre um problema que tive e como resolvi.</em></p>
+
+<h2>Problema</h2>
+
+<p>Estava pareando hoje para resolver um problema em uma regular expression e
+precisavamos verificar se o antes e o pós de uma string continha caracteres
+alfanuméricos.</p>
+
+<p>Como estamos falando de português, acentos e cedilhas são comuns, então
+precisavamos levar em conta esses caractéres também.</p>
+
+<h2>Solução</h2>
+
+<p>Uma solução rápida foi adicionar os caracteres acentuados e cedilhas na regex,
+como o range do <code>À</code> até o <code>ÿ</code>:</p>
+<div class="highlight"><pre class="highlight ruby"><code><span class="p">[\</span><span class="n">w</span><span class="err">À</span><span class="o">-</span><span class="err">ÿ</span><span class="p">]</span>
+</code></pre></div>
+<p>Dessa forma, conseguimos verificar se a string contém caracteres alfanuméricos.</p>
+
+<p>Para entender melhor o range, podemos usar o método <code>chr</code> e <code>ord</code> para ver o código do caractere:</p>
+<div class="highlight"><pre class="highlight ruby"><code><span class="n">chars</span> <span class="o">=</span> <span class="no">Array</span><span class="p">(</span><span class="mi">0</span><span class="o">..</span><span class="mi">255</span><span class="p">).</span><span class="nf">map</span> <span class="p">{</span> <span class="n">_1</span><span class="p">.</span><span class="nf">chr</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="p">}</span>
+<span class="n">pp</span> <span class="n">chars</span>
+</code></pre></div>
+<p>E para utilizar fazer o processo inverso, podemos usar o método <code>ord</code>:</p>
+<div class="highlight"><pre class="highlight ruby"><code><span class="n">pp</span> <span class="n">chars</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:ord</span><span class="p">)</span>
+</code></pre></div>
+<p>Se voce reparar, o range do <code>À</code> até o <code>ÿ</code> é de <code>192</code> até <code>255</code>.</p>
+
+<p>Espero que isso ajude alguém que esteja com o mesmo problema que eu tive hoje.</p>
+
+    </section>
 
 
+    <p class="contact-me rounded border border-solid border-slate-700 p-4">
+  Quer conversar sobre este artigo? Mande-me uma
+  <a href="mailto:7pa1gevhw@mozmail.com?Subject=Comment: [Vincebot] Caracteres com acento em ruby">mensagem</a>.
+</p>
 
-  <section class="post-content">
-    <p>Olá, meu nome é Daniel Vinciguerra, mas se você não gosta de nomes longos, pode me chamar de Vince.</p>
 
-<p>Tenho usado as linguagens <a href="https://github.com/dvinciguerra?tab=repositories&amp;q=&amp;type=&amp;language=ruby&amp;sort=stargazers" rel="nofollow">Ruby</a>, C e C++, <a href="https://github.com/dvinciguerra?tab=repositories&amp;q=&amp;type=&amp;language=javascript&amp;sort=stargazers" rel="nofollow">JS</a> (frontend e backend), <a href="https://github.com/dvinciguerra?tab=repositories&amp;q=&amp;type=&amp;language=shell&amp;sort=stargazers" rel="nofollow">Shell script</a> e um pouco de Python.</p>
+    <!-- footer class="post-footer">
+      <section class="author">
+        <h4>
+          <a href="/author/daniel-vinciguerra/">Daniel Vinciguerra</a>
+        </h4>
+        <p>
+            Read <a href="/author/daniel-vinciguerra/">more posts</a> by this author.
+        </p>
 
-<p>Também tenho experiência com <a href="https://github.com/dvinciguerra?tab=repositories&amp;q=&amp;type=&amp;language=perl&amp;sort=stargazers" rel="nofollow">Perl</a>, Java, C#, Lua (e algumas outras linguagens) profissionalmente.</p>
+      </section>
 
-<p>Atualmente ando brincando com Rust, <a href="https://github.com/dvinciguerra?tab=repositories&amp;q=&amp;type=&amp;language=crystal&amp;sort=stargazers" rel="nofollow">Crystal</a>, Elixir, Erlang e Clojure nas horas vagas.</p>
+      <section class="share">
+        <h4>Share this post</h4>
+        <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Caracteres com acento em ruby&amp;url=http://www.example.com/2025/01/13/caracteres-com-acento-em-ruby/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+          <span class="hidden">Twitter</span>
+        </a>
+        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://www.example.com/2025/01/13/caracteres-com-acento-em-ruby/" onclick="window.open(this.href, 'facebook-share', 'width=580,height=296');return false;">
+          <span class="hidden">Facebook</span>
+        </a>
+        <a class="icon-google-plus" href="https://plus.google.com/share?url=http://www.example.com/2025/01/13/caracteres-com-acento-em-ruby/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+          <span class="hidden">Google+</span>
+        </a>
+      </section>
+    </footer -->
 
-<h3>Social</h3>
-
-<ul>
-<li><p>GitHub: <a href="https://github.com/dvinciguerra" rel="nofollow">https://github.com/dvinciguerra</a></p></li>
-<li><p>Bluesky: <a href="https://bsky.app/profile/danielvinciguerra.bsky.social" rel="nofollow">https://bsky.app/profile/danielvinciguerra.bsky.social</a></p></li>
-<li><p>LinkedIn: <a href="https://www.linkedin.com/in/dvinciguerra/" rel="nofollow">https://www.linkedin.com/in/dvinciguerra/</a></p></li>
-<li><p>~~Twitter: <a href="https://twitter.com/dvinciguerra" rel="nofollow">https://twitter.com/dvinciguerra</a>~~</p></li>
-</ul>
-
-<h3>Contact</h3>
-
-<p>daniel.vinciguerra AT bivee.com.br
-@dvinciguerra</p>
-
-  </section>
+  </article>
 
         </div>
       </section>
