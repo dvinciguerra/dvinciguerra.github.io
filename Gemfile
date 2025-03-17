@@ -27,3 +27,9 @@ group :development do
   gem 'rubocop', require: false
   gem 'solargraph', require: false
 end
+
+gem "bigdecimal", "~> 3.1"
+
+gem "mutex_m", "~> 0.3.0"
+
+gem "base64", "~> 0.2.0"
