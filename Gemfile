@@ -33,3 +33,9 @@ gem "bigdecimal", "~> 3.1"
 gem "mutex_m", "~> 0.3.0"
 
 gem "base64", "~> 0.2.0"
+
+gem "rdoc", "~> 6.12"
+
+gem "csv", "~> 3.3"
+
+gem "ostruct", "~> 0.6.1"
