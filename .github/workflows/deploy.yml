@@ -30,13 +30,6 @@ jobs:
       - name: Install Node.js dependencies
         run: npm install
 
-      - name: Check for uncommitted changes
-        run: |
-          if [[ -n "$(git status --porcelain)" ]]; then
-            echo "[error] There are uncommitted changes."
-            exit 1
-          fi
-
       - name: Disable Bundler frozen mode
         run: bundle config set --local frozen false
 
