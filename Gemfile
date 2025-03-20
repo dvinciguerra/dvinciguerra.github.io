@@ -21,7 +21,7 @@ gem 'middleman-syntax'
 
 gem 'middleman-livereload', '~> 3.4'
 
-gem 'tzinfo-data' if platform.version == 'android'
+gem 'tzinfo-data'
 
 group :development do
   gem 'rubocop', require: false
