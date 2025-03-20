@@ -27,8 +27,16 @@ jobs:
           node-version: 18
           cache: 'npm'
 
+      - name: Setup NPM environment
+        run: |
+          export NVM_DIR=~/.nvm
+          source ~/.nvm/nvm.sh
+
       - name: Install Node.js dependencies
         run: npm install
+
+      - name: Install Tailwind CSS
+        run: npm install tailwindcss
 
       - name: Disable Bundler frozen mode
         run: bundle config set --local frozen false
