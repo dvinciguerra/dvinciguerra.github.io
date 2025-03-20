@@ -1,0 +1,72 @@
+name: Deploy Middleman to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.4
+          bundler-cache: true
+
+      - name: Check for uncommitted changes
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "[error] There are uncommitted changes."
+            exit 1
+          fi
+
+      - name: Disable Bundler frozen mode
+        run: bundle config set --local frozen false
+
+      - name: Install dependencies
+        run: bundle install --jobs 4 --retry 3
+
+      - name: Build Middleman site
+        run: bundle exec middleman build --clean
+
+      - name: Stash built files
+        run: git stash push --include-untracked --keep-index
+
+      - name: Switch to gh-pages branch
+        run: |
+          if git show-ref --verify --quiet refs/heads/gh-pages; then
+            git checkout gh-pages
+            git pull origin gh-pages
+          else
+            git checkout --orphan gh-pages
+          fi
+
+      - name: Pop stash
+        run: git stash pop || echo "[info] No stashed changes to apply"
+
+      - name: Remove old files
+        run: find . -mindepth 1 ! -regex '^./\.git/.*?' -delete
+
+      - name: Move build files to root
+        run: mv build/* . && rm -rf build
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "build: deployment to gh-pages" || echo "[info] No changes to commit"
+
+      - name: Push changes to gh-pages
+        run: git push origin gh-pages
+
+      - name: Switch back to main branch
+        run: git checkout main
