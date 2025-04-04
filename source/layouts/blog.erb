@@ -15,7 +15,7 @@
     <title><%= current_page.data.title || "Vincebot" %></title>
     <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
 
-    <!-- script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
 
     <%= stylesheet_link_tag "site" %>
     <%= stylesheet_link_tag "highlighting" %>
