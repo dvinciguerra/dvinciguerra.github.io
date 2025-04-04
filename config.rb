@@ -118,11 +118,11 @@ end
 
 style_file = 'stylesheets/site.scss'
 
-activate :external_pipeline,
-         name: :tailwind,
-         command: "npx tailwindcss -i ./source/#{style_file} -o ./dist/#{style_file} #{'--watch' unless build?}",
-         latency: 2,
-         source: './dist/'
+# activate :external_pipeline,
+#          name: :tailwind,
+#          # command: "npx tailwindcss -i ./source/#{style_file} -o ./dist/#{style_file} #{'--watch' unless build?}",
+#          latency: 2,
+#          source: './dist/'
 
 configure :development do
   set :debug_assets, true
