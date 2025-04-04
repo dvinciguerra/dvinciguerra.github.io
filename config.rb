@@ -116,7 +116,7 @@ activate :importmap do |option|
   option.use_shim = true # or false
 end
 
-style_file = 'stylesheets/site.css'
+style_file = 'stylesheets/site.scss'
 
 activate :external_pipeline,
          name: :tailwind,
