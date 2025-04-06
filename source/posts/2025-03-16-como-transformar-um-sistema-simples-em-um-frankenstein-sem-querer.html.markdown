@@ -16,26 +16,21 @@ E se não... calma que sua hora vai chegar.
 
 ## MVC: Simples, mas nem todo mundo entende
 
-O padrão Model-View-Controller (MVC) já foi o queridinho do desenvolvimento web. Ainda é, na real. Simples, direto e fácil de entender:
+O padrão _Model-View-Controller_ (MVC) já foi o queridinho do desenvolvimento web. Ainda é, na real. Simples, direto e fácil de entender:
 
-Model → cuida dos dados e regras de negócio.
-
-View → exibe as informações pro usuário.
-
-Controller → recebe requisições, faz a ponte entre Model e View.
+- **Model** → cuida dos dados e regras de negócio.
+- **View** → exibe as informações pro usuário.
+- **Controller** → recebe requisições, faz a ponte entre Model e View.
 
 
 Até aí, tudo lindo. O problema não é o MVC. O problema é que as pessoas não estudam direito como aplicar MVC antes de decidir que ele "não é suficiente".
 
 Aí começam os improvisos:
 
-"Vamos criar um Service Object pra organizar isso!"
-
-"Que tal um Interactor?"
-
-"E se a gente usar Clean Architecture?"
-
-"O sistema tá uma bagunça, bora aplicar DDD!"
+"Vamos criar um Service Object pra organizar isso!",
+"Que tal um Interactor?",
+"E se a gente usar Clean Architecture?",
+"O sistema tá uma bagunça, bora aplicar DDD!".
 
 
 De repente, aquele código que era só um Model, um Controller e uma View, vira um sistema onde ninguém mais sabe onde colocar código novo.
@@ -74,34 +69,27 @@ No fim, o problema não está nos padrões, mas na forma como eles são aplicado
 
 Aqui vão algumas dicas pra evitar o caos arquitetural:
 
-1. Entenda bem o padrão antes de tentar "melhorá-lo".
+**1 - Entenda bem o padrão antes de tentar "melhorá-lo".**
 
 MVC puro já resolve muita coisa se for bem aplicado.
-
 Antes de sair criando Service Objects, pergunte: "Isso realmente não cabe num Model?"
 
 
-
-2. Novas camadas só devem ser criadas quando há um problema real.
+**2 - Novas camadas só devem ser criadas quando há um problema real.**
 
 Criar camadas porque "todo mundo faz assim" não é argumento.
-
 Se o problema for código desorganizado, a solução pode ser organizar melhor o que já existe.
 
 
-
-3. Arquitetura deve ser um consenso do time, não uma decisão individual.
+**3 - Arquitetura deve ser um consenso do time, não uma decisão individual.**
 
 Se cada dev aplica um padrão diferente, o sistema perde coesão.
-
 Se vamos adicionar uma camada nova, todo mundo precisa entender o porquê.
 
 
-
-4. Simplicidade é um superpoder.
+**4 - Simplicidade é um superpoder.**
 
 Um código fácil de entender é melhor do que um código "sofisticado" que ninguém sabe mexer.
-
 A melhor arquitetura não é a mais complexa, é a que o time consegue manter sem dor de cabeça.
 
 
