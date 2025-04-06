@@ -1,0 +1,905 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Vincebot</title>
+  <subtitle>I'm a software engineer and I love to write about technology, automation, integration, programming, productivity and life.
+</subtitle>
+  <id>https://vincebot.dev</id>
+  <link href="https://vincebot.dev"/>
+  <link href="https://vincebot.dev/feed.xml" rel="self"/>
+  <updated>2025-03-16T20:08:00-03:00</updated>
+  <author>
+    <name>Daniel Vinciguerra</name>
+  </author>
+  <entry>
+    <title>Como transformar um sistema simples em um Frankenstein sem querer</title>
+    <link rel="alternate" href="https://vincebot.dev/2025/03/16/como-transformar-um-sistema-simples-em-um-frankenstein-sem-querer/"/>
+    <id>https://vincebot.dev/2025/03/16/como-transformar-um-sistema-simples-em-um-frankenstein-sem-querer/</id>
+    <published>2025-03-16T20:08:00-03:00</published>
+    <updated>2025-04-06T17:02:45-03:00</updated>
+    <author>
+      <name>Daniel Vinciguerra</name>
+    </author>
+    <content type="html">&lt;p&gt;&amp;hellip;ou o perigo de tentar resolver problemas que você ainda não entendeu.&lt;/p&gt;
+
+&lt;p&gt;Você já trabalhou em um projeto onde cada parte do código parecia seguir uma filosofia diferente? Onde MVC, Clean Architecture, DDD, Service Objects, Interactors e um monte de camadas extras coexistiam, mas ninguém sabia exatamente quando e por que cada coisa foi adicionada?&lt;/p&gt;
+
+&lt;p&gt;Se sim, você já viu um Frankenstein arquitetural de perto.&lt;/p&gt;
+
+&lt;p&gt;E se não&amp;hellip; calma que sua hora vai chegar.&lt;/p&gt;
+
+&lt;h2&gt;MVC: Simples, mas nem todo mundo entende&lt;/h2&gt;
+
+&lt;p&gt;O padrão &lt;em&gt;Model-View-Controller&lt;/em&gt; (MVC) já foi o queridinho do desenvolvimento web. Ainda é, na real. Simples, direto e fácil de entender:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Model&lt;/strong&gt; → cuida dos dados e regras de negócio.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;View&lt;/strong&gt; → exibe as informações pro usuário.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Controller&lt;/strong&gt; → recebe requisições, faz a ponte entre Model e View.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Até aí, tudo lindo. O problema não é o MVC. O problema é que as pessoas não estudam direito como aplicar MVC antes de decidir que ele &amp;ldquo;não é suficiente&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;Aí começam os improvisos:&lt;/p&gt;
+
+&lt;p&gt;&amp;ldquo;Vamos criar um Service Object pra organizar isso!&amp;rdquo;,
+&amp;ldquo;Que tal um Interactor?&amp;rdquo;,
+&amp;ldquo;E se a gente usar Clean Architecture?&amp;rdquo;,
+&amp;ldquo;O sistema tá uma bagunça, bora aplicar DDD!&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;De repente, aquele código que era só um Model, um Controller e uma View, vira um sistema onde ninguém mais sabe onde colocar código novo.&lt;/p&gt;
+
+&lt;p&gt;A equipe não discute mais regras de negócio. Agora, as discussões são sobre &amp;ldquo;Onde eu coloco essa lógica?&amp;rdquo; porque cada dev acha que tem que seguir um padrão diferente.&lt;/p&gt;
+
+&lt;p&gt;O que era simples agora virou uma jornada épica pra entender como o código funciona.&lt;/p&gt;
+
+&lt;h2&gt;Mas pera&amp;hellip; então Service Objects e afins são ruins?&lt;/h2&gt;
+
+&lt;p&gt;Não, não são. O problema não é criar novas camadas. O problema é criar camadas sem entender a necessidade real.&lt;/p&gt;
+
+&lt;p&gt;MVC pode ter limitações? Sim. Mas antes de sair metendo Service Object, Port &amp;amp; Adapter, Domain Service e o escambau, vale a pena perguntar:&lt;/p&gt;
+
+&lt;p&gt;O problema é o padrão ou a forma como estamos aplicando ele?&lt;/p&gt;
+
+&lt;p&gt;Muitas vezes, os problemas em sistemas grandes não vêm da falta de camadas, mas da falta de disciplina na aplicação do próprio MVC.&lt;/p&gt;
+
+&lt;p&gt;Se ninguém entende onde colocar a lógica, talvez o problema não seja a falta de abstrações, mas sim a falta de organização dentro do que já existe.&lt;/p&gt;
+
+&lt;h2&gt;O perigo da ansiedade em aplicar padrões&lt;/h2&gt;
+
+&lt;p&gt;Aqui entra outro problema clássico: a ânsia de aplicar tudo o que aprendemos, sem entender profundamente os conceitos.&lt;/p&gt;
+
+&lt;p&gt;Já viu devs que assistem um vídeo sobre Clean Architecture e, no dia seguinte, querem refatorar o sistema todo?
+Ou alguém que leu sobre DDD e já quer transformar cada regra de negócio em um agregado?&lt;/p&gt;
+
+&lt;p&gt;Esse é um dos maiores perigos da nossa área: aplicar conhecimento sem realmente entender ele.&lt;/p&gt;
+
+&lt;p&gt;A verdade é que cada sistema tem um contexto, e nenhum padrão resolve tudo.
+Você pode seguir MVC puro e ter um código incrível. Você pode usar Clean Architecture e criar um monstro difícil de manter.&lt;/p&gt;
+
+&lt;p&gt;No fim, o problema não está nos padrões, mas na forma como eles são aplicados.&lt;/p&gt;
+
+&lt;h2&gt;Como evitar que seu sistema vire um Frankenstein?&lt;/h2&gt;
+
+&lt;p&gt;Aqui vão algumas dicas pra evitar o caos arquitetural:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1 - Entenda bem o padrão antes de tentar &amp;ldquo;melhorá-lo&amp;rdquo;.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;MVC puro já resolve muita coisa se for bem aplicado.
+Antes de sair criando Service Objects, pergunte: &amp;ldquo;Isso realmente não cabe num Model?&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2 - Novas camadas só devem ser criadas quando há um problema real.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Criar camadas porque &amp;ldquo;todo mundo faz assim&amp;rdquo; não é argumento.
+Se o problema for código desorganizado, a solução pode ser organizar melhor o que já existe.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3 - Arquitetura deve ser um consenso do time, não uma decisão individual.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Se cada dev aplica um padrão diferente, o sistema perde coesão.
+Se vamos adicionar uma camada nova, todo mundo precisa entender o porquê.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4 - Simplicidade é um superpoder.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Um código fácil de entender é melhor do que um código &amp;ldquo;sofisticado&amp;rdquo; que ninguém sabe mexer.
+A melhor arquitetura não é a mais complexa, é a que o time consegue manter sem dor de cabeça.&lt;/p&gt;
+
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+
+&lt;p&gt;A arquitetura do seu sistema não deve ser definida com base no hype do momento.
+Ela precisa fazer sentido pro time, pro projeto e pro negócio.&lt;/p&gt;
+
+&lt;p&gt;MVC pode ser suficiente? Pode.
+Adicionar camadas extras pode ser necessário? Também pode.
+Mas só faz sentido se for resolver um problema real e se as pessoas souberem usar.&lt;/p&gt;
+
+&lt;p&gt;No fim, o maior desafio da arquitetura de software não é técnico, é humano: garantir que todos entendam e sigam um modelo organizacional coeso.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Caracteres com acento em ruby</title>
+    <link rel="alternate" href="https://vincebot.dev/2025/01/13/caracteres-com-acento-em-ruby/"/>
+    <id>https://vincebot.dev/2025/01/13/caracteres-com-acento-em-ruby/</id>
+    <published>2025-01-13T16:53:00-03:00</published>
+    <updated>2025-01-14T09:02:04-03:00</updated>
+    <author>
+      <name>Daniel Vinciguerra</name>
+    </author>
+    <content type="html">&lt;p&gt;&lt;em&gt;Este post não é exatamente um TIL, mas sim um post sobre um problema que tive e como resolvi.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2&gt;Problema&lt;/h2&gt;
+
+&lt;p&gt;Estava pareando hoje para resolver um problema em uma regular expression e
+precisavamos verificar se o antes e o pós de uma string continha caracteres
+alfanuméricos.&lt;/p&gt;
+
+&lt;p&gt;Como estamos falando de português, acentos e cedilhas são comuns, então
+precisavamos levar em conta esses caractéres também.&lt;/p&gt;
+
+&lt;h2&gt;Solução&lt;/h2&gt;
+
+&lt;p&gt;Uma solução rápida foi adicionar os caracteres acentuados e cedilhas na regex,
+como o range do &lt;code&gt;À&lt;/code&gt; até o &lt;code&gt;ÿ&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="p"&gt;[\&lt;/span&gt;&lt;span class="n"&gt;w&lt;/span&gt;&lt;span class="err"&gt;À&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="err"&gt;ÿ&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Dessa forma, conseguimos verificar se a string contém caracteres alfanuméricos.&lt;/p&gt;
+
+&lt;p&gt;Para entender melhor o range, podemos usar o método &lt;code&gt;chr&lt;/code&gt; e &lt;code&gt;ord&lt;/code&gt; para ver o código do caractere:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;chars&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;Array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;..&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nf"&gt;map&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="n"&gt;_1&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;chr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'utf-8'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;pp&lt;/span&gt; &lt;span class="n"&gt;chars&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;E para utilizar fazer o processo inverso, podemos usar o método &lt;code&gt;ord&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;pp&lt;/span&gt; &lt;span class="n"&gt;chars&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="ss"&gt;:ord&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Se voce reparar, o range do &lt;code&gt;À&lt;/code&gt; até o &lt;code&gt;ÿ&lt;/code&gt; é de &lt;code&gt;192&lt;/code&gt; até &lt;code&gt;255&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Espero que isso ajude alguém que esteja com o mesmo problema que eu tive hoje.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Mute and umute audio using terminal on Ubuntu</title>
+    <link rel="alternate" href="https://vincebot.dev/2024/12/06/mute-and-umute-audio-using-terminal-on-ubuntu/"/>
+    <id>https://vincebot.dev/2024/12/06/mute-and-umute-audio-using-terminal-on-ubuntu/</id>
+    <published>2024-12-06T19:54:00-03:00</published>
+    <updated>2025-01-14T09:02:04-03:00</updated>
+    <author>
+      <name>Daniel Vinciguerra</name>
+    </author>
+    <content type="html">&lt;p&gt;Hoje precisei mutar o som do meu computador que com Ubuntu e estava utilizando uma outra maquina.&lt;/p&gt;
+
+&lt;p&gt;Não queria precisar me deslocar até o computador para mutar o som, então pesquisei como fazer isso via terminal.&lt;/p&gt;
+
+&lt;p&gt;Para minha surpresa, descobri em um post no &lt;a href="https://askubuntu.com/questions/26068/how-do-you-mute-from-the-command-line" rel="nofollow"&gt;askubuntu&lt;/a&gt; que é possível mutar e desmutar o som utilizando o comando &lt;code&gt;amixer&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4&gt;Mutar o som e desmutar o som respectivamente&lt;/h4&gt;
+
+&lt;p&gt;Para mutar e desmutar o som, utilize os comandos abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;amixer &lt;span class="nb"&gt;set &lt;/span&gt;Master mute
+amixer &lt;span class="nb"&gt;set &lt;/span&gt;Master unmute
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Alternar entre mutar e desmutar o som&lt;/h4&gt;
+
+&lt;p&gt;Também é possível alternar entre mutar e desmutar o som utilizando o comando abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;amixer &lt;span class="nb"&gt;set &lt;/span&gt;Master toggle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Verificar o status do som&lt;/h4&gt;
+
+&lt;p&gt;Para verificar o status do som, utilize o comando abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;amixer get Master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Os comando retornam informações sobre o volume e se o som está mutado ou não, com um output parecido com o abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight plaintext"&gt;&lt;code&gt;Simple mixer control 'Master',0
+  Capabilities: pvolume pvolume-joined pswitch pswitch-joined
+  Playback channels: Mono
+  Limits: Playback 0 - 87
+  Mono: Playback 75 [86%] [-9.00dB] [off]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Onde na ultima linha, a palavra &lt;code&gt;off&lt;/code&gt; indica que o som está mutado.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Debugando códigos em Ruby</title>
+    <link rel="alternate" href="https://vincebot.dev/2024/11/03/debugando-codigos-em-ruby/"/>
+    <id>https://vincebot.dev/2024/11/03/debugando-codigos-em-ruby/</id>
+    <published>2024-11-03T16:36:00-03:00</published>
+    <updated>2025-01-14T09:02:04-03:00</updated>
+    <author>
+      <name>Daniel Vinciguerra</name>
+    </author>
+    <content type="html">&lt;p&gt;Eu realmente gosto muito das ferramentas de desenvolvimento (devtools) disponíveis para Ruby. Elas são poderosas e facilitam bastante a vida de quem está desenvolvendo. Neste post, vou falar sobre algumas dessas ferramentas e como usá-las para debugar seus códigos Ruby.&lt;/p&gt;
+
+&lt;h2&gt;Interactive Ruby - IRB&lt;/h2&gt;
+
+&lt;p&gt;Que Ruby é uma linguagem extremamente poderosa e produtiva, acho que é bem claro para quem a utiliza no dia a dia, mas preciso dizer: sou um grande fã do REPL IRB.&lt;/p&gt;
+
+&lt;p&gt;REPL é a abreviação de Read-Eval-Print Loop, um ambiente de programação interativo que permite escrever expressões em uma linha de comando e executá-las imediatamente.&lt;/p&gt;
+
+&lt;p&gt;Isso é muito útil para criar provas de conceito (PoC), debugar comportamentos ou resolver problemas rapidamente.&lt;/p&gt;
+
+&lt;p&gt;O IRB é, sem dúvida, a ferramenta mais básica e simples que temos para debugar códigos Ruby, mas também uma das mais importantes.&lt;/p&gt;
+
+&lt;h2&gt;Bindings&lt;/h2&gt;
+
+&lt;p&gt;Bindings são pontos de parada (breakpoints) que você pode inserir no código para inspecionar variáveis, métodos e muito mais.&lt;/p&gt;
+
+&lt;p&gt;Combinado ao irb, adicionar um binding.irb no código é uma das formas mais simples e eficazes de depuração, permitindo inspecionar variáveis e métodos no contexto desejado.&lt;/p&gt;
+
+&lt;p&gt;Apesar de termos ferramentas que estendem as funcionalidades do REPL, como o Byebug e o Pry, o IRB é nativo e não requer dependências adicionais, o que o torna prático e acessível.&lt;/p&gt;
+
+&lt;h2&gt;Pretty Print - pp&lt;/h2&gt;
+
+&lt;p&gt;Seguindo a clássica, porém ainda muito prática, estratégia de debugar com mensagens no stdout, o pp nos permite inspecionar objetos de forma mais amigável.&lt;/p&gt;
+
+&lt;p&gt;Ele chama o método #inspect dos objetos passados como argumento, mas apresenta o resultado de maneira mais legível, o que é extremamente útil para lidar com estruturas mais complexas.&lt;/p&gt;
+
+&lt;h2&gt;Rails Console&lt;/h2&gt;
+
+&lt;p&gt;O Rails é um software incrível, e uma das suas grandes vantagens é facilitar não apenas a criação de novas aplicações, mas também a manutenção das existentes.&lt;/p&gt;
+
+&lt;p&gt;Uma ferramenta essencial para isso é o rails console, um ambiente interativo que carrega todo o contexto da aplicação, permitindo interagir programaticamente com ela.&lt;/p&gt;
+
+&lt;p&gt;É excelente para consultar informações, testar comportamentos, corrigir problemas e, claro, debugar códigos. É simplesmente fantástico.&lt;/p&gt;
+
+&lt;h2&gt;Rails Runner&lt;/h2&gt;
+
+&lt;p&gt;Ainda falando sobre o Rails, o rails runner é uma ferramenta que permite rodar scripts Ruby no contexto da aplicação.&lt;/p&gt;
+
+&lt;p&gt;Embora não seja exatamente uma ferramenta de desenvolvimento ou depuração, ela é extremamente útil em ambientes de desenvolvimento. Com ela, é possível escrever pequenos scripts para testar comportamentos ou extrair informações rapidamente.&lt;/p&gt;
+
+&lt;h2&gt;RSpec&lt;/h2&gt;
+
+&lt;p&gt;Pode parecer clichê, mas eu realmente gosto muito do RSpec. Ele é uma ferramenta poderosa que nos ajuda a escrever testes de forma legível e organizada.&lt;/p&gt;
+
+&lt;p&gt;Escrever testes é, muitas vezes, uma forma eficaz de debugar códigos, pois permite validar comportamentos e verificar se o código está funcionando como esperado.&lt;/p&gt;
+
+&lt;p&gt;Quando estou com dificuldade para entender um código, costumo escrever testes no mesmo arquivo e utilizo o autorun para executá-los automaticamente. Isso ajuda bastante a esclarecer comportamentos confusos e a identificar problemas conforme o código evolui.&lt;/p&gt;
+
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+
+&lt;p&gt;Essas são algumas das ferramentas que uso para debugar códigos Ruby. Elas são muito poderosas e me ajudam a entender o que está acontecendo no código, o que é fundamental no dia a dia de desenvolvimento.&lt;/p&gt;
+
+&lt;p&gt;Esse é um dos motivos pelos quais eu gosto tanto de Ruby: o tooling da linguagem é simplesmente incrível.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Como eu organizo e mantenho meus dotfiles</title>
+    <link rel="alternate" href="https://vincebot.dev/2024/09/07/como-eu-organizo-e-mantenho-meus-dotfiles/"/>
+    <id>https://vincebot.dev/2024/09/07/como-eu-organizo-e-mantenho-meus-dotfiles/</id>
+    <published>2024-09-06T21:00:00-03:00</published>
+    <updated>2025-01-14T09:02:04-03:00</updated>
+    <author>
+      <name>Daniel Vinciguerra</name>
+    </author>
+    <content type="html">&lt;p&gt;Dotfiles são arquivos que controlam as configurações do meu ambiente de desenvolvimento, como o terminal e editores de texto. Mantê-los organizados facilita a portabilidade entre máquinas e garante um ambiente consistente. Neste artigo, compartilho como organizo e mantenho meus dotfiles, destacando as ferramentas e boas práticas que uso.&lt;/p&gt;
+
+&lt;h2&gt;Por que manter os dotfiles organizados?&lt;/h2&gt;
+
+&lt;p&gt;Manter os dotfiles organizados facilita muito a vida. Quando preciso configurar uma nova máquina, é só copiar tudo e já tenho meu ambiente de volta, sem dor de cabeça. Além disso, usando Git, consigo rastrear todas as mudanças que fiz, então se algo der errado ou eu quiser voltar atrás, está tudo documentado.&lt;/p&gt;
+
+&lt;h2&gt;Como eu organizo meus dotfiles&lt;/h2&gt;
+
+&lt;p&gt;Eu mantenho meus dotfiles em um repositório no GitHub, o que facilita a sincronização entre máquinas. Para gerenciar a instalação, uso o Itamae, uma ferramenta de gerenciamento de configurações. Criei uma extensão para o Itamae que facilita a criação de links simbólicos, o que torna o processo muito simples. Isso me permite selecionar facilmente quais arquivos aplicar em diferentes sistemas operacionais. Como o Itamae é escrito em Ruby, consigo criar extensões sempre que preciso, o que dá bastante flexibilidade.&lt;/p&gt;
+
+&lt;h2&gt;Dotfiles e configurações essenciais&lt;/h2&gt;
+
+&lt;p&gt;No meu setup, alguns dotfiles são indispensáveis. As configurações do Zsh, Git, Neovim e Ruby são fundamentais para o meu fluxo de trabalho. Além disso, mantenho alguns scripts que uso diariamente para automatizar tarefas e facilitar a rotina.&lt;/p&gt;
+
+&lt;p&gt;Também dou bastante atenção às configurações do ambiente, como o terminal e ferramentas como SSH, GPG, Tmux/Zellij, FZF, e Docker. Tudo isso ajuda a garantir que o ambiente esteja pronto para o desenvolvimento. Ferramentas específicas para desenvolvimento em Ruby, como algumas gems, também fazem parte do setup para otimizar o dia a dia.&lt;/p&gt;
+
+&lt;p&gt;Por fim, faço questão de instalar os apps que uso com mais frequência, garantindo que a produtividade não seja interrompida.&lt;/p&gt;
+
+&lt;h2&gt;Script para gerenciamento de dotfiles com Itamae&lt;/h2&gt;
+
+&lt;p&gt;Para manter meus dotfiles organizados e garantir que estejam sempre atualizados nos diferentes ambientes que utilizo, desenvolvi uma extensão no Itamae para facilitar a criação de links simbólicos. O script abaixo define uma função &lt;code&gt;dotfile&lt;/code&gt;, que faz o gerenciamento dessas configurações automaticamente, criando symlinks entre os arquivos de configuração e os diretórios de destino.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# frozen_string_literal: true&lt;/span&gt;
+
+&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'specinfra_termux'&lt;/span&gt;
+
+&lt;span class="n"&gt;os_info&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="sb"&gt;`uname -a`&lt;/span&gt;
+
+&lt;span class="n"&gt;is_android&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os_info&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;match?&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sr"&gt;/android/i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;is_darwin&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os_info&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;match?&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sr"&gt;/darwin/i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;is_linux&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os_info&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;match?&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="sr"&gt;/linux/i&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="no"&gt;Itamae&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;logger&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;debug&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"OS Info: &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;os_info&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# creating dotfiles symlink configurations&lt;/span&gt;
+&lt;span class="n"&gt;define&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:dotfile&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;source: &lt;/span&gt;&lt;span class="kp"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;target: &lt;/span&gt;&lt;span class="kp"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+  &lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;params&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'source'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="n"&gt;params&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'name'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+  &lt;span class="n"&gt;target&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;params&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'target'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="n"&gt;source&lt;/span&gt;
+
+  &lt;span class="n"&gt;source_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="no"&gt;File&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;expand_path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__dir__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/config/&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;source&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;
+  &lt;span class="n"&gt;target_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="no"&gt;File&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;Dir&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;home&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+  &lt;span class="n"&gt;directory&lt;/span&gt; &lt;span class="no"&gt;File&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;dirname&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;target_path&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+  &lt;span class="n"&gt;link&lt;/span&gt; &lt;span class="n"&gt;target_path&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;source_path&lt;/span&gt;
+    &lt;span class="n"&gt;force&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Esse script usa o Itamae para verificar o sistema operacional atual e criar links simbólicos para os arquivos de configuração armazenados em um diretório específico. Assim, ao configurar uma nova máquina, basta executar o script para garantir que todos os dotfiles estejam no lugar certo, independentemente do sistema que estou usando.&lt;/p&gt;
+
+&lt;h2&gt;Manutenção dos meus dotfiles&lt;/h2&gt;
+
+&lt;p&gt;Eu faço commits regulares no meu repositório de dotfiles, mas prefiro atualizar manualmente em cada ambiente. Embora pudesse automatizar esse processo, como, por exemplo, verificar se o repositório está desatualizado ao iniciar o terminal e atualizar automaticamente, gosto de ter mais controle sobre quando e como as atualizações são aplicadas. Isso me dá mais segurança, especialmente em ambientes diferentes, onde nem sempre quero que as mudanças aconteçam sem supervisão.&lt;/p&gt;
+
+&lt;h2&gt;Considerações Finais&lt;/h2&gt;
+
+&lt;p&gt;Este texto reflete muito da minha experiência pessoal, mas se tem algo que eu aprendi é que o mais importante é manter seus dotfiles, suas versões e backups. Esses arquivos são cruciais para garantir que você possa configurar rapidamente seu ambiente e começar a trabalhar nas suas tarefas e projetos sem perder tempo.&lt;/p&gt;
+
+&lt;p&gt;Já passei por situações onde precisei configurar manualmente meu ambiente várias vezes, e isso é sempre demorado. Além disso, é fácil esquecer de instalar ou configurar algo importante. Por isso, sempre que for possível, prefira usar código para configurar seu ambiente. Isso vai tornar sua vida muito mais fácil a longo prazo.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Como criar CLIs em Ruby - Parsers de argumentos</title>
+    <link rel="alternate" href="https://vincebot.dev/2024/09/02/como-criar-clis-em-ruby-parsers-de-argumentos/"/>
+    <id>https://vincebot.dev/2024/09/02/como-criar-clis-em-ruby-parsers-de-argumentos/</id>
+    <published>2024-09-02T19:32:00-03:00</published>
+    <updated>2025-01-14T09:02:04-03:00</updated>
+    <author>
+      <name>Daniel Vinciguerra</name>
+    </author>
+    <content type="html">&lt;p&gt;Uma das habilidades mais valiosas para desenvolvedores é se sentir à vontade no terminal. É onde temos o poder de controlar nosso ambiente de forma detalhada, aumentando nossa produtividade e automatizando tarefas com facilidade.&lt;/p&gt;
+
+&lt;p&gt;No entanto, nem sempre temos todas as ferramentas de que precisamos à mão. Às vezes, precisamos criar nossas próprias soluções a partir de um conjunto específico de operações. Para isso, é essencial entender como desenvolver ferramentas de linha de comando, também conhecidas como CLIs (Command Line Interfaces).&lt;/p&gt;
+
+&lt;h2&gt;Criando nossa primeira CLI em Ruby&lt;/h2&gt;
+
+&lt;p&gt;Ruby nos oferece uma vasta coleção de gems para criar CLIs, mas também podemos optar por não usar nenhuma. A escolha é toda nossa e depende das nossas necessidades específicas. Neste artigo, vou compartilhar algumas das minhas preferências e mostrar exemplos práticos de como utilizá-las.&lt;/p&gt;
+
+&lt;h2&gt;Anatomia de um comando&lt;/h2&gt;
+
+&lt;p&gt;Sem querer entrar em muitos detalhes técnicos (que vou explorar em outro artigo), é importante entender a estrutura básica de um comando. Embora não exista um padrão rígido, algumas recomendações e boas práticas ajudam a criar comandos que sejam intuitivos e fáceis de lembrar.&lt;/p&gt;
+
+&lt;p&gt;Geralmente, CLIs seguem um formato como este:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;comando subcomando ação &lt;span class="nt"&gt;--param-booleano&lt;/span&gt; &lt;span class="nt"&gt;--param-texto&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"meu texto"&lt;/span&gt; &lt;span class="nt"&gt;--param-numerico&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;100
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para simplificar, vamos usar o &lt;code&gt;gh&lt;/code&gt;, a ferramenta CLI do GitHub, como exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;gh &lt;span class="nb"&gt;pr &lt;/span&gt;list &lt;span class="nt"&gt;--state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;open &lt;span class="nt"&gt;--limit&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;10 &lt;span class="nt"&gt;--sort&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;created &lt;span class="nt"&gt;-R&lt;/span&gt; owner/repo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Este é o estilo que gosto de seguir ao criar CLIs, pois acho que é um padrão bem organizado e fácil de memorizar.&lt;/p&gt;
+
+&lt;h2&gt;Parsing de argumentos&lt;/h2&gt;
+
+&lt;p&gt;Quando estamos criando uma CLI, podemos capturar todas as informações passadas como argumentos usando a variável &lt;code&gt;ARGV&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# exemplo.rb&lt;/span&gt;
+&lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="no"&gt;ARGV&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;ruby exemplo.rb &lt;span class="nt"&gt;--param1&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;valor1 &lt;span class="nt"&gt;--param2&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;valor2
+&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"--param1=valor1"&lt;/span&gt;, &lt;span class="s2"&gt;"--param2=valor2"&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;No entanto, quando lidamos com parâmetros, flags e valores, é útil ter um parser para simplificar essa tarefa. Ruby já nos oferece a gem &lt;code&gt;OptionParser&lt;/code&gt; para isso, que vem na biblioteca padrão. Mas, para fins didáticos, vamos criar um parser simples baseado no comando &lt;code&gt;gh&lt;/code&gt; que vimos antes.&lt;/p&gt;
+
+&lt;p&gt;Vamos criar um parser para um comando hipotético simples:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# gh.rb&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;parse_args&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="n"&gt;options&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+  &lt;span class="n"&gt;current_option&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;nil&lt;/span&gt;
+
+  &lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;each&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;arg&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;arg&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;start_with?&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'--'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;arg&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;gsub&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'--'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nf"&gt;split&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'='&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;key&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt;
+    &lt;span class="k"&gt;elsif&lt;/span&gt; &lt;span class="n"&gt;arg&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;start_with?&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'-'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="n"&gt;current_option&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;arg&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;gsub&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'-'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nf"&gt;to_sym&lt;/span&gt;
+      &lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;current_option&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kp"&gt;true&lt;/span&gt;
+    &lt;span class="k"&gt;else&lt;/span&gt;
+      &lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;current_option&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;arg&lt;/span&gt;
+    &lt;span class="k"&gt;end&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="n"&gt;options&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;parse_args&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;ARGV&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;ruby gh.rb &lt;span class="nb"&gt;pr &lt;/span&gt;list &lt;span class="nt"&gt;--state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;open &lt;span class="nt"&gt;--limit&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;10 &lt;span class="nt"&gt;--sort&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;created &lt;span class="nt"&gt;-R&lt;/span&gt; owner/repo
+&lt;span class="o"&gt;{&lt;/span&gt;:state&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"open"&lt;/span&gt;, :limit&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;10, :sort&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"created"&lt;/span&gt;, :R&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"owner/repo"&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Agora temos um hash com os parâmetros passados para o nosso comando. Não é nada muito complexo, mas é um bom começo para entender como lidar com argumentos em CLIs. E claro, não precisamos reinventar a roda; podemos usar a gem &lt;code&gt;OptionParser&lt;/code&gt; para lidar com isso de forma mais robusta.&lt;/p&gt;
+
+&lt;h2&gt;Utilizando o OptionParser&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;OptionParser&lt;/code&gt; é uma gem que facilita muito a manipulação dos argumentos passados para o nosso comando.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# gh.rb&lt;/span&gt;
+
+&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'optparse'&lt;/span&gt;
+
+&lt;span class="n"&gt;options&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+
+&lt;span class="no"&gt;OptionParser&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;new&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;opts&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+  &lt;span class="n"&gt;opts&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;banner&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"Usage: gh pr list [options]"&lt;/span&gt;
+
+  &lt;span class="n"&gt;opts&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;on&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"--state=STATE"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Filter by state"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;state&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:state&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;state&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="n"&gt;opts&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;on&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"--limit=LIMIT"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Limit the number of results"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;limit&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:limit&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;limit&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="n"&gt;opts&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;on&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"--sort=SORT"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Sort the results"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;sort&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:sort&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sort&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="n"&gt;opts&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;on&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"-R"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"--repository=REPOSITORY"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"Repository to list PRs from"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt;&lt;span class="n"&gt;repository&lt;/span&gt;&lt;span class="o"&gt;|&lt;/span&gt;
+    &lt;span class="n"&gt;options&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:repository&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;repository&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;parse!&lt;/span&gt;
+
+&lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;options&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;ruby gh.rb &lt;span class="nb"&gt;pr &lt;/span&gt;list &lt;span class="nt"&gt;--state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;open &lt;span class="nt"&gt;--limit&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;10 &lt;span class="nt"&gt;--sort&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;created &lt;span class="nt"&gt;-R&lt;/span&gt; owner/repo
+&lt;span class="o"&gt;{&lt;/span&gt;:state&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"open"&lt;/span&gt;, :limit&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"10"&lt;/span&gt;, :sort&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"created"&lt;/span&gt;, :repository&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"owner/repo"&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Utilizando o Thor&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;Thor&lt;/code&gt; é uma gem que nos ajuda a criar CLIs mais robustas e organizadas, permitindo que criemos comandos e subcomandos de forma fácil e eficiente.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# Gemfile&lt;/span&gt;
+
+&lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="s1"&gt;'https://rubygems.org'&lt;/span&gt;
+
+&lt;span class="n"&gt;gem&lt;/span&gt; &lt;span class="s1"&gt;'thor'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="c1"&gt;# gh.rb&lt;/span&gt;
+
+&lt;span class="nb"&gt;require&lt;/span&gt; &lt;span class="s1"&gt;'thor'&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Gh&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="no"&gt;Thor&lt;/span&gt;
+  &lt;span class="n"&gt;desc&lt;/span&gt; &lt;span class="s2"&gt;"pr list"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;"List pull requests"&lt;/span&gt;
+  &lt;span class="n"&gt;method_option&lt;/span&gt; &lt;span class="ss"&gt;:state&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;type: :string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;desc: &lt;/span&gt;&lt;span class="s2"&gt;"Filter by state"&lt;/span&gt;
+  &lt;span class="n"&gt;method_option&lt;/span&gt; &lt;span class="ss"&gt;:limit&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;type: :numeric&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;desc: &lt;/span&gt;&lt;span class="s2"&gt;"Limit the number of results"&lt;/span&gt;
+  &lt;span class="n"&gt;method_option&lt;/span&gt; &lt;span class="ss"&gt;:sort&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;type: :string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;desc: &lt;/span&gt;&lt;span class="s2"&gt;"Sort the results"&lt;/span&gt;
+  &lt;span class="n"&gt;method_option&lt;/span&gt; &lt;span class="ss"&gt;:repository&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;type: :string&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;desc: &lt;/span&gt;&lt;span class="s2"&gt;"Repository to list PRs from"&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;pr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="nb"&gt;puts&lt;/span&gt; &lt;span class="n"&gt;options&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="no"&gt;Gh&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nf"&gt;start&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="no"&gt;ARGV&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;ruby gh.rb &lt;span class="nb"&gt;pr &lt;/span&gt;list &lt;span class="nt"&gt;--state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;open &lt;span class="nt"&gt;--limit&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;10 &lt;span class="nt"&gt;--sort&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;created &lt;span class="nt"&gt;-R&lt;/span&gt; owner/repo
+&lt;span class="o"&gt;{&lt;/span&gt;:state&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"open"&lt;/span&gt;, :limit&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;10, :sort&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"created"&lt;/span&gt;, :repository&lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;&lt;span class="s2"&gt;"owner/repo"&lt;/span&gt;&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Usando Thor, podemos ver que a criação de comandos e subcomandos segue um padrão declarativo, mas utiliza classes em vez de um formato mais procedural. Pessoalmente, gosto de usar Thor para criar minhas CLIs, pois ele oferece várias opções e métodos que tornam a criação de comandos mais flexível e organizada.&lt;/p&gt;
+
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+
+&lt;p&gt;Essas são algumas formas de criar CLIs em Ruby. Como vimos, há várias opções para escolhermos ao criar nossas ferramentas. Neste artigo, compartilhei algumas das minhas preferências pessoais, mas existem muitas outras abordagens por aí. Escolha a que melhor se adapta às suas necessidades e mãos à obra!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Configurando dominios do meu Homelab na Cloudflare usando Terraform</title>
+    <link rel="alternate" href="https://vincebot.dev/2024/08/28/configurando-dominios-do-meu-homelab-na-cloudflare-usando-terraform/"/>
+    <id>https://vincebot.dev/2024/08/28/configurando-dominios-do-meu-homelab-na-cloudflare-usando-terraform/</id>
+    <published>2024-08-28T11:08:00-03:00</published>
+    <updated>2025-01-14T09:02:04-03:00</updated>
+    <author>
+      <name>Daniel Vinciguerra</name>
+    </author>
+    <content type="html">&lt;p&gt;Uma das coisas mais divertidas e uteis que fiz quando comecei a montar meu homelab foi configurar os registros DNS dos
+meus domínios na Cloudflare apontando para as maquinas nas rede. Além de ser uma ferramenta gratuita para esse uso mais
+simples, a Cloudflare oferece uma série de recursos que ajudam a melhorar a segurança e performance dos sites.&lt;/p&gt;
+
+&lt;p&gt;Neste post, vou mostrar como eu fiz esse processo utilizando o terraform.&lt;/p&gt;
+
+&lt;h2&gt;O que é Terraform?&lt;/h2&gt;
+
+&lt;p&gt;Terraform é uma ferramenta de infraestrutura como código (IaC) que permite criar, alterar e versionar a infraestrutura
+de forma segura e eficiente. Com ele, é possível gerenciar diversos provedores de nuvem, como AWS, Azure, Google Cloud,
+entre outros.&lt;/p&gt;
+
+&lt;p&gt;Passei muitos anos configurando maquinas manualmente e, acredite, é um processo bem chato e propenso a erros. Nos dias
+de hoje, com a popularização das ferramentas e do conceito de IaC, não é mais aceitável construirmos infraestruturas
+de forma manual, mesmo que seja para coisas simples, visto que vamos esquecer o que fizemos, como fizemos, não
+conseguimos aproveitar em outros projetos&amp;hellip; enfim, é um caos.&lt;/p&gt;
+
+&lt;h2&gt;Instalando o Terraform&lt;/h2&gt;
+
+&lt;p&gt;Para começar, você precisa instalar o terraform na sua maquina. Você pode baixar o binário no site oficial ou instalar
+via gerenciador de pacotes da sua distribuição.&lt;/p&gt;
+
+&lt;p&gt;Para instalar no Ubuntu, por exemplo, você pode executar os seguintes comandos:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;wget &lt;span class="nt"&gt;-O-&lt;/span&gt; https://apt.releases.hashicorp.com/gpg | &lt;span class="nb"&gt;sudo &lt;/span&gt;gpg &lt;span class="nt"&gt;--dearmor&lt;/span&gt; &lt;span class="nt"&gt;-o&lt;/span&gt; /usr/share/keyrings/hashicorp-archive-keyring.gpg
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;"deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com &lt;/span&gt;&lt;span class="si"&gt;$(&lt;/span&gt;lsb_release &lt;span class="nt"&gt;-cs&lt;/span&gt;&lt;span class="si"&gt;)&lt;/span&gt;&lt;span class="s2"&gt; main"&lt;/span&gt; | &lt;span class="nb"&gt;sudo tee&lt;/span&gt; /etc/apt/sources.list.d/hashicorp.list
+&lt;span class="nb"&gt;sudo &lt;/span&gt;apt update &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nb"&gt;sudo &lt;/span&gt;apt &lt;span class="nb"&gt;install &lt;/span&gt;terraform
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Se estiver usando o MacOS, você pode instalar o terraform via Homebrew:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;brew tap hashicorp/tap
+brew &lt;span class="nb"&gt;install &lt;/span&gt;hashicorp/tap/terraform
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Criando o script&lt;/h2&gt;
+
+&lt;p&gt;Agora, vamos criar o script que vai configurar os registros DNS na Cloudflare. Crie um arquivo chamado &lt;code&gt;main.tf&lt;/code&gt; e
+adicione o seguinte conteúdo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight hcl"&gt;&lt;code&gt;&lt;span class="c1"&gt;# enable required providers&lt;/span&gt;
+&lt;span class="nx"&gt;terraform&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;required_providers&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;cloudflare&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;span class="nx"&gt;source&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"cloudflare/cloudflare"&lt;/span&gt;
+      &lt;span class="nx"&gt;version&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"~&amp;gt; 4"&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;# env variables&lt;/span&gt;
+&lt;span class="nx"&gt;variable&lt;/span&gt; &lt;span class="s2"&gt;"CLOUDFLARE_API_TOKEN"&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;description&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"Cloudflare API Token"&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nx"&gt;variable&lt;/span&gt; &lt;span class="s2"&gt;"CLOUDFLARE_ZONE_ID"&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;description&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"Cloudflare Zone ID"&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nx"&gt;variable&lt;/span&gt; &lt;span class="s2"&gt;"CLOUDFLARE_ACCOUNT_ID"&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;description&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"Cloudflare Account ID"&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nx"&gt;variable&lt;/span&gt; &lt;span class="s2"&gt;"CLOUDFLARE_DOMAIN"&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;description&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"Cloudflare Domain"&lt;/span&gt;
+  &lt;span class="nx"&gt;default&lt;/span&gt;     &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"example.com.br"&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nx"&gt;provider&lt;/span&gt; &lt;span class="s2"&gt;"cloudflare"&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;api_token&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"${var.CLOUDFLARE_API_TOKEN}"&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="c1"&gt;# resources&lt;/span&gt;
+&lt;span class="nx"&gt;resource&lt;/span&gt; &lt;span class="s2"&gt;"cloudflare_record"&lt;/span&gt; &lt;span class="s2"&gt;"foo_example_com_br"&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;zone_id&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"${var.CLOUDFLARE_ZONE_ID}"&lt;/span&gt;
+  &lt;span class="nx"&gt;name&lt;/span&gt;    &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"foo"&lt;/span&gt;
+  &lt;span class="nx"&gt;value&lt;/span&gt;   &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"192.168.0.100"&lt;/span&gt;
+  &lt;span class="nx"&gt;type&lt;/span&gt;    &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"A"&lt;/span&gt;
+  &lt;span class="nx"&gt;ttl&lt;/span&gt;     &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;300&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nx"&gt;resource&lt;/span&gt; &lt;span class="s2"&gt;"cloudflare_record"&lt;/span&gt; &lt;span class="s2"&gt;"bar_example_com_br"&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;zone_id&lt;/span&gt; &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"${var.CLOUDFLARE_ZONE_ID}"&lt;/span&gt;
+  &lt;span class="nx"&gt;name&lt;/span&gt;    &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"bar"&lt;/span&gt;
+  &lt;span class="nx"&gt;value&lt;/span&gt;   &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"192.168.0.101"&lt;/span&gt;
+  &lt;span class="nx"&gt;type&lt;/span&gt;    &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"A"&lt;/span&gt;
+  &lt;span class="nx"&gt;ttl&lt;/span&gt;     &lt;span class="p"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;300&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Neste script (fictício), estamos criando dois registros DNS na Cloudflare, um para o domínio &lt;code&gt;homelab.com&lt;/code&gt; e outro para o
+subdomínio &lt;code&gt;blog.homelab.com&lt;/code&gt;. Note que o valor dos registros está vazio, pois vamos preencher com o IP das maquinas
+na rede.&lt;/p&gt;
+
+&lt;p&gt;Para simplificar minha vida, eu também criei um arquivo &lt;code&gt;.env&lt;/code&gt; com as variáveis de ambiente que o terraform vai usar.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight plaintext"&gt;&lt;code&gt;TF_VAR_CLOUDFLARE_API_TOKEN=TF_VAR_CLOUDFLARE_API_TOKEN
+TF_VAR_CLOUDFLARE_ZONE_ID=TF_VAR_CLOUDFLARE_ZONE_ID
+TF_VAR_CLOUDFLARE_ACCOUNT_ID=TF_VAR_CLOUDFLARE_ACCOUNT_ID
+TF_VAR_CLOUDFLARE_DOMAIN=TF_VAR_CLOUDFLARE_DOMAIN
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Aplicando as configurações&lt;/h2&gt;
+
+&lt;p&gt;Para aplicar as configurações, execute os seguinte:&lt;/p&gt;
+
+&lt;p&gt;Com o uso da ferramenta dotenv, carregar o &lt;code&gt;.env&lt;/code&gt; e posso executar o comando &lt;code&gt;terraform plan&lt;/code&gt; para verificar se está
+tudo certo.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;dotenv &lt;span class="nt"&gt;-f&lt;/span&gt; .env terraform plan
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Se tudo estiver correto, você pode aplicar as configurações com o comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;dotenv &lt;span class="nt"&gt;-f&lt;/span&gt; .env terraform apply
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;O terraform vai criar os registros DNS na Cloudflare de acordo com o script que criamos. Depois de aplicar as
+configurações, você pode acessar o painel da Cloudflare e verificar se os registros foram criados corretamente.&lt;/p&gt;
+
+&lt;p&gt;E é isso! Agora você tem seus domínios configurados na Cloudflare de forma automatizada.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Utilizando userscripts para customizar sua experiencia na web</title>
+    <link rel="alternate" href="https://vincebot.dev/2024/08/26/utilizando-userscripts-para-customizar-sua-experiencia-na-web/"/>
+    <id>https://vincebot.dev/2024/08/26/utilizando-userscripts-para-customizar-sua-experiencia-na-web/</id>
+    <published>2024-08-26T00:48:00-03:00</published>
+    <updated>2025-01-14T09:02:04-03:00</updated>
+    <author>
+      <name>Daniel Vinciguerra</name>
+    </author>
+    <content type="html">&lt;p&gt;Sabe quando você acessa um site ou plataforma e pensa: &amp;ldquo;Poxa, isso aqui poderia ser diferente&amp;rdquo;, ou &amp;ldquo;Seria ótimo se tivesse essa feature&amp;rdquo;? A solução que logo vem à cabeça de muitos desenvolvedores é criar uma extensão para o navegador, que altere o site ao ser acessado. Mas, apesar de criar um plugin não ser tão complicado, às vezes precisamos de algo mais rápido e simples.&lt;/p&gt;
+
+&lt;p&gt;É aí que entram os userscripts.&lt;/p&gt;
+
+&lt;h2&gt;Mas, o que são userscripts?&lt;/h2&gt;
+
+&lt;p&gt;Userscripts são pequenos códigos que escrevemos para modificar determinados sites na web, personalizando a experiência de acordo com nossas necessidades. Em outras palavras, é uma maneira prática de tirar o máximo proveito das ferramentas que usamos no dia a dia.&lt;/p&gt;
+
+&lt;h2&gt;Alguns casos de uso&lt;/h2&gt;
+
+&lt;p&gt;Eu já uso userscripts há algum tempo e eles têm melhorado minha experiência em diversas situações, como por exemplo:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Criar um banner para me avisar que estou acessando o ambiente de staging.&lt;/li&gt;
+&lt;li&gt;Automatizar o preenchimento de campos em formulários, quando os nomes seguem certos padrões.&lt;/li&gt;
+&lt;li&gt;Esconder partes de sites que tiram minha atenção do que eu realmente preciso fazer.&lt;/li&gt;
+&lt;li&gt;Adicionar teclas de atalho para aumentar minha produtividade.&lt;/li&gt;
+&lt;li&gt;Colocar botões que facilitam o acesso a funcionalidades escondidas, mas que uso com frequência.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Como dá pra ver, os userscripts são extremamente versáteis e trazem uma série de benefícios.&lt;/p&gt;
+
+&lt;h2&gt;Como usar userscripts&lt;/h2&gt;
+
+&lt;p&gt;Para começar a usar userscripts, existem alguns add-ons específicos que permitem injetar esses scripts nas páginas que você acessar. Geralmente, eles têm versões para os principais navegadores.&lt;/p&gt;
+
+&lt;p&gt;Aqui estão dois que eu costumo usar:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Greasemonkey&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tampermonkey&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;É só visitar a página deles, escolher o que mais te agrada e instalar.&lt;/p&gt;
+
+&lt;h2&gt;Exemplo prático&lt;/h2&gt;
+
+&lt;p&gt;Vou compartilhar um script que criei para adicionar atalhos no Jira. Isso tem me ajudado a acessar alguns filtros e criar novos cards no board do time de forma mais rápida.&lt;/p&gt;
+
+&lt;p&gt;Vamos criar um script que adiciona um atalho para quando você digitar &lt;code&gt;ctrl + n&lt;/code&gt;, criar um novo card automaticamente.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight javascript"&gt;&lt;code&gt;&lt;span class="c1"&gt;// ==UserScript==&lt;/span&gt;
+&lt;span class="c1"&gt;// @name        Jira :: Custom Shortcuts&lt;/span&gt;
+&lt;span class="c1"&gt;// @namespace   dvinciguerra&lt;/span&gt;
+&lt;span class="c1"&gt;// @version     1.0.0&lt;/span&gt;
+&lt;span class="c1"&gt;// @grant       none&lt;/span&gt;
+&lt;span class="c1"&gt;// @match       https://*.atlassian.net/jira/software/c/projects/*&lt;/span&gt;
+&lt;span class="c1"&gt;// @author      Daniel Vinciguerra&lt;/span&gt;
+&lt;span class="c1"&gt;// ==/UserScript==&lt;/span&gt;
+
+
+&lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;keymap&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;event&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;keys&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;event&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;ctrlKey&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="nx"&gt;keys&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;includes&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;event&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;key&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;action&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+  &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;clickElement&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;selector&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt;
+  &lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;querySelector&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;selector&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;click&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;redirectTo&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;address&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;options&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{})&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;options&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="na"&gt;params&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{},&lt;/span&gt; &lt;span class="p"&gt;...&lt;/span&gt;&lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+
+  &lt;span class="kd"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="k"&gt;new&lt;/span&gt; &lt;span class="nx"&gt;URL&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;address&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toString&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+  &lt;span class="nb"&gt;Object&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;entries&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;options&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;params&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;forEach&lt;/span&gt;&lt;span class="p"&gt;(([&lt;/span&gt;&lt;span class="nx"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;v&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;item&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;searchParams&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="kd"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;v&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+  &lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;location&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;replace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;url&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;toString&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="nb"&gt;document&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;addEventListener&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="s1"&gt;keydown&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;event&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nx"&gt;event&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;event&lt;/span&gt; &lt;span class="o"&gt;||&lt;/span&gt; &lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;event&lt;/span&gt;
+
+  &lt;span class="c1"&gt;// create new card: [ctrl + n] or [ctrl + E]&lt;/span&gt;
+  &lt;span class="nx"&gt;keymap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;event&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="s1"&gt;n&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="s1"&gt;E&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;clickElement&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="s1"&gt;#createGlobalItem&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="p"&gt;})&lt;/span&gt;
+
+  &lt;span class="c1"&gt;// filters: [ctrl + Number] and jira filter ids&lt;/span&gt;
+  &lt;span class="nx"&gt;filters&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="s1"&gt;1&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="na"&gt;quickFilter&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="s1"&gt;100&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt; &lt;span class="p"&gt;}],&lt;/span&gt;
+    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="s1"&gt;2&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="na"&gt;quickFilter&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="s1"&gt;200&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt; &lt;span class="p"&gt;}],&lt;/span&gt;
+    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="s1"&gt;3&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="na"&gt;quickFilter&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="s1"&gt;300&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt; &lt;span class="p"&gt;}],&lt;/span&gt;
+    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="s1"&gt;4&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="na"&gt;quickFilter&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="s1"&gt;400&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt; &lt;span class="p"&gt;}],&lt;/span&gt;
+    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="s1"&gt;5&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="na"&gt;quickFilter&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="s1"&gt;500&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt; &lt;span class="p"&gt;}],&lt;/span&gt;
+    &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="s1"&gt;6&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="na"&gt;quickFilter&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="dl"&gt;'&lt;/span&gt;&lt;span class="s1"&gt;600&lt;/span&gt;&lt;span class="dl"&gt;'&lt;/span&gt; &lt;span class="p"&gt;}],&lt;/span&gt;
+  &lt;span class="p"&gt;]&lt;/span&gt;
+
+  &lt;span class="c1"&gt;// apply filters shortcuts&lt;/span&gt;
+  &lt;span class="nx"&gt;filters&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;forEach&lt;/span&gt;&lt;span class="p"&gt;(([&lt;/span&gt;&lt;span class="nx"&gt;keys&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;params&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;item&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;index&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nx"&gt;keymap&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;event&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;keys&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;redirectTo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;window&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;location&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="na"&gt;params&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;params&lt;/span&gt; &lt;span class="p"&gt;}))&lt;/span&gt;
+  &lt;span class="p"&gt;})&lt;/span&gt;
+&lt;span class="p"&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Explicando&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Nesse script cadastramos atalhos para a criação de novos cards e para acessar filtros específicos no Jira. Para isso,
+usamos a função &lt;code&gt;keymap&lt;/code&gt; que recebe o evento do teclado, as teclas que queremos monitorar e a ação que deve ser
+executada.&lt;/p&gt;
+
+&lt;p&gt;Também criamos funções auxiliares para clicar em elementos da página e redirecionar para uma nova URL.&lt;/p&gt;
+
+&lt;p&gt;Por fim, adicionamos um listener para o evento &lt;code&gt;keydown&lt;/code&gt; e, a partir dele, chamamos as funções que criamos
+anteriormente.&lt;/p&gt;
+
+&lt;p&gt;E pronto! Agora é só garantir que o script está ativo e, sempre que você entrar no Jira, o atalho vai estar funcionando.&lt;/p&gt;
+
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+
+&lt;p&gt;Como vimos, é bem fácil injetar novos comportamentos em aplicações web, melhorando a usabilidade e, consequentemente, nossa produtividade.&lt;/p&gt;
+
+&lt;p&gt;Embora exista uma comunidade grande de pessoas que criam scripts, eu prefiro seguir a regra de nunca usar scripts de terceiros por questões de segurança. Mas, no fim das contas, esses add-ons tornam nossa vida e o uso das ferramentas e plataformas web muito mais simples e produtivos.&lt;/p&gt;
+
+&lt;p&gt;Obrigado por ler e até o próximo artigo!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Minhas regras de ouro quando estou arquitetando uma solução</title>
+    <link rel="alternate" href="https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/"/>
+    <id>https://vincebot.dev/2024/08/17/minhas-regras-de-ouro-quando-estou-arquitetando-uma-solucao/</id>
+    <published>2024-08-16T23:16:00-03:00</published>
+    <updated>2025-01-14T09:02:04-03:00</updated>
+    <author>
+      <name>Daniel Vinciguerra</name>
+    </author>
+    <content type="html">&lt;p&gt;No ano passado (2023), completei 20 anos escrevendo software, sendo que 18 desses foram escrevendo software profissionalmente.&lt;/p&gt;
+
+&lt;p&gt;Durante todo esse tempo, já passei por projetos que foram incríveis e outros que eram um caos total. Alguns eram bem organizados, enquanto outros eram uma verdadeira bagunça. Também participei de projetos onde tentaram aplicar algum padrão arquitetural ou de engenharia, mas que nunca chegaram a um bom termo.&lt;/p&gt;
+
+&lt;p&gt;Por isso, criei algumas &amp;ldquo;regras de ouro&amp;rdquo; que sempre tento seguir e que acho que funcionam bem nesses cenários:&lt;/p&gt;
+
+&lt;h2&gt;1. Design e Arquitetura São Sobre Comunicação&lt;/h2&gt;
+
+&lt;p&gt;A arquitetura do seu software tem que ter a comunicação como o princípio mais importante.&lt;/p&gt;
+
+&lt;p&gt;Quem estiver desenvolvendo o projeto, e quem vai pegar ele no futuro, precisa entender rápido o raciocínio por trás dele e saber onde está e o que fazer.&lt;/p&gt;
+
+&lt;h2&gt;2. Abstrações Simples Criam Projetos Simples&lt;/h2&gt;
+
+&lt;p&gt;E o inverso também é verdade.&lt;/p&gt;
+
+&lt;p&gt;Se você começa seu projeto logo de cara com implementações super complexas, projetando para problemas que ainda nem existem, usando micro serviços e toda aquela sopa de letrinhas que os mais experientes já conhecem, seu projeto já nasce complicado. Isso acaba atrapalhando tanto o crescimento do negócio quanto a velocidade da sua equipe.&lt;/p&gt;
+
+&lt;p&gt;Simplicidade é a chave para projetos que duram e que são bem escritos.&lt;/p&gt;
+
+&lt;p&gt;Não adianta nada querer construir sistemas distribuídos se você ainda não entendeu bem como funciona um MVC básico.&lt;/p&gt;
+
+&lt;p&gt;Explore as opções, conheça os conceitos e mantenha tudo simples.&lt;/p&gt;
+
+&lt;h2&gt;3. O Time Precisa Estar Alinhado&lt;/h2&gt;
+
+&lt;p&gt;De novo falando sobre complexidade: não adianta você já ter estudado e aplicado com sucesso padrões arquiteturais em outros lugares se, no projeto atual, a sua equipe não entende as decisões que estão sendo tomadas.&lt;/p&gt;
+
+&lt;p&gt;Boas arquiteturas são aquelas que, assim como o código, são organizadas, fáceis de entender e ajudam todo mundo a se encontrar no projeto.&lt;/p&gt;
+
+&lt;p&gt;De que adianta uma arquitetura super sofisticada se ninguém vê valor nisso?&lt;/p&gt;
+
+&lt;h2&gt;4. Pare de Escolher as Tecnologias da Moda&lt;/h2&gt;
+
+&lt;p&gt;É importante que as pessoas entendam o que você está usando e por que está usando cada tecnologia.&lt;/p&gt;
+
+&lt;p&gt;Se você tem um projeto web simples, tipo um MVP, por que usar Kubernetes, Kafka, dividir o projeto em dezenas de pedaços, cada um com seu próprio servidor, e criar problemas que você não precisa?&lt;/p&gt;
+
+&lt;h2&gt;5. Entenda que Tudo Tem Seus Prós e Contras&lt;/h2&gt;
+
+&lt;p&gt;Se você quer criar boas soluções, entenda que cada escolha vai ter um lado negativo.&lt;/p&gt;
+
+&lt;p&gt;Por que não usar SSDs para tudo se eles são mais rápidos? Porque a vida útil deles é bem menor que a dos HDDs. Por que não usar Memory Stores no lugar de Bancos Relacionais? Porque, além de mais caros, esses bancos que usam memória RAM como armazenamento têm o problema da volatilidade.&lt;/p&gt;
+
+&lt;p&gt;Tudo tem seu lado bom e ruim, e entender isso logo, além de saber como usar essas características a seu favor, vai te ajudar a evitar escolhas ruins e impulsivas.&lt;/p&gt;
+
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+
+&lt;p&gt;Arquiteturas são muito mais sobre comunicação entre as pessoas do negócio e sobre entender o que funciona ou não em determinado contexto do que sobre seguir preferências pessoais.&lt;/p&gt;
+
+&lt;p&gt;Bons profissionais não criam soluções só para si mesmos, mas sim pensando na equipe, no negócio e, principalmente, nas pessoas que vão usar o projeto.&lt;/p&gt;
+
+&lt;p&gt;E isso é super importante, porque projetos que ninguém usa ou que não resolvem um problema são só um desperdício de tempo e dinheiro.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>O 'Efeito Notion': Por que Prefiro Evitar Apps de Produtividade Superpoderosos</title>
+    <link rel="alternate" href="https://vincebot.dev/2024/08/10/efeito-notion/"/>
+    <id>https://vincebot.dev/2024/08/10/efeito-notion/</id>
+    <published>2024-08-10T02:16:00-03:00</published>
+    <updated>2025-01-14T09:02:04-03:00</updated>
+    <author>
+      <name>Daniel Vinciguerra</name>
+    </author>
+    <content type="html">&lt;p&gt;Nos últimos anos, tenho me dedicado bastante ao autoconhecimento, especialmente depois de ser diagnosticado com TDAH. Embora eu evite &amp;ldquo;culpar&amp;rdquo; o TDAH pelas minhas dificuldades, sei que ele influencia a maneira como funciono. Por isso, estou sempre em busca de ferramentas que se adaptem melhor às minhas necessidades.&lt;/p&gt;
+
+&lt;p&gt;Neste artigo, vou falar sobre o que chamo de &amp;ldquo;Efeito Notion&amp;rdquo;, algo que experimentei ao usar certas ferramentas de produtividade. Só pra deixar claro, uso o termo de forma pejorativa, mas isso não significa que o Notion não seja uma ótima ferramenta. Ele funciona muito bem para muita gente, e recomendo que você experimente para ver se serve para você.&lt;/p&gt;
+
+&lt;h2&gt;O que é o Efeito Notion?&lt;/h2&gt;
+
+&lt;p&gt;Por ter TDAH, sou facilmente distraído por uma infinidade de coisas, e isso sempre foi parte de mim. Depois do meu diagnóstico em 2017, comecei a prestar ainda mais atenção no meu comportamento e nas ferramentas que uso.&lt;/p&gt;
+
+&lt;p&gt;Logo percebi que precisava de um app para gerenciar minhas tarefas—algo simples, fácil de acessar de qualquer lugar e sem complicações. E aí começou minha saga em busca da ferramenta perfeita. Passei por várias, como Google Tasks, Basecamp, Todo.txt, e mais algumas, até que finalmente encontrei o Todoist.&lt;/p&gt;
+
+&lt;p&gt;O Todoist se destacou porque me dava tudo o que eu precisava, mas de um jeito super simples.&lt;/p&gt;
+
+&lt;p&gt;Depois que resolvi a parte das tarefas, fui procurar uma ferramenta para anotações e gestão de conhecimento que eu pudesse acessar tanto no computador quanto no celular, sem precisar me preocupar com sincronização manual.&lt;/p&gt;
+
+&lt;p&gt;Foi aí que me deparei com o Notion, que estava super na moda. Todo mundo falava bem, e realmente, é uma ferramenta poderosa. Dá pra criar textos estruturados, checklists, listas, tabelas, metadados, personalizar cores, banners, ícones, e muito mais.&lt;/p&gt;
+
+&lt;p&gt;O problema começou quando percebi que estava gastando mais tempo configurando e ajustando o Notion do que realmente usando-o para ser produtivo. Esse é o &amp;ldquo;Efeito Notion&amp;rdquo;: a sobrecarga de funcionalidades que acaba desviando o foco do objetivo principal.&lt;/p&gt;
+
+&lt;p&gt;Acabei abandonando o Notion e continuei testando outras ferramentas até chegar no Logseq, que é o que uso hoje em dia.&lt;/p&gt;
+
+&lt;h2&gt;O que Aprendi com Isso?&lt;/h2&gt;
+
+&lt;p&gt;Como já imaginava, ferramentas que fazem muita coisa acabam oferecendo muitas distrações. Nós, seres humanos, somos inquietos por natureza e temos a tendência de querer organizar tudo, experimentar coisas novas, principalmente quando alguém próximo recomenda. No caso do Notion, isso resultou numa sobrecarga de funcionalidades que eu nem precisava, desviando minha atenção do que realmente importava: me organizar e ser produtivo.&lt;/p&gt;
+
+&lt;h2&gt;Lições e Dicas&lt;/h2&gt;
+
+&lt;p&gt;Cada pessoa funciona de um jeito, e isso é algo importante a se considerar. Mas se você, assim como eu, sofre com esse excesso de informações e possibilidades, aqui vão algumas dicas:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Comece Simples&lt;/strong&gt;
+Use o que está mais à mão e tire um tempo para entender suas necessidades. Isso vai te ajudar a fazer uma escolha mais acertada.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Liste o que é Importante&lt;/strong&gt;
+Quando você já tiver uma noção melhor das suas necessidades, faça uma lista do que é essencial para começar a experimentar.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Experimente sem Medo&lt;/strong&gt;
+Teste várias ferramentas, explore diferentes cenários e veja se você se sente confortável com as opções.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Escolha as Candidatas&lt;/strong&gt;
+Selecione as melhores opções e use-as por um tempo para ter certeza de que está fazendo a escolha certa.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Faça sua Escolha&lt;/strong&gt;
+Depois de um tempo experimentando, você provavelmente estará mais preparado para escolher a ferramenta que mais te atende.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Revise Periodicamente sua Escolha&lt;/strong&gt;
+Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é importante revisar suas escolhas de tempos em tempos para garantir que elas ainda fazem sentido.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+
+&lt;p&gt;Estou usando o Todoist e o Logseq há anos e estou super satisfeito. Ambas as ferramentas me atendem muito bem e, por enquanto, não vejo motivo para deixá-las de lado no curto ou médio prazo. Essa confiança veio depois de muitos testes e uma avaliação cuidadosa para garantir que elas realmente cumpririam o que eu precisava.&lt;/p&gt;
+
+&lt;p&gt;Mesmo assim, sempre me pergunto se essas ferramentas ainda estão alinhadas com minhas necessidades. Pode ser que, em algum momento, a resposta seja não, e eu precise buscar novas soluções. Esse é o fluxo natural das coisas.&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
+    <title>Produtividade e algumas recomendações e referências sobre o assunto</title>
+    <link rel="alternate" href="https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/"/>
+    <id>https://vincebot.dev/2024/08/04/produtividade-e-algumas-recomendacoes-e-referencias-sobre-o-assunto/</id>
+    <published>2024-08-04T00:12:00-03:00</published>
+    <updated>2025-01-14T09:02:04-03:00</updated>
+    <author>
+      <name>Daniel Vinciguerra</name>
+    </author>
+    <content type="html">&lt;p&gt;Produtividade não diz respeito a fazer as coisas mais rápido, mas sim, fazer as coisas de forma consistente e respeitando o tempo e particularidade de cada indivíduo envolvido.&lt;/p&gt;
+
+&lt;p&gt;Existem diversas técnicas para ajudar a nos tornarmos mais produtivos, mas existe algo indispensável no processo que é auto-conhecimento para saber suas virtudes e trabalhar suas oportunidades de melhoria.&lt;/p&gt;
+
+&lt;h2&gt;Conceitos&lt;/h2&gt;
+
+&lt;p&gt;Alguns conceitos que eu acho importante conhecermos.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://pt.wikipedia.org/wiki/Kaizen" rel="nofollow"&gt;Kaizen&lt;/a&gt; (evolução contínua)&lt;/li&gt;
+&lt;li&gt;Todo List (mantendo listas de tarefas)&lt;/li&gt;
+&lt;li&gt;Checklists (para organizar processos)&lt;/li&gt;
+&lt;li&gt;WIP Limit (limitar o trabalho em progresso)&lt;/li&gt;
+&lt;li&gt;Digital Garden (para compartilhando conhecimentos)&lt;/li&gt;
+&lt;li&gt;Matriz de Eisenhower (auxilia na priorização)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Ferramentas&lt;/h2&gt;
+
+&lt;p&gt;E para levar o dia a dia também existem algumas ferramentas que podem nos ajudar (e essas são algumas das que eu gosto de recomendar).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Trello (board kanban para projetos)&lt;/li&gt;
+&lt;li&gt;Todoist (para minhas demandas pessoais)&lt;/li&gt;
+&lt;li&gt;Google Calendar (compromissos e centralizar eventos)&lt;/li&gt;
+&lt;li&gt;Noises (para manter a mente focada)&lt;/li&gt;
+&lt;li&gt;IFTTT (uso para integrar tudo ou automatizar processos)&lt;/li&gt;
+&lt;li&gt;Logseq (para manter minhas ideias e informações)&lt;/li&gt;
+&lt;li&gt;Github (organizar os projetos)&lt;/li&gt;
+&lt;li&gt;DuckDuckGo (além de ótimo buscador tem widgets pra várias coisas)&lt;/li&gt;
+&lt;li&gt;Cron job scheduler (para agendar várias rotinas mais críticas)&lt;/li&gt;
+&lt;li&gt;Greasemonkey userscript (automatizar coisas em web pages)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Métodos&lt;/h2&gt;
+
+&lt;p&gt;Alguns métodos que conheço e costumo usar para as demandas pessoais e profissionais.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;GTD (Getting Things Done)&lt;/li&gt;
+&lt;li&gt;Pomodoro&lt;/li&gt;
+&lt;li&gt;Pair Programming&lt;/li&gt;
+&lt;li&gt;Prova de Conceito&lt;/li&gt;
+&lt;li&gt;TDD (Test Driven Development)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Tentar Evitar&lt;/h2&gt;
+
+&lt;p&gt;E como não pode faltar, algumas pegadinhas (ciladas Bino) que as vezes podemos passar no trajeto.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;FOMO (Fear Of Missing Out)&lt;/li&gt;
+&lt;li&gt;Analysis Paralysis&lt;/li&gt;
+&lt;li&gt;Overengineering&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;Considerações&lt;/h2&gt;
+
+&lt;p&gt;A produtividade depende do ambiente conhecimentos e ponto de vista de cada indivíduo, grupo ou ambiente e por esse motivo as técnicas que funcionam para uma pessoa pode não ser tão eficiente para outro.&lt;/p&gt;
+
+&lt;p&gt;Outro ponto importante é que se trata de um projeto evolutivo e longo de autoconhecimento e uma coisa muito importante é medirmos o que pretendemos melhorar para acompanharmos nossa evolução.&lt;/p&gt;
+</content>
+  </entry>
+</feed>

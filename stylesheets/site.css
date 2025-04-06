@@ -1,0 +1,92 @@
+.post p {
+  padding-top: 1rem;
+  padding-bottom: 1rem; }
+
+.post h2 {
+  font-size: 1.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+  color: #f8fafc; }
+
+.post h3 {
+  font-size: 1.25rem;
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+  color: #e5e7eb; }
+
+.post h4 {
+  font-size: 1.125rem;
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+  color: #e5e7eb; }
+
+.post h5 {
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+  color: #e5e7eb; }
+
+.post h6 {
+  font-size: 0.875rem;
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+  color: #e5e7eb; }
+
+.post pre {
+  background-color: #1f2937;
+  color: #f8fafc;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0.375rem;
+  overflow-y: auto; }
+
+.post ul {
+  list-style-type: disc;
+  padding-left: 1.25rem; }
+
+main h2 {
+  font-size: 1.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+  color: #f8fafc; }
+
+main h3 {
+  font-size: 1.25rem;
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+  color: #e5e7eb; }
+
+main h4 {
+  font-size: 1.125rem;
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+  color: #e5e7eb; }
+
+main h5 {
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+  color: #e5e7eb; }
+
+main h6 {
+  font-size: 0.875rem;
+  padding-top: 1.5rem;
+  padding-bottom: 0.5rem;
+  color: #e5e7eb; }
+
+main strong {
+  font-weight: 600;
+  color: #f1f5f9; }
+  @media (max-width: 640px) {
+    main strong {
+      padding-top: 2.5rem; } }
+main a {
+  color: #6366f1; }
+  main a:hover {
+    color: #a5b4fc; }
+
+nav a {
+  color: #d1d5db; }
+
+.debug {
+  background-color: #ef4444;
+  color: white;
+  padding: 0.5rem; }
