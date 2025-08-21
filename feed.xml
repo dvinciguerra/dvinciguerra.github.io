@@ -96,6 +96,141 @@ minhas habilidades no OpenScad. para criar os outros projetos que estou tocando.
 </content>
   </entry>
   <entry>
+    <title>Configurando o SSH no Termux</title>
+    <link rel="alternate" href="https://vincebot.dev/2025/07/08/configurando-o-ssh-no-termux/"/>
+    <id>https://vincebot.dev/2025/07/08/configurando-o-ssh-no-termux/</id>
+    <published>2025-07-08T00:15:00+00:00</published>
+    <updated>2025-08-21T21:12:43+00:00</updated>
+    <author>
+      <name>Daniel Vinciguerra</name>
+    </author>
+    <content type="html">&lt;p&gt;O Termux é um emulador de terminal para Android que permite executar comandos de linha de comando e instalar pacotes Linux. Configurar o SSH no Termux pode ser útil para acessar remotamente o seu dispositivo Android ou para se conectar a outros servidores.&lt;/p&gt;
+
+&lt;p&gt;Eu particularmente gosto de usar o Termux para acessar remotamente os servidores no meu homelab,e fazer algumas tarefas ou ate para pequenas manutenções.&lt;/p&gt;
+
+&lt;p&gt;Mas utilizando ele você também pode hospedar aplicações no seu dispositivo, como
+apps web e serviços, o que pode ser útil para dar uso a um aparelho antigo ou
+simplesmente desenvolver ou testar projetos.&lt;/p&gt;
+
+&lt;p&gt;Por isso, neste post, vou mostrar como configurar o SSH no Termux.&lt;/p&gt;
+
+&lt;h2&gt;Instalando o openssh&lt;/h2&gt;
+
+&lt;p&gt;Primeiro, você precisa instalar o pacote &lt;code&gt;openssh&lt;/code&gt; no Termux. Abra o Termux e execute o seguinte comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;pkg &lt;span class="nb"&gt;install &lt;/span&gt;openssh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Isso instalará o OpenSSH, que é o servidor SSH que você usará para se conectar ao seu dispositivo Android.&lt;/p&gt;
+
+&lt;h2&gt;Iniciando o servidor ssh&lt;/h2&gt;
+
+&lt;p&gt;Depois de instalar o OpenSSH, você pode iniciar o servidor SSH com o seguinte comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;sshd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Geralmente, para garantir que não haja outro processo em execução, gosto de executar o comando junto com o &lt;code&gt;pkill&lt;/code&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;pkill sshd &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; sshd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Configurando o servidor ssh&lt;/h2&gt;
+
+&lt;p&gt;O arquivo de configuração do servidor SSH está localizado em &lt;code&gt;/data/data/com.termux/files/usr/etc/ssh/sshd_config&lt;/code&gt;. Você pode editar esse arquivo para ajustar as configurações do servidor SSH. Por exemplo, você pode alterar a porta padrão (22) para outra porta, desabilitar o login de root, etc.&lt;/p&gt;
+
+&lt;p&gt;Para editar o arquivo de configuração, você pode usar um editor de texto como o &lt;code&gt;vim&lt;/code&gt; ou &lt;code&gt;nano&lt;/code&gt;. Por exemplo, para editar com o &lt;code&gt;vim&lt;/code&gt;, execute:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;vim &lt;span class="nv"&gt;$PREFIX&lt;/span&gt;/etc/ssh/sshd_config
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Adicione ou modifique as seguintes linhas conforme necessário:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight plaintext"&gt;&lt;code&gt;# Desabilitar o login de root
+PermitRootLogin no
+
+# Habilitar autenticação por chave pública
+PubkeyAuthentication yes
+
+# Habilitar autenticação por senha
+PasswordAuthentication yes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Gerando a senha no Termux&lt;/h2&gt;
+
+&lt;p&gt;Acoselho que você configure a permissão de autenticação por chave pública, que é mais segura do que a autenticação por senha. Mas, se você não for capaz de copiar sua chave para a configuracao, pode ser necessario que voce defina uma senha para fazer isso atravéz do comando &lt;code&gt;ssh-copy-id&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Entao, para definir uma senha, execute:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;passwd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Isso solicitará que você insira uma nova senha para o usuário atual.&lt;/p&gt;
+
+&lt;p&gt;O termux não possui um usuário root por padrão, então você estará configurando a senha para o usuário padrão do Termux.&lt;/p&gt;
+
+&lt;p&gt;Para saber o nome do usuário, você pode usar o comando &lt;code&gt;whoami&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;&lt;span class="nb"&gt;whoami&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Conectando ao servidor SSH&lt;/h2&gt;
+
+&lt;p&gt;Agora que o servidor SSH está em execução, você pode se conectar a ele usando um cliente SSH. No seu computador, abra um terminal e execute o seguinte comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;ssh username@ip_address
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Substitua &lt;code&gt;username&lt;/code&gt; pelo nome de usuário do Termux (geralmente é o mesmo nome de usuário do Android) e &lt;code&gt;ip_address&lt;/code&gt; pelo endereço IP do seu dispositivo Android.&lt;/p&gt;
+
+&lt;h2&gt;Copian1do a chave pública&lt;/h2&gt;
+
+&lt;p&gt;Se você quiser usar autenticação por chave pública, primeiro você precisa gerar um par de chaves SSH no seu computador (se ainda não tiver feito isso). Execute o seguinte comando no terminal do seu computador:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;ssh-keygen &lt;span class="nt"&gt;-t&lt;/span&gt; rsa &lt;span class="nt"&gt;-b&lt;/span&gt; 4096
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Isso criará um par de chaves SSH (uma chave pública e uma chave privada) no diretório &lt;code&gt;~/.ssh/&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Depois de gerar as chaves, você precisa copiar a chave pública para o Termux. Você pode fazer isso usando o comando &lt;code&gt;ssh-copy-id&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;ssh-copy-id username@ip_address
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Se tudo deu certo, você deve conseguir se conectar ao Termux sem precisar digitar a senha.&lt;/p&gt;
+
+&lt;h2&gt;Melhorando a conexão&lt;/h2&gt;
+
+&lt;p&gt;Para melhorar a conexão SSH, você pode adicionar a seguinte linha ao arquivo de configuração do SSH no seu computador (&lt;code&gt;~/.ssh/config&lt;/code&gt;):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight plaintext"&gt;&lt;code&gt;Host termux
+    HostName ip_address
+    User username
+    Port 8022 # ou a porta configurada no Termux
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Isso permitirá que você se conecte ao Termux usando o comando &lt;code&gt;ssh termux&lt;/code&gt;, sem precisar digitar o nome de usuário e o endereço IP toda vez.&lt;/p&gt;
+
+&lt;p&gt;Assim que terminar de utilizar o SSH no Termux, você pode parar o servidor SSH com o seguinte comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;pkill sshd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Evite deixar o servidor SSH em execução quando não estiver em uso, pois isso pode representar um risco de segurança alem do consumo de recursos do dispositivo como bateria e processamento.&lt;/p&gt;
+
+&lt;h2&gt;Extra: Configurando tudo usando o Itamae&lt;/h2&gt;
+
+&lt;p&gt;Se você quiser automatizar a configuração do SSH no Termux, pode usar o Itamae, que é uma ferramenta de automação de configuração. Com o Itamae, você pode criar um script para instalar e configurar o SSH no Termux automaticamente.&lt;/p&gt;
+
+&lt;p&gt;Para fazer isso, crie um arquivo chamado &lt;code&gt;ssh.rb&lt;/code&gt; com o seguinte conteúdo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight ruby"&gt;&lt;code&gt;&lt;span class="n"&gt;package&lt;/span&gt; &lt;span class="s1"&gt;'openssh'&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+  &lt;span class="n"&gt;action&lt;/span&gt; &lt;span class="ss"&gt;:install&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="n"&gt;execute&lt;/span&gt; &lt;span class="s1"&gt;'start sshd'&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+  &lt;span class="n"&gt;command&lt;/span&gt; &lt;span class="s1"&gt;'pkill sshd &amp;amp;&amp;amp; sshd'&lt;/span&gt;
+  &lt;span class="n"&gt;action&lt;/span&gt; &lt;span class="ss"&gt;:run&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="n"&gt;file&lt;/span&gt; &lt;span class="s1"&gt;'/data/data/com.termux/files/usr/etc/ssh/sshd_config'&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+  &lt;span class="n"&gt;content&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;-&lt;/span&gt;&lt;span class="no"&gt;EOF&lt;/span&gt;&lt;span class="sh"&gt;
+PermitRootLogin no
+PubkeyAuthentication yes
+PasswordAuthentication yes
+&lt;/span&gt;&lt;span class="no"&gt;  EOF&lt;/span&gt;
+  &lt;span class="n"&gt;action&lt;/span&gt; &lt;span class="ss"&gt;:create&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="n"&gt;execute&lt;/span&gt; &lt;span class="s1"&gt;'set password'&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+  &lt;span class="n"&gt;command&lt;/span&gt; &lt;span class="s1"&gt;'passwd'&lt;/span&gt;
+  &lt;span class="n"&gt;action&lt;/span&gt; &lt;span class="ss"&gt;:run&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Depois, execute o Itamae com o seguinte comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre class="highlight shell"&gt;&lt;code&gt;itamae ssh.rb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Isso instalará o OpenSSH, iniciará o servidor SSH e configurará o arquivo &lt;code&gt;sshd_config&lt;/code&gt; automaticamente.&lt;/p&gt;
+
+&lt;p&gt;Espero ter ajudado você a configurar o SSH no Termux!&lt;/p&gt;
+</content>
+  </entry>
+  <entry>
     <title>Como transformar um sistema simples em um Frankenstein sem querer</title>
     <link rel="alternate" href="https://vincebot.dev/2025/03/16/como-transformar-um-sistema-simples-em-um-frankenstein-sem-querer/"/>
     <id>https://vincebot.dev/2025/03/16/como-transformar-um-sistema-simples-em-um-frankenstein-sem-querer/</id>
@@ -854,65 +989,6 @@ anteriormente.&lt;/p&gt;
 &lt;p&gt;Bons profissionais não criam soluções só para si mesmos, mas sim pensando na equipe, no negócio e, principalmente, nas pessoas que vão usar o projeto.&lt;/p&gt;
 
 &lt;p&gt;E isso é super importante, porque projetos que ninguém usa ou que não resolvem um problema são só um desperdício de tempo e dinheiro.&lt;/p&gt;
-</content>
-  </entry>
-  <entry>
-    <title>O 'Efeito Notion': Por que Prefiro Evitar Apps de Produtividade Superpoderosos</title>
-    <link rel="alternate" href="https://vincebot.dev/2024/08/10/efeito-notion/"/>
-    <id>https://vincebot.dev/2024/08/10/efeito-notion/</id>
-    <published>2024-08-10T05:16:00+00:00</published>
-    <updated>2025-08-21T13:16:24+00:00</updated>
-    <author>
-      <name>Daniel Vinciguerra</name>
-    </author>
-    <content type="html">&lt;p&gt;Nos últimos anos, tenho me dedicado bastante ao autoconhecimento, especialmente depois de ser diagnosticado com TDAH. Embora eu evite &amp;ldquo;culpar&amp;rdquo; o TDAH pelas minhas dificuldades, sei que ele influencia a maneira como funciono. Por isso, estou sempre em busca de ferramentas que se adaptem melhor às minhas necessidades.&lt;/p&gt;
-
-&lt;p&gt;Neste artigo, vou falar sobre o que chamo de &amp;ldquo;Efeito Notion&amp;rdquo;, algo que experimentei ao usar certas ferramentas de produtividade. Só pra deixar claro, uso o termo de forma pejorativa, mas isso não significa que o Notion não seja uma ótima ferramenta. Ele funciona muito bem para muita gente, e recomendo que você experimente para ver se serve para você.&lt;/p&gt;
-
-&lt;h2&gt;O que é o Efeito Notion?&lt;/h2&gt;
-
-&lt;p&gt;Por ter TDAH, sou facilmente distraído por uma infinidade de coisas, e isso sempre foi parte de mim. Depois do meu diagnóstico em 2017, comecei a prestar ainda mais atenção no meu comportamento e nas ferramentas que uso.&lt;/p&gt;
-
-&lt;p&gt;Logo percebi que precisava de um app para gerenciar minhas tarefas—algo simples, fácil de acessar de qualquer lugar e sem complicações. E aí começou minha saga em busca da ferramenta perfeita. Passei por várias, como Google Tasks, Basecamp, Todo.txt, e mais algumas, até que finalmente encontrei o Todoist.&lt;/p&gt;
-
-&lt;p&gt;O Todoist se destacou porque me dava tudo o que eu precisava, mas de um jeito super simples.&lt;/p&gt;
-
-&lt;p&gt;Depois que resolvi a parte das tarefas, fui procurar uma ferramenta para anotações e gestão de conhecimento que eu pudesse acessar tanto no computador quanto no celular, sem precisar me preocupar com sincronização manual.&lt;/p&gt;
-
-&lt;p&gt;Foi aí que me deparei com o Notion, que estava super na moda. Todo mundo falava bem, e realmente, é uma ferramenta poderosa. Dá pra criar textos estruturados, checklists, listas, tabelas, metadados, personalizar cores, banners, ícones, e muito mais.&lt;/p&gt;
-
-&lt;p&gt;O problema começou quando percebi que estava gastando mais tempo configurando e ajustando o Notion do que realmente usando-o para ser produtivo. Esse é o &amp;ldquo;Efeito Notion&amp;rdquo;: a sobrecarga de funcionalidades que acaba desviando o foco do objetivo principal.&lt;/p&gt;
-
-&lt;p&gt;Acabei abandonando o Notion e continuei testando outras ferramentas até chegar no Logseq, que é o que uso hoje em dia.&lt;/p&gt;
-
-&lt;h2&gt;O que Aprendi com Isso?&lt;/h2&gt;
-
-&lt;p&gt;Como já imaginava, ferramentas que fazem muita coisa acabam oferecendo muitas distrações. Nós, seres humanos, somos inquietos por natureza e temos a tendência de querer organizar tudo, experimentar coisas novas, principalmente quando alguém próximo recomenda. No caso do Notion, isso resultou numa sobrecarga de funcionalidades que eu nem precisava, desviando minha atenção do que realmente importava: me organizar e ser produtivo.&lt;/p&gt;
-
-&lt;h2&gt;Lições e Dicas&lt;/h2&gt;
-
-&lt;p&gt;Cada pessoa funciona de um jeito, e isso é algo importante a se considerar. Mas se você, assim como eu, sofre com esse excesso de informações e possibilidades, aqui vão algumas dicas:&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Comece Simples&lt;/strong&gt;
-Use o que está mais à mão e tire um tempo para entender suas necessidades. Isso vai te ajudar a fazer uma escolha mais acertada.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Liste o que é Importante&lt;/strong&gt;
-Quando você já tiver uma noção melhor das suas necessidades, faça uma lista do que é essencial para começar a experimentar.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Experimente sem Medo&lt;/strong&gt;
-Teste várias ferramentas, explore diferentes cenários e veja se você se sente confortável com as opções.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Escolha as Candidatas&lt;/strong&gt;
-Selecione as melhores opções e use-as por um tempo para ter certeza de que está fazendo a escolha certa.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Faça sua Escolha&lt;/strong&gt;
-Depois de um tempo experimentando, você provavelmente estará mais preparado para escolher a ferramenta que mais te atende.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;Revise Periodicamente sua Escolha&lt;/strong&gt;
-Nada é definitivo, e nossas necessidades mudam com o tempo. Por isso, é importante revisar suas escolhas de tempos em tempos para garantir que elas ainda fazem sentido.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2&gt;Conclusão&lt;/h2&gt;
-
-&lt;p&gt;Estou usando o Todoist e o Logseq há anos e estou super satisfeito. Ambas as ferramentas me atendem muito bem e, por enquanto, não vejo motivo para deixá-las de lado no curto ou médio prazo. Essa confiança veio depois de muitos testes e uma avaliação cuidadosa para garantir que elas realmente cumpririam o que eu precisava.&lt;/p&gt;
-
-&lt;p&gt;Mesmo assim, sempre me pergunto se essas ferramentas ainda estão alinhadas com minhas necessidades. Pode ser que, em algum momento, a resposta seja não, e eu precise buscar novas soluções. Esse é o fluxo natural das coisas.&lt;/p&gt;
 </content>
   </entry>
 </feed>
