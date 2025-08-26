@@ -1,5 +1,18 @@
 @import "variables";
 
+a[disabled] {
+  pointer-events: none;
+  filter: opacity(.2);
+}
+
+.post-content {
+  p {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+
 .post {
   p {
     padding-top: 1rem;
