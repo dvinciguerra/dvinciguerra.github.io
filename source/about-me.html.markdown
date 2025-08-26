@@ -3,13 +3,32 @@ title: Sobre mim
 layout: page
 ---
 
-Olá, meu nome é Daniel Vinciguerra, mas se você não gosta de nomes longos, pode me chamar de Vince.
+Pode me chamar de _Vince_.
 
-Tenho usado as linguagens [Ruby](https://github.com/dvinciguerra?tab=repositories&q=&type=&language=ruby&sort=stargazers), C e C++, [JS](https://github.com/dvinciguerra?tab=repositories&q=&type=&language=javascript&sort=stargazers) (frontend e backend), [Shell script](https://github.com/dvinciguerra?tab=repositories&q=&type=&language=shell&sort=stargazers) e um pouco de Python.
+Sou um engenheiro de software com mais de 15 anos de experiência e um
+generalista profissional, apaixonado por tecnologia, código aberto e boas
+práticas de desenvolvimento.
 
-Também tenho experiência com [Perl](https://github.com/dvinciguerra?tab=repositories&q=&type=&language=perl&sort=stargazers), Java, C#, Lua (e algumas outras linguagens) profissionalmente.
+Na minha carreira, tive o privilégio de trabalhar em diversas áreas, incluindo
+sotware houses, startups, empresas de médio e grande porte, smart cities e
+tecnologias civicas, health and wellness, marketing, sales, e-commerce e
+devtools.
 
-Atualmente ando brincando com Rust, [Crystal](https://github.com/dvinciguerra?tab=repositories&q=&type=&language=crystal&sort=stargazers), Elixir, Erlang e Clojure nas horas vagas.
+Atualmente, tenho trabalhado como engenheiro de software especialista em
+automações e integrações, serviços e APIs utilizando **Ruby** ou **Node.js**, e
+sistemas utilizando **C e C++**, além de atuar também como arquiteto de
+software.
+
+Também tenho experiência em desenvolvimento utilizando **Perl**, **Java**,
+**C#**, **Lua** e outras linguagens de programação.
+
+Nas horas vagas e em meu **Homelab**, gosto de explorar novas linguagens e
+tecnologias. Utilizando **Python**, **Crystal**, **Erlang**, **Elixir**,
+**rust**, e tenho me divertido criando e codando **smart devices** e sensores
+para minha casa além de **automações** e até me aventurado com modelagem 3D para
+minha impressora.
+
+
 
 ### Social
 
@@ -24,4 +43,5 @@ Atualmente ando brincando com Rust, [Crystal](https://github.com/dvinciguerra?ta
 ### Contact
 
 daniel.vinciguerra AT bivee.com.br
+
 @dvinciguerra
