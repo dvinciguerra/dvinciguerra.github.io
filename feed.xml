@@ -15,7 +15,7 @@
     <link rel="alternate" href="https://vincebot.dev/2025/08/24/jenkins-no-meu-homelab/"/>
     <id>https://vincebot.dev/2025/08/24/jenkins-no-meu-homelab/</id>
     <published>2025-08-24T23:48:00+00:00</published>
-    <updated>2025-08-26T00:02:20+00:00</updated>
+    <updated>2025-08-26T00:32:12+00:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -69,7 +69,7 @@ Segurança é fundamental nesse contexto, e poder rodar as coisas mais críticas
     <link rel="alternate" href="https://vincebot.dev/2025/08/03/aprendendo-a-modelar-3d-usando-openscad/"/>
     <id>https://vincebot.dev/2025/08/03/aprendendo-a-modelar-3d-usando-openscad/</id>
     <published>2025-08-03T15:53:00+00:00</published>
-    <updated>2025-08-21T01:04:29+00:00</updated>
+    <updated>2025-08-21T13:16:24+00:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -154,7 +154,7 @@ minhas habilidades no OpenScad. para criar os outros projetos que estou tocando.
     <link rel="alternate" href="https://vincebot.dev/2025/07/08/configurando-o-ssh-no-termux/"/>
     <id>https://vincebot.dev/2025/07/08/configurando-o-ssh-no-termux/</id>
     <published>2025-07-08T00:15:00+00:00</published>
-    <updated>2025-08-26T00:02:20+00:00</updated>
+    <updated>2025-08-21T21:12:43+00:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -289,7 +289,7 @@ PasswordAuthentication yes
     <link rel="alternate" href="https://vincebot.dev/2025/03/16/como-transformar-um-sistema-simples-em-um-frankenstein-sem-querer/"/>
     <id>https://vincebot.dev/2025/03/16/como-transformar-um-sistema-simples-em-um-frankenstein-sem-querer/</id>
     <published>2025-03-16T23:08:00+00:00</published>
-    <updated>2025-08-21T01:04:29+00:00</updated>
+    <updated>2025-08-21T13:16:24+00:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -393,7 +393,7 @@ Mas só faz sentido se for resolver um problema real e se as pessoas souberem us
     <link rel="alternate" href="https://vincebot.dev/2025/01/13/caracteres-com-acento-em-ruby/"/>
     <id>https://vincebot.dev/2025/01/13/caracteres-com-acento-em-ruby/</id>
     <published>2025-01-13T19:53:00+00:00</published>
-    <updated>2025-08-21T01:04:29+00:00</updated>
+    <updated>2025-08-21T13:16:24+00:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -433,7 +433,7 @@ como o range do &lt;code&gt;À&lt;/code&gt; até o &lt;code&gt;ÿ&lt;/code&gt;:&
     <link rel="alternate" href="https://vincebot.dev/2024/12/06/mute-and-umute-audio-using-terminal-on-ubuntu/"/>
     <id>https://vincebot.dev/2024/12/06/mute-and-umute-audio-using-terminal-on-ubuntu/</id>
     <published>2024-12-06T22:54:00+00:00</published>
-    <updated>2025-08-21T01:04:29+00:00</updated>
+    <updated>2025-08-21T13:16:24+00:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -474,7 +474,7 @@ amixer &lt;span class="nb"&gt;set &lt;/span&gt;Master unmute
     <link rel="alternate" href="https://vincebot.dev/2024/11/03/debugando-codigos-em-ruby/"/>
     <id>https://vincebot.dev/2024/11/03/debugando-codigos-em-ruby/</id>
     <published>2024-11-03T19:36:00+00:00</published>
-    <updated>2025-08-21T01:04:29+00:00</updated>
+    <updated>2025-08-21T13:16:24+00:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -538,7 +538,7 @@ amixer &lt;span class="nb"&gt;set &lt;/span&gt;Master unmute
     <link rel="alternate" href="https://vincebot.dev/2024/09/07/como-eu-organizo-e-mantenho-meus-dotfiles/"/>
     <id>https://vincebot.dev/2024/09/07/como-eu-organizo-e-mantenho-meus-dotfiles/</id>
     <published>2024-09-07T00:00:00+00:00</published>
-    <updated>2025-08-21T01:04:29+00:00</updated>
+    <updated>2025-08-21T13:16:24+00:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -609,7 +609,7 @@ amixer &lt;span class="nb"&gt;set &lt;/span&gt;Master unmute
     <link rel="alternate" href="https://vincebot.dev/2024/09/02/como-criar-clis-em-ruby-parsers-de-argumentos/"/>
     <id>https://vincebot.dev/2024/09/02/como-criar-clis-em-ruby-parsers-de-argumentos/</id>
     <published>2024-09-02T22:32:00+00:00</published>
-    <updated>2025-08-21T01:04:29+00:00</updated>
+    <updated>2025-08-21T13:16:24+00:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -743,7 +743,7 @@ amixer &lt;span class="nb"&gt;set &lt;/span&gt;Master unmute
     <link rel="alternate" href="https://vincebot.dev/2024/08/28/configurando-dominios-do-meu-homelab-na-cloudflare-usando-terraform/"/>
     <id>https://vincebot.dev/2024/08/28/configurando-dominios-do-meu-homelab-na-cloudflare-usando-terraform/</id>
     <published>2024-08-28T14:08:00+00:00</published>
-    <updated>2025-08-21T01:04:29+00:00</updated>
+    <updated>2025-08-21T13:16:24+00:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
@@ -863,7 +863,7 @@ configurações, você pode acessar o painel da Cloudflare e verificar se os reg
     <link rel="alternate" href="https://vincebot.dev/2024/08/26/utilizando-userscripts-para-customizar-sua-experiencia-na-web/"/>
     <id>https://vincebot.dev/2024/08/26/utilizando-userscripts-para-customizar-sua-experiencia-na-web/</id>
     <published>2024-08-26T03:48:00+00:00</published>
-    <updated>2025-08-21T01:04:29+00:00</updated>
+    <updated>2025-08-21T13:16:24+00:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
