@@ -104,8 +104,10 @@ end
 
 configure :build do
   activate :minify_css
-  activate :minify_javascript
   activate :asset_hash
+
+  # cant minify and uglify js using importmap
+  # activate :minify_javascript
 end
 
 activate :importmap do |option|
