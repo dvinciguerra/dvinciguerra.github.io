@@ -1,41 +1,54 @@
+
+
 <!doctype html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='ie=edge' />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Blog Title</title>
-
-    <meta name="description" content="Makes developing websites simple.">
-    <meta name="HandheldFriendly" content="True">
-
-    <!-- Open Graph Tags -->
-    <meta property="og:site_name" content="Middleman">
-    <meta property="og:type" content="website">
-      <meta property="og:title" content="solution-architecture">
-    <meta property="og:description" content="Makes developing websites simple.">
-    <meta property="og:url" content="http://www.example.com/tags/solution-architecture/">
-
-    <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary">
-      <meta name="twitter:title" content="solution-architecture">
-    <meta name="twitter:description" content="Makes developing websites simple.">
-    <meta name="twitter:url" content="http://www.example.com/tags/solution-architecture/">
+    <link rel="apple-touch-icon" sizes="300x300" href="/images/avatar-12b9c075.jpg">
+<link rel="icon" type="image/jpeg" sizes="300x300" href="/images/avatar-12b9c075.jpg">
 
 
-    <link href="/images/images/favicon.ico" rel="icon" type="image/ico" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400">
 
 
+    <title>Vincebot</title>
     <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/feed.xml" />
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
 
     <link href="/stylesheets/site-e6250032.css" rel="stylesheet" />
-    <script src="/javascripts/site-ff03f7d1.js"></script>
+    <link href="/stylesheets/highlighting-9702f692.css" rel="stylesheet" />
 
+
+    <script
+  async
+  data-turbo-track="reload"
+  src="https://ga.jspm.io/npm:es-module-shims@1.8.2/dist/es-module-shims.js"
+  crossorigin="anonymous"
+></script>
+<script type="importmap-shim">
+  {
+  "imports": {
+    "@hotwired/stimulus": "https://unpkg.com/@hotwired/stimulus/dist/stimulus.js"
+  }
+}
+</script>
+<script
+  type="module-shim"
+  src="/javascripts/site-ff03f7d1.js"
+></script>
+
+
+    <!-- style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+      }
+    </style -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-L13LRG6EMB"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -47,10 +60,47 @@
 
 
   </head>
-  <body>
+  <body class="bg-gray-900 ">
+    <header class="text-gray-400 bg-gray-900 body-font">
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+    <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+      <img src="/images/logo-dcaa08f8.png" alt="vincebot logo" class="w-10 h-10" />
 
-    <div id="main" role="main">
-      <h1>Articles tagged 'solution-architecture'</h1>
+      <span class="ml-3 text-xl">Vincebot</span>
+    </a>
+    <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700	flex flex-wrap items-center text-base justify-center">
+      <a class="mr-5 hover:text-white" href="/">Home</a>
+      <a class="mr-5 hover:text-white" href="/now">Now</a>
+      <a class="mr-5 hover:text-white" href="/about-me">About me</a>
+    </nav>
+  </div>
+</header>
+
+
+
+
+    <main class="bg-gray-900 pb-20">
+      <section class="text-gray-400 body-font overflow-hidden min-h-svh">
+        <div class="container px-0 sm:px-2 md:px-6 lg:px-20 xl:px-60 pt-5 mx-auto px-auto max-md:px-0 max-sm:px-4 md:pb-40 max-sm:pb-20">
+            <section class="text-gray-400 bg-gray-900 body-font">
+  <div class="container p-20 mx-auto">
+    <div class="text-center mb-10">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font text-white mb-4">Hi, I'm Daniel Vinciguerra
+</h1>
+      <!-- subtitulo para o meu blog -->
+      <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-400">I'm a software engineer and I love to write about technology, automation, integration, programming, productivity and life.
+</p>
+      <div class="flex mt-6 justify-center">
+        <div class="w-16 h-1 rounded-full bg-indigo-500 inline-flex"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <section class="post-content">
+    <h1>Articles tagged 'solution-architecture'</h1>
 
 
 <ul>
@@ -58,117 +108,50 @@
 </ul>
 
 
-    </div>
+  </section>
 
-    <aside>
-      <h2>Recent Articles</h2>
-      <ol>
-          <li><a href="/2025/08/24/jenkins-no-meu-homelab/">Jenkins no meu Homelab</a> <span>Aug 24</span></li>
-          <li><a href="/2025/08/03/aprendendo-a-modelar-3d-usando-openscad/">Aprendendo a modelar 3D usando OpenScad</a> <span>Aug  3</span></li>
-          <li><a href="/2025/07/08/configurando-o-ssh-no-termux/">Configurando o SSH no Termux</a> <span>Jul  8</span></li>
-          <li><a href="/2025/03/16/como-transformar-um-sistema-simples-em-um-frankenstein-sem-querer/">Como transformar um sistema simples em um Frankenstein sem querer</a> <span>Mar 16</span></li>
-          <li><a href="/2025/01/13/caracteres-com-acento-em-ruby/">Caracteres com acento em ruby</a> <span>Jan 13</span></li>
-          <li><a href="/2024/12/06/mute-and-umute-audio-using-terminal-on-ubuntu/">Mute and umute audio using terminal on Ubuntu</a> <span>Dec  6</span></li>
-          <li><a href="/2024/11/03/debugando-codigos-em-ruby/">Debugando códigos em Ruby</a> <span>Nov  3</span></li>
-          <li><a href="/2024/09/07/como-eu-organizo-e-mantenho-meus-dotfiles/">Como eu organizo e mantenho meus dotfiles</a> <span>Sep  7</span></li>
-          <li><a href="/2024/09/02/como-criar-clis-em-ruby-parsers-de-argumentos/">Como criar CLIs em Ruby - Parsers de argumentos</a> <span>Sep  2</span></li>
-          <li><a href="/2024/08/28/configurando-dominios-do-meu-homelab-na-cloudflare-usando-terraform/">Configurando dominios do meu Homelab na Cloudflare usando Terraform</a> <span>Aug 28</span></li>
-      </ol>
+        </div>
+      </section>
+    </main>
 
-      <h2>Tags</h2>
-      <ol>
-          <li><a href="/tags/jenkins/">jenkins (1)</a></li>
-          <li><a href="/tags/homelab/">homelab (2)</a></li>
-          <li><a href="/tags/deployment/">deployment (1)</a></li>
-          <li><a href="/tags/devops/">devops (2)</a></li>
-          <li><a href="/tags/infraestructure/">infraestructure (1)</a></li>
-          <li><a href="/tags/self-hosted/">self-hosted (1)</a></li>
-          <li><a href="/tags/3d/">3D (1)</a></li>
-          <li><a href="/tags/openscad/">openscad (1)</a></li>
-          <li><a href="/tags/modeling/">modeling (1)</a></li>
-          <li><a href="/tags/design/">design (2)</a></li>
-          <li><a href="/tags/learning/">learning (1)</a></li>
-          <li><a href="/tags/mobile/">mobile (1)</a></li>
-          <li><a href="/tags/termux/">termux (1)</a></li>
-          <li><a href="/tags/ssh/">ssh (1)</a></li>
-          <li><a href="/tags/terninal/">terninal (1)</a></li>
-          <li><a href="/tags/config/">config (1)</a></li>
-          <li><a href="/tags/connection/">connection (1)</a></li>
-          <li><a href="/tags/software/">software (1)</a></li>
-          <li><a href="/tags/arquitetura/">arquitetura (1)</a></li>
-          <li><a href="/tags/til/">til (1)</a></li>
-          <li><a href="/tags/ruby/">ruby (5)</a></li>
-          <li><a href="/tags/caracteres/">caracteres (1)</a></li>
-          <li><a href="/tags/encoding/">encoding (1)</a></li>
-          <li><a href="/tags/today-i-learned/">today i learned (1)</a></li>
-          <li><a href="/tags/ubuntu/">ubuntu (1)</a></li>
-          <li><a href="/tags/linux/">linux (1)</a></li>
-          <li><a href="/tags/terminal/">terminal (2)</a></li>
-          <li><a href="/tags/audio/">audio (1)</a></li>
-          <li><a href="/tags/debug/">debug (1)</a></li>
-          <li><a href="/tags/pry/">pry (1)</a></li>
-          <li><a href="/tags/byebug/">byebug (1)</a></li>
-          <li><a href="/tags/irb/">irb (1)</a></li>
-          <li><a href="/tags/dotfiles/">dotfiles (1)</a></li>
-          <li><a href="/tags/git/">git (1)</a></li>
-          <li><a href="/tags/github/">github (2)</a></li>
-          <li><a href="/tags/shell/">shell (1)</a></li>
-          <li><a href="/tags/zsh/">zsh (1)</a></li>
-          <li><a href="/tags/tmux/">tmux (1)</a></li>
-          <li><a href="/tags/neovim/">neovim (1)</a></li>
-          <li><a href="/tags/cli/">cli (2)</a></li>
-          <li><a href="/tags/development/">development (2)</a></li>
-          <li><a href="/tags/command-line/">command-line (1)</a></li>
-          <li><a href="/tags/terraform/">terraform (1)</a></li>
-          <li><a href="/tags/cloudflare/">cloudflare (1)</a></li>
-          <li><a href="/tags/dns/">dns (1)</a></li>
-          <li><a href="/tags/infraestrutura/">infraestrutura (1)</a></li>
-          <li><a href="/tags/tech/">tech (1)</a></li>
-          <li><a href="/tags/userscripts/">userscripts (1)</a></li>
-          <li><a href="/tags/web/">web (2)</a></li>
-          <li><a href="/tags/productivity/">productivity (5)</a></li>
-          <li><a href="/tags/addons/">addons (1)</a></li>
-          <li><a href="/tags/greasemonkey/">greasemonkey (1)</a></li>
-          <li><a href="/tags/tampermonkey/">tampermonkey (1)</a></li>
-          <li><a href="/tags/solution-architecture/">solution-architecture (1)</a></li>
-          <li><a href="/tags/software-architecture/">software architecture (1)</a></li>
-          <li><a href="/tags/software-engineering/">software engineering (1)</a></li>
-          <li><a href="/tags/system-design/">system design (1)</a></li>
-          <li><a href="/tags/apps/">apps (1)</a></li>
-          <li><a href="/tags/notion/">notion (1)</a></li>
-          <li><a href="/tags/todoist/">todoist (2)</a></li>
-          <li><a href="/tags/lpgseq/">lpgseq (1)</a></li>
-          <li><a href="/tags/tdah/">tdah (1)</a></li>
-          <li><a href="/tags/note-taking/">note-taking (2)</a></li>
-          <li><a href="/tags/knowledgement/">knowledgement (2)</a></li>
-          <li><a href="/tags/tools/">tools (1)</a></li>
-          <li><a href="/tags/methods/">methods (1)</a></li>
-          <li><a href="/tags/concepts/">concepts (1)</a></li>
-          <li><a href="/tags/basecamp/">basecamp (1)</a></li>
-          <li><a href="/tags/solid-queue/">solid-queue (1)</a></li>
-          <li><a href="/tags/rails/">rails (1)</a></li>
-          <li><a href="/tags/activejob/">activejob (1)</a></li>
-          <li><a href="/tags/background-job/">background-job (1)</a></li>
-          <li><a href="/tags/async-job/">async-job (1)</a></li>
-          <li><a href="/tags/jekyll/">jekyll (1)</a></li>
-          <li><a href="/tags/middleman/">middleman (2)</a></li>
-          <li><a href="/tags/blog/">blog (2)</a></li>
-          <li><a href="/tags/migration/">migration (1)</a></li>
-          <li><a href="/tags/ui/">ui (1)</a></li>
-          <li><a href="/tags/frontend/">frontend (1)</a></li>
-          <li><a href="/tags/tailwindcss/">tailwindcss (1)</a></li>
-          <li><a href="/tags/logseq/">logseq (1)</a></li>
-          <li><a href="/tags/api/">api (1)</a></li>
-          <li><a href="/tags/personal/">personal (1)</a></li>
-      </ol>
+    <footer class="text-gray-400 bg-gray-900 body-font">
+  <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+    <a class="flex title-font font-medium items-center md:justify-start justify-center text-white">
 
-      <h2>By Year</h2>
-      <ol>
-          <li><a href="/2025/">2025 (5)</a></li>
-          <li><a href="/2024/">2024 (13)</a></li>
-          <li><a href="/2023/">2023 (1)</a></li>
-          <li><a href="/2019/">2019 (1)</a></li>
-      </ol>
-    </aside>
+      <img src="/images/logo-dcaa08f8.png" alt="vincebot logo" class="w-10 h-10" />
+
+
+      <span class="ml-3 text-xl">Vincebot</span>
+    </a>
+    <p class="text-sm text-gray-400 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-800 sm:py-2 sm:mt-0 mt-4">&copy; 2023 Vincebot —
+    <a href="https://github.com/dvinciguerra" class="text-gray-500 ml-1" target="_blank" rel="noopener noreferrer">Daniel Vinciguerra</a>&nbsp;
+      <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>
+    </p>
+    <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+      <a class="text-gray-400" href="https://github.com/dvinciguerra" target="_blank">
+        <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor" style="--darkreader-inline-color: #bbb9b7;" data-darkreader-inline-color="">
+          <path d="M16 22.0268V19.1568C16.0375 18.68 15.9731 18.2006 15.811 17.7506C15.6489 17.3006 15.3929 16.8902 15.06 16.5468C18.2 16.1968 21.5 15.0068 21.5 9.54679C21.4997 8.15062 20.9627 6.80799 20 5.79679C20.4558 4.5753 20.4236 3.22514 19.91 2.02679C19.91 2.02679 18.73 1.67679 16 3.50679C13.708 2.88561 11.292 2.88561 8.99999 3.50679C6.26999 1.67679 5.08999 2.02679 5.08999 2.02679C4.57636 3.22514 4.54413 4.5753 4.99999 5.79679C4.03011 6.81549 3.49251 8.17026 3.49999 9.57679C3.49999 14.9968 6.79998 16.1868 9.93998 16.5768C9.61098 16.9168 9.35725 17.3222 9.19529 17.7667C9.03334 18.2112 8.96679 18.6849 8.99999 19.1568V22.0268" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="--darkreader-inline-stroke: #000000;" data-darkreader-inline-stroke=""></path><path d="M9 20.0267C6 20.9999 3.5 20.0267 2 17.0267" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="--darkreader-inline-stroke: #000000;" data-darkreader-inline-stroke=""></path>
+        </svg>
+      </a>
+      <a class="ml-3 text-gray-400" href="https://www.linkedin.com/in/dvinciguerra/" target="_blank">
+        <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor" style="--darkreader-inline-color: #bbb9b7;" data-darkreader-inline-color="">
+          <path d="M21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-darkreader-inline-stroke=""></path>
+          <path d="M7 17V13.5V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="--darkreader-inline-stroke: currentColor;" data-darkreader-inline-stroke=""></path><path d="M11 17V13.75M11 10V13.75M11 13.75C11 10 17 10 17 13.75V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="--darkreader-inline-stroke: currentColor;" data-darkreader-inline-stroke=""></path><path d="M7 7.01L7.01 6.99889" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="--darkreader-inline-stroke: currentColor;" data-darkreader-inline-stroke=""></path>
+        </svg>
+      </a>
+      <a class="ml-3 text-gray-400" href="https://twitter.com/dvinciguerra" target="_blank">
+        <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor" style="--darkreader-inline-color: #bbb9b7;" data-darkreader-inline-color="">
+          <path d="M23 3.01006C23 3.01006 20.9821 4.20217 19.86 4.54006C19.2577 3.84757 18.4573 3.35675 17.567 3.13398C16.6767 2.91122 15.7395 2.96725 14.8821 3.29451C14.0247 3.62177 13.2884 4.20446 12.773 4.96377C12.2575 5.72309 11.9877 6.62239 12 7.54006V8.54006C10.2426 8.58562 8.50127 8.19587 6.93101 7.4055C5.36074 6.61513 4.01032 5.44869 3 4.01006C3 4.01006 -1 13.0101 8 17.0101C5.94053 18.408 3.48716 19.109 1 19.0101C10 24.0101 21 19.0101 21 7.51006C20.9991 7.23151 20.9723 6.95365 20.92 6.68006C21.9406 5.67355 23 3.01006 23 3.01006Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="--darkreader-inline-stroke: currentColor;" data-darkreader-inline-stroke=""></path>
+        </svg>
+      </a>
+      <a class="ml-3 text-gray-400" href="https://www.instagram.com/danielvinciguerra/" target="_blank">
+        <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="currentColor" style="--darkreader-inline-color: #bbb9b7;" data-darkreader-inline-color=""><path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="--darkreader-inline-stroke: currentColor;" data-darkreader-inline-stroke=""></path><path d="M3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16Z" stroke="currentColor" stroke-width="1.5" style="--darkreader-inline-stroke: currentColor;" data-darkreader-inline-stroke=""></path><path d="M17.5 6.51L17.51 6.49889" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="--darkreader-inline-stroke: currentColor;" data-darkreader-inline-stroke=""></path></svg>
+      </a>
+    </span>
+  </div>
+</footer>
+
+
+
   </body>
 </html>
