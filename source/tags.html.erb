@@ -1,0 +1,25 @@
+---
+pageable: true
+per_page: 50
+layout: page
+---
+
+<div class="-my-8 divide-y-2 divide-gray-800 grid grid-flow-rows auto-rows-max">
+  <% blog.tags.each_slice(5) do |items| %>
+    <div class="my-1 border-b-0 border-none">
+      <% items.each do |tag, articles| %>
+        <a
+          href="/tags/<%= tag %>/"
+          class="
+            rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1 mx-1
+          "
+        >
+          <%= articles.count %>&nbsp;
+          <%= tag %>
+        </a>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<%= partial "components/pagination", locals: { pageable: @pageable } %>
