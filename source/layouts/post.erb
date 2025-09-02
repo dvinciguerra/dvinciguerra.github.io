@@ -1,23 +1,45 @@
-
 <% wrap_layout :blog do %>
   <article class="post">
     <header class="post-header">
-      <div class="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-12">
-        <p class="mb-2 text-xs font-semibold tracking-wide text-gray-600 uppercase sm:text-center">
-          <time class="post-date" datetime="<%= current_article.date.strftime('%Y-%m-%d') %>">
+      <div
+        class="
+          px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8
+          lg:py-12
+        "
+      >
+        <p
+          class="
+            mb-2 text-xs font-semibold tracking-wide text-gray-600 uppercase sm:text-center
+          "
+        >
+          <time
+            class="post-date"
+            datetime="<%= current_article.date.strftime('%Y-%m-%d') %>"
+          >
             <%= current_article.date.strftime(blog_settings.date_format) %>
           </time>
         </p>
         <div class="max-w-xl mb-5 md:mx-auto sm:text-center lg:max-w-2xl">
           <div class="mb-4">
-            <h1 class="inline-block max-w-lg font-sans text-3xl font-extrabold leading-none tracking-tight text-gray-50 transition-colors duration-200 hover:text-gray-50 sm:text-4xl">
+            <h1
+              class="
+                inline-block max-w-lg font-sans text-3xl font-extrabold leading-none
+                tracking-tight text-gray-50 transition-colors duration-200 hover:text-gray-50
+                sm:text-4xl
+              "
+            >
               <%= current_article.title %>
             </h1>
           </div>
 
           <p class="text-base text-gray-50 md:text-lg">
             <% current_article.tags.each do |tag| %>
-              <span class="rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1"><%= tag %></span>
+              <a
+                class="
+                  rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1
+                "
+                href="/tags/<%= tag %>/"
+              ><%= tag %></a>
             <% end %>
           </p>
         </div>
@@ -26,61 +48,81 @@
       </div>
     </header>
 
-    <section class="post-content container px-auto max-md:px-0 max-sm:px-4 md:pb-40 max-sm:pb-20">
+    <section
+      class="
+        post-content container px-auto max-md:px-0 max-sm:px-4 md:pb-40 max-sm:pb-20
+      "
+    >
       <%= yield %>
     </section>
 
     <%# <%= partial('components/comments') %1> %>
 
-    <%= partial('components/contact_me') %>
-
+    <%= partial("components/contact_me") %>
     <!-- footer class="post-footer">
-      <% if gravatar? %>
-        <figure class="author-image">
-          <a class="img" href="<%= author_path %>" style="background-image: url(<%= gravatar %>)">
-            <span class="hidden"><%= blog_author.name %>'s Picture</span>
-          </a>
-        </figure>
-      <% end %>
-      <section class="author">
-        <h4>
-          <a href="<%= author_path %>"><%= blog_author.name %></a>
-        </h4>
-        <p>
-          <% if blog_author.bio.present? %>
-            <%= blog_author.bio %>
-          <% else %>
-            Read <a href="<%= author_path %>">more posts</a> by this author.
-          <% end %>
-        </p>
-
-        <% if blog_author.location.present? || blog_author.website.present? %>
-          <div class="author-meta">
-            <% if blog_author.location.present? %>
-              <span class="author-location icon-location"><%= blog_author.location %></span>
-            <% end %>
-            <% if blog_author.website.present? %>
-              <span class="author-link icon-link">
-                <a href="<%= blog_author.website %>"><%= blog_author.website %></a>
-              </span>
-            <% end %>
-          </div>
+    <% if gravatar? %>
+      <figure class="author-image">
+        <a
+          class="img"
+          href="<%= author_path %>"
+          style="background-image: url(<%= gravatar %>)"
+        >
+          <span class="hidden"><%= blog_author.name %>'s Picture</span>
+        </a>
+      </figure>
+    <% end %>
+    <section class="author">
+      <h4>
+        <a href="<%= author_path %>"><%= blog_author.name %></a>
+      </h4>
+      <p>
+        <% if blog_author.bio.present? %>
+          <%= blog_author.bio %>
+        <% else %>
+          Read
+          <a href="<%= author_path %>">more posts</a>
+          by this author.
         <% end %>
-      </section>
+      </p>
 
-      <section class="share">
-        <h4>Share this post</h4>
-        <a class="icon-twitter" href="<%= twitter_url %>" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-          <span class="hidden">Twitter</span>
-        </a>
-        <a class="icon-facebook" href="<%= facebook_url %>" onclick="window.open(this.href, 'facebook-share', 'width=580,height=296');return false;">
-          <span class="hidden">Facebook</span>
-        </a>
-        <a class="icon-google-plus" href="<%= google_plus_url %>" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-          <span class="hidden">Google+</span>
-        </a>
-      </section>
+      <% if blog_author.location.present? || blog_author.website.present? %>
+        <div class="author-meta">
+          <% if blog_author.location.present? %>
+            <span class="author-location icon-location"><%= blog_author.location %></span>
+          <% end %>
+          <% if blog_author.website.present? %>
+            <span class="author-link icon-link">
+              <a href="<%= blog_author.website %>"><%= blog_author.website %></a>
+            </span>
+          <% end %>
+        </div>
+      <% end %>
+    </section>
+
+    <section class="share">
+      <h4>Share this post</h4>
+      <a
+        class="icon-twitter"
+        href="<%= twitter_url %>"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"
+      >
+        <span class="hidden">Twitter</span>
+      </a>
+      <a
+        class="icon-facebook"
+        href="<%= facebook_url %>"
+        onclick="window.open(this.href, 'facebook-share', 'width=580,height=296');return false;"
+      >
+        <span class="hidden">Facebook</span>
+      </a>
+      <a
+        class="icon-google-plus"
+        href="<%= google_plus_url %>"
+        onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;"
+      >
+        <span class="hidden">Google+</span>
+      </a>
+    </section>
     </footer -->
-
   </article>
 <% end %>
