@@ -1,24 +1,22 @@
 ---
 pageable: true
-per_page: 50
+per_page: 40
 layout: page
 ---
 
-<div class="-my-8 divide-y-2 divide-gray-800 grid grid-flow-rows auto-rows-max">
-  <% blog.tags.each_slice(5) do |items| %>
-    <div class="my-1 border-b-0 border-none">
-      <% items.each do |tag, articles| %>
-        <a
-          href="/tags/<%= tag %>/"
-          class="
-            rounded-md bg-gray-700 text-gray-50 text-xs py-0.5 px-2 ml-1 mx-1
-          "
-        >
-          <%= articles.count %>&nbsp;
-          <%= tag %>
-        </a>
-      <% end %>
-    </div>
+<div class="-my-8 divide-y-2 divide-gray-800">
+  <% blog.tags.each do |tag, articles| %>
+    <a
+      href="/tags/<%= tag %>/"
+      class="
+        inline-flex items-center gap-x-1.5 rounded-md px-1.5 py-0.5 text-sm/5
+        font-medium sm:text-xs/5 forced-colors:outline bg-zinc-600/10 text-zinc-700
+        group-data-hover:bg-zinc-600/20 dark:bg-white/5 dark:text-zinc-400
+        dark:group-data-hover:bg-white/10 my-2 mx-1
+      "
+    >
+      <%= articles.count %>&nbsp;<%= tag %>
+    </a>
   <% end %>
 </div>
 
