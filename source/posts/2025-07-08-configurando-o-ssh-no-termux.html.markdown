@@ -6,6 +6,8 @@ category: tech
 layout: post
 ---
 
+![](./2025-07-08-configurando-o-ssh-no-termux/banner.png)
+
 O Termux é um emulador de terminal para Android que permite executar comandos de linha de comando e instalar pacotes Linux. Configurar o SSH no Termux pode ser útil para acessar remotamente o seu dispositivo Android ou para se conectar a outros servidores.
 
 Eu particularmente gosto de usar o Termux para acessar remotamente os servidores no meu homelab,e fazer algumas tarefas ou ate para pequenas manutenções.
@@ -23,6 +25,7 @@ Primeiro, você precisa instalar o pacote `openssh` no Termux. Abra o Termux e e
 ```bash
 pkg install openssh
 ```
+
 Isso instalará o OpenSSH, que é o servidor SSH que você usará para se conectar ao seu dispositivo Android.
 
 ## Iniciando o servidor ssh
