@@ -154,11 +154,13 @@ minhas habilidades no OpenScad. para criar os outros projetos que estou tocando.
     <link rel="alternate" href="https://vincebot.dev/2025/07/08/configurando-o-ssh-no-termux/"/>
     <id>https://vincebot.dev/2025/07/08/configurando-o-ssh-no-termux/</id>
     <published>2025-07-08T00:15:00+00:00</published>
-    <updated>2025-08-21T21:12:43+00:00</updated>
+    <updated>2025-09-04T13:42:26+00:00</updated>
     <author>
       <name>Daniel Vinciguerra</name>
     </author>
-    <content type="html">&lt;p&gt;O Termux é um emulador de terminal para Android que permite executar comandos de linha de comando e instalar pacotes Linux. Configurar o SSH no Termux pode ser útil para acessar remotamente o seu dispositivo Android ou para se conectar a outros servidores.&lt;/p&gt;
+    <content type="html">&lt;p&gt;&lt;img src="/2025/07/08/configurando-o-ssh-no-termux/banner-f754f0f9.png" alt="" /&gt;&lt;/p&gt;
+
+&lt;p&gt;O Termux é um emulador de terminal para Android que permite executar comandos de linha de comando e instalar pacotes Linux. Configurar o SSH no Termux pode ser útil para acessar remotamente o seu dispositivo Android ou para se conectar a outros servidores.&lt;/p&gt;
 
 &lt;p&gt;Eu particularmente gosto de usar o Termux para acessar remotamente os servidores no meu homelab,e fazer algumas tarefas ou ate para pequenas manutenções.&lt;/p&gt;
 
