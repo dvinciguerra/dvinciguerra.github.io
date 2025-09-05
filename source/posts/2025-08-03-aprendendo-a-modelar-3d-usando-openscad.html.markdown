@@ -6,6 +6,8 @@ category: tech
 layout: post
 ---
 
+![](./2025-08-03-aprendendo-a-modelar-3d-usando-openscad/screenshot.jpg)
+
 Por muito tempo eu quis aprender a modelar em 3D, mas não sabia por onde
 começar. A maioria dos programas de modelagem 3D são complexos e cheios de
 recursos que nem fazia ideia para que serviam.
